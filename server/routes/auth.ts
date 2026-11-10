@@ -4,6 +4,7 @@ import { clearSessionCookie, getSession, setSessionCookie } from '../auth';
 import { findUserByEmail, getSessionUser } from '../db/repo';
 import { DEMO_EMAIL, verifyPassword } from '../db/seed';
 import { parseBody } from '../http';
+import { authLimiter } from '../security';
 
 export const authRouter = Router();
 
@@ -16,7 +17,7 @@ authRouter.get('/session', (req, res) => {
   res.json({ user });
 });
 
-authRouter.post('/demo', (_req, res) => {
+authRouter.post('/demo', authLimiter, (_req, res) => {
   const demoUser = findUserByEmail(DEMO_EMAIL);
   if (!demoUser) {
     res.status(503).json({ error: 'Demo workspace is not seeded. Run npm run db:reset.' });
@@ -31,7 +32,7 @@ const loginSchema = z.object({
   password: z.string().min(1),
 });
 
-authRouter.post('/login', (req, res) => {
+authRouter.post('/login', authLimiter, (req, res) => {
   const input = parseBody(loginSchema, req, res);
   if (!input) return;
   const user = findUserByEmail(input.email);

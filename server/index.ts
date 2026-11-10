@@ -1,7 +1,9 @@
 import { createApp } from './app';
-import { config, geminiConfigured, paypalConfigured, paypalWebhookConfigured, webhookUrl } from './config';
+import { assertProductionConfig, config, geminiConfigured, paypalConfigured, paypalWebhookConfigured, webhookUrl } from './config';
 import { getDb } from './db/connection';
 import { seedDatabase } from './db/seed';
+
+assertProductionConfig();
 
 const db = getDb();
 seedDatabase(db);

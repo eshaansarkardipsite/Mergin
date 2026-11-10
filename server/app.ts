@@ -12,12 +12,15 @@ import { copilotRouter } from './routes/copilot';
 import { settingsRouter, onboardingRouter } from './routes/settings';
 import { webhookRouter } from './routes/webhooks';
 import { config } from './config';
+import { apiLimiter, securityHeaders } from './security';
 
 export function createApp(): express.Express {
   const app = express();
   app.disable('x-powered-by');
-  app.set('trust proxy', 1);
+  app.set('trust proxy', config.trustProxy);
 
+  app.use(securityHeaders);
+  app.use('/api', apiLimiter);
   app.use(
     express.json({
       limit: '1mb',

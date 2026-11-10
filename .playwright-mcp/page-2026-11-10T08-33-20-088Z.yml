@@ -1,0 +1,266 @@
+- generic [ref=f1e2]:
+  - generic [ref=f1e102]:
+    - complementary [ref=f1e103]:
+      - generic [ref=f1e104]:
+        - link "MERGIN overview" [ref=f1e106] [cursor=pointer]:
+          - /url: /app
+          - img "MERGIN" [ref=f1e107]
+        - link "NC Northstar Creative Demo workspace" [ref=f1e109] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [ref=f1e110]: NC
+          - generic [ref=f1e111]:
+            - generic [ref=f1e112]: Northstar Creative
+            - generic [ref=f1e113]: Demo workspace
+          - generic [aria-hidden] [ref=f1e114]: unfold_more
+        - navigation "Primary" [ref=f1e115]:
+          - generic [ref=f1e116]:
+            - paragraph [ref=f1e117]: Workspace
+            - generic [ref=f1e118]:
+              - link "Overview" [ref=f1e119] [cursor=pointer]:
+                - /url: /app
+                - generic [aria-hidden] [ref=f1e120]: space_dashboard
+              - link "Invoices" [ref=f1e122] [cursor=pointer]:
+                - /url: /app/invoices
+                - generic [aria-hidden] [ref=f1e123]: receipt_long
+              - link "Transactions" [ref=f1e125] [cursor=pointer]:
+                - /url: /app/transactions
+                - generic [aria-hidden] [ref=f1e126]: swap_horiz
+          - generic [ref=f1e128]:
+            - paragraph [ref=f1e129]: Planning
+            - generic [ref=f1e130]:
+              - link "Expenses" [ref=f1e131] [cursor=pointer]:
+                - /url: /app/expenses
+                - generic [aria-hidden] [ref=f1e132]: credit_card
+              - link "Budgets" [ref=f1e134] [cursor=pointer]:
+                - /url: /app/budgets
+                - generic [aria-hidden] [ref=f1e135]: savings
+              - link "Cash Flow" [ref=f1e137] [cursor=pointer]:
+                - /url: /app/cash-flow
+                - generic [aria-hidden] [ref=f1e138]: monitoring
+          - generic [ref=f1e140]:
+            - paragraph [ref=f1e141]: Intelligence
+            - generic [ref=f1e142]:
+              - link "Sentinel" [ref=f1e143] [cursor=pointer]:
+                - /url: /app/sentinel
+                - generic [aria-hidden] [ref=f1e144]: radar
+              - link "Copilot" [ref=f1e147] [cursor=pointer]:
+                - /url: /app/copilot
+                - generic [aria-hidden] [ref=f1e148]: forum
+        - generic [ref=f1e150]:
+          - link "Settings" [ref=f1e151] [cursor=pointer]:
+            - /url: /app/settings
+            - generic [aria-hidden] [ref=f1e152]: settings
+            - text: Settings
+          - button "Onboarding" [ref=f1e153] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f1e154]: rocket_launch
+            - text: Onboarding
+          - generic [ref=f1e155]:
+            - generic [ref=f1e156]: MC
+            - generic [ref=f1e157]:
+              - paragraph [ref=f1e158]: Maya Chen
+              - paragraph [ref=f1e159]: Demo owner
+            - button "Sign out" [ref=f1e160] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f1e161]: logout
+    - generic [ref=f1e162]:
+      - banner [ref=f1e163]:
+        - generic [ref=f1e164]:
+          - search [ref=f1e165]:
+            - generic [aria-hidden]: search
+            - searchbox "Search invoices" [ref=f1e166]
+            - generic: Ctrl K
+          - generic [ref=f1e167]:
+            - link "Demo data" [ref=f1e168] [cursor=pointer]:
+              - /url: /app/settings
+            - button "About this demo" [ref=f1e170] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f1e171]: help
+            - button "Notifications, 3 unread" [ref=f1e173] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f1e174]: notifications
+              - generic [ref=f1e175]: "3"
+            - link "Open profile settings" [ref=f1e176] [cursor=pointer]:
+              - /url: /app/settings
+              - text: MC
+      - main [ref=f1e177]:
+        - generic [ref=f1e179]:
+          - generic [ref=f1e180]:
+            - generic [ref=f1e181]:
+              - generic [ref=f1e182]: Treasury snapshot · demo feed
+              - heading "Overview" [level=1] [ref=f1e184]
+              - paragraph [ref=f1e185]: Good afternoon, Maya. Here is the workspace's financial posture today.
+            - generic [ref=f1e186]:
+              - link "Ask Copilot" [ref=f1e187] [cursor=pointer]:
+                - /url: /app/copilot
+                - generic [aria-hidden] [ref=f1e188]: terminal
+                - text: Ask Copilot
+              - link "Create invoice" [ref=f1e189] [cursor=pointer]:
+                - /url: /app/invoices/new
+                - generic [aria-hidden] [ref=f1e190]: add
+                - text: Create invoice
+          - region "Key metrics" [ref=f1e191]:
+            - generic [ref=f1e192]:
+              - generic [ref=f1e193]:
+                - generic [ref=f1e194]: Recorded balance
+                - generic [aria-hidden] [ref=f1e197]: account_balance_wallet
+              - generic [ref=f1e198]:
+                - generic [ref=f1e199]: $18,420.50
+                - generic [ref=f1e200]: Opening balance plus settled demo ledger activity
+            - generic [ref=f1e201]:
+              - generic [ref=f1e202]:
+                - generic [ref=f1e203]: Incoming this month
+                - generic [aria-hidden] [ref=f1e206]: call_received
+              - generic [ref=f1e207]:
+                - generic [ref=f1e208]: $7,250.00
+                - generic [ref=f1e209]: Settled receipts · November 2026
+            - generic [ref=f1e210]:
+              - generic [ref=f1e211]:
+                - generic [ref=f1e212]: Outstanding invoices
+                - generic [aria-hidden] [ref=f1e215]: receipt_long
+              - generic [ref=f1e216]:
+                - generic [ref=f1e217]: $5,490.00
+                - generic [ref=f1e219]:
+                  - generic [ref=f1e220]:
+                    - generic [aria-hidden] [ref=f1e221]: priority_high
+                    - text: 1 overdue
+                  - generic [ref=f1e222]: Receivables — never counted as cash
+            - generic [ref=f1e223]:
+              - generic [ref=f1e224]:
+                - generic [ref=f1e225]: Monthly expenses
+                - generic [aria-hidden] [ref=f1e228]: credit_card
+              - generic [ref=f1e229]:
+                - generic [ref=f1e230]: $4,380.20
+                - generic [ref=f1e231]: Expense records dated November 2026
+          - generic [ref=f1e232]:
+            - generic [ref=f1e233]:
+              - generic [ref=f1e234]:
+                - generic [ref=f1e235]:
+                  - generic [ref=f1e236]:
+                    - heading "Six-month inflow velocity" [level=2] [ref=f1e237]
+                    - generic [ref=f1e238]: November 2026
+                  - paragraph [ref=f1e239]: Settled incoming ledger transactions. Forecasts never include unpaid invoices.
+                - generic [ref=f1e240]:
+                  - generic [ref=f1e241]: Net this month
+                  - generic [ref=f1e242]: +$2,869.80
+              - generic [ref=f1e244]:
+                - generic [ref=f1e245]:
+                  - img "Inflow chart with 6 points" [ref=f1e246]
+                  - generic: "NOV: $7.3K"
+                - generic [ref=f1e262]:
+                  - generic [ref=f1e263]: JUN
+                  - generic [ref=f1e264]: JUL
+                  - generic [ref=f1e265]: AUG
+                  - generic [ref=f1e266]: SEP
+                  - generic [ref=f1e267]: OCT
+                  - generic [ref=f1e268]: NOV
+              - generic [ref=f1e269]:
+                - generic [ref=f1e270]: "Source: local demo ledger · Demo workspace · 20 ledger records"
+                - link "Open transactions" [ref=f1e271] [cursor=pointer]:
+                  - /url: /app/transactions
+                  - text: Open transactions
+                  - generic [aria-hidden] [ref=f1e272]: arrow_forward
+            - generic [ref=f1e273]:
+              - generic [ref=f1e274]:
+                - generic [ref=f1e275]:
+                  - heading "Needs attention" [level=2] [ref=f1e276]
+                  - paragraph [ref=f1e277]: Evidence-backed items only
+                - generic [ref=f1e278]: "4"
+              - list [ref=f1e279]:
+                - listitem [ref=f1e280]:
+                  - link "INV-1048 is overdue Acme Studios · was due Oct 31, 2026 $2,400.00" [ref=f1e281] [cursor=pointer]:
+                    - /url: /app/invoices/inv_1048
+                    - generic [aria-hidden] [ref=f1e283]: receipt_long
+                    - generic [ref=f1e284]:
+                      - generic [ref=f1e285]: INV-1048 is overdue
+                      - generic [ref=f1e286]: Acme Studios · was due Oct 31, 2026
+                    - generic [ref=f1e287]: $2,400.00
+                - listitem [ref=f1e288]:
+                  - link "New recurring charge pattern found Figma · evidence available $75.00" [ref=f1e289] [cursor=pointer]:
+                    - /url: /app/sentinel/rev_2004
+                    - generic [aria-hidden] [ref=f1e291]: radar
+                    - generic [ref=f1e292]:
+                      - generic [ref=f1e293]: New recurring charge pattern found
+                      - generic [ref=f1e294]: Figma · evidence available
+                    - generic [ref=f1e295]: $75.00
+                - listitem [ref=f1e296]:
+                  - link "Renewal expected within 30 days Amazon Web Services · evidence available $340.00" [ref=f1e297] [cursor=pointer]:
+                    - /url: /app/sentinel/rev_2003
+                    - generic [aria-hidden] [ref=f1e299]: radar
+                    - generic [ref=f1e300]:
+                      - generic [ref=f1e301]: Renewal expected within 30 days
+                      - generic [ref=f1e302]: Amazon Web Services · evidence available
+                    - generic [ref=f1e303]: $340.00
+                - listitem [ref=f1e304]:
+                  - link "Marketing budget at 99% Review spend before the period closes $792.00" [ref=f1e305] [cursor=pointer]:
+                    - /url: /app/budgets
+                    - generic [aria-hidden] [ref=f1e307]: savings
+                    - generic [ref=f1e308]:
+                      - generic [ref=f1e309]: Marketing budget at 99%
+                      - generic [ref=f1e310]: Review spend before the period closes
+                    - generic [ref=f1e311]: $792.00
+              - generic [ref=f1e312]:
+                - link "Review Sentinel" [ref=f1e313] [cursor=pointer]:
+                  - /url: /app/sentinel
+                - link "Explain" [ref=f1e314] [cursor=pointer]:
+                  - /url: /app/copilot
+                  - text: Explain
+                  - generic [aria-hidden] [ref=f1e315]: arrow_forward
+          - generic [ref=f1e316]:
+            - generic [ref=f1e317]:
+              - generic [ref=f1e318]:
+                - heading "Recent ledger activity" [level=2] [ref=f1e319]
+                - paragraph [ref=f1e320]: Latest settled records across the demo workspace
+              - link "View all" [ref=f1e321] [cursor=pointer]:
+                - /url: /app/transactions
+                - text: View all
+                - generic [aria-hidden] [ref=f1e322]: arrow_forward
+            - table [ref=f1e324]:
+              - rowgroup [ref=f1e325]:
+                - row [ref=f1e326]:
+                  - columnheader "Date" [ref=f1e327]
+                  - columnheader "Counterparty" [ref=f1e328]
+                  - columnheader "Description" [ref=f1e329]
+                  - columnheader "Status" [ref=f1e330]
+                  - columnheader "Amount" [ref=f1e331]
+              - rowgroup [ref=f1e332]:
+                - row [ref=f1e333]:
+                  - cell "Nov 7, 2026" [ref=f1e334]
+                  - cell "Forma Labs" [ref=f1e335]
+                  - cell "Payment received · INV-1054" [ref=f1e336]
+                  - cell "settled" [ref=f1e337]
+                  - cell "+$3,200.00" [ref=f1e339]
+                - row [ref=f1e340]:
+                  - cell "Nov 4, 2026" [ref=f1e341]
+                  - cell "Helio Ventures" [ref=f1e342]
+                  - cell "Payment received · INV-1050" [ref=f1e343]
+                  - cell "settled" [ref=f1e344]
+                  - cell "+$2,800.00" [ref=f1e346]
+                - row [ref=f1e347]:
+                  - cell "Nov 3, 2026" [ref=f1e348]
+                  - cell "CloudDesk Pro" [ref=f1e349]
+                  - cell "Workspace subscription" [ref=f1e350]
+                  - cell "settled" [ref=f1e351]
+                  - cell "−$49.00" [ref=f1e353]
+                - row [ref=f1e354]:
+                  - cell "Nov 2, 2026" [ref=f1e355]
+                  - cell "Wren & Field" [ref=f1e356]
+                  - cell "Payment received · INV-1052" [ref=f1e357]
+                  - cell "settled" [ref=f1e358]
+                  - cell "+$1,250.00" [ref=f1e360]
+                - row [ref=f1e361]:
+                  - cell "Nov 1, 2026" [ref=f1e362]
+                  - cell "Amazon Web Services" [ref=f1e363]
+                  - cell "Cloud hosting · monthly" [ref=f1e364]
+                  - cell "settled" [ref=f1e365]
+                  - cell "−$340.00" [ref=f1e367]
+                - row [ref=f1e368]:
+                  - cell "Oct 30, 2026" [ref=f1e369]
+                  - cell "WeWork" [ref=f1e370]
+                  - cell "Studio membership · monthly" [ref=f1e371]
+                  - cell "settled" [ref=f1e372]
+                  - cell "−$1,200.00" [ref=f1e374]
+            - generic [ref=f1e375]:
+              - generic [aria-hidden] [ref=f1e376]: schedule
+              - text: Snapshot generated just now · demo data, not a live bank feed
+  - status [ref=f1e378]:
+    - generic [ref=f1e379]: check_circle
+    - paragraph [ref=f1e380]: Demo workspace ready. All records are seeded local data.
+    - button "Dismiss notification" [ref=f1e381] [cursor=pointer]:
+      - generic [ref=f1e382]: close

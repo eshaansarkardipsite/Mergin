@@ -33,6 +33,8 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 - Express 5 API mounted under `/api`, Zod-validated.
 - `node:sqlite` persistence with a typed repository layer (`server/db/repo.ts`) and explicit schema.
 - Signed HTTP-only demo session cookie, one-click demo entry, seeded credentials.
+- Security headers with a Google Fonts-aware CSP, API rate limiting, stricter failed-sign-in limiting, and a
+  production startup guard for `SESSION_SECRET` / `APP_BASE_URL`.
 - Coherent seed data; dashboard totals reconcile exactly (see README).
 
 ### Routes
@@ -51,7 +53,7 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 | Copilot | `GET /api/copilot/suggestions`, `POST /api/copilot/ask` |
 | Settings | `GET/PATCH /api/settings`, `POST /api/settings/paypal/test`, `POST /api/settings/renewal-policy`, `POST /api/settings/demo-reset` |
 | Onboarding | `GET/POST /api/onboarding` |
-| Webhooks | `POST /api/webhooks/paypal` |
+| Webhooks | `POST /api/paypal/webhook` |
 
 ### Money
 
@@ -111,7 +113,7 @@ minor units into decimals at the boundary only.
 | `npm run db:reset` | Complete; totals reconcile |
 | `npm run typecheck` | Passing |
 | `npm run lint` | Passing |
-| `npm test` | 27 tests in 5 files passing |
+| `npm test` | 31 tests in 6 files passing |
 | `npm run build` | Passing |
 | Browser flows | Sign-in, dashboard, invoices, payment, transactions, expenses, budgets, cash flow, Sentinel, Copilot, settings, reset |
 
@@ -122,6 +124,20 @@ Vitest suites:
 - `tests/paypal.test.ts` — status mapping, reconciliation, signature verification
 - `tests/webhook.test.ts` — event extraction, deduplication, status handling
 - `tests/budgets.test.ts` — utilisation thresholds
+- `tests/security.test.ts` — security headers, provider readiness flags
+
+## Production foundation (Phase 1)
+
+Phase 1 prepares the production path without changing the demo sign-in flow:
+
+- Supabase, Google OAuth, and OpenRouter environment variables plus typed readiness flags in `server/config.ts`.
+- Helmet security headers, API rate limiting, and failed-sign-in throttling in `server/security.ts`.
+- `TRUST_PROXY` configuration; production refuses to start without `SESSION_SECRET` and `APP_BASE_URL`.
+- GitHub Actions CI runs typecheck, lint, tests, and build on every push and pull request.
+- README documents Supabase, Google OAuth, and PayPal Sandbox credential setup, including the webhook endpoint
+  `<origin>/api/paypal/webhook` and required invoice events.
+
+Phase 2 replaces the demo session with Supabase-validated sessions and adds Google OAuth and passkey flows.
 
 ## Branding audit
 
@@ -136,12 +152,12 @@ Vitest suites:
 
 ## Intentional limits
 
-- Demo authentication only; no production identity provider.
+- Demo authentication only; Supabase session validation, Google OAuth, and passkeys arrive in Phase 2.
 - Demo mode does not deliver email and does not create PayPal invoices without credentials.
 - Receipt upload is not implemented; only a receipt reference is stored.
-- No CI configuration.
+- CI verifies the build; deployment automation is not included.
 - Real PayPal and Gemini integrations require credentials and were not exercised against live services during
-  verification. Their behaviour without credentials is tested and truthful.
+  verification. Their behaviour without credentials is tested and truthful. OpenRouter replaces Gemini in Phase 3.
 
 ## Documentation
 

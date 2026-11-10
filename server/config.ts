@@ -10,11 +10,16 @@ function dbPathFromUrl(url: string | undefined): string {
   return path.resolve(process.cwd(), url);
 }
 
+function cleanUrl(url: string | undefined): string {
+  return url?.trim().replace(/\/$/, '') ?? '';
+}
+
 export const config = {
   nodeEnv: env.NODE_ENV ?? 'development',
   isProduction: env.NODE_ENV === 'production',
   port: Number(env.PORT ?? 3001),
-  appBaseUrl: (env.APP_BASE_URL ?? 'http://localhost:5173').replace(/\/$/, ''),
+  trustProxy: Number(env.TRUST_PROXY ?? 0),
+  appBaseUrl: cleanUrl(env.APP_BASE_URL) || 'http://localhost:5173',
   databasePath: dbPathFromUrl(env.DATABASE_URL),
   paypal: {
     environment: env.PAYPAL_ENV === 'live' ? 'live' : 'sandbox',
@@ -26,9 +31,34 @@ export const config = {
     apiKey: env.GEMINI_API_KEY?.trim() ?? '',
     model: env.GEMINI_MODEL?.trim() ?? '',
   },
+  openrouter: {
+    apiKey: env.OPENROUTER_API_KEY?.trim() ?? '',
+    model: env.OPENROUTER_MODEL?.trim() ?? '',
+  },
+  supabase: {
+    url: cleanUrl(env.SUPABASE_URL),
+    anonKey: env.SUPABASE_ANON_KEY?.trim() ?? '',
+    serviceRoleKey: env.SUPABASE_SERVICE_ROLE_KEY?.trim() ?? '',
+  },
+  google: {
+    clientId: env.GOOGLE_CLIENT_ID?.trim() ?? '',
+    clientSecret: env.GOOGLE_CLIENT_SECRET?.trim() ?? '',
+  },
   sessionSecret: env.SESSION_SECRET?.trim() || crypto.randomBytes(32).toString('hex'),
-  publicWebhookBaseUrl: env.PUBLIC_WEBHOOK_BASE_URL?.trim().replace(/\/$/, '') ?? '',
+  publicWebhookBaseUrl: cleanUrl(env.PUBLIC_WEBHOOK_BASE_URL),
 };
+
+/** Fail fast instead of running production with a per-process session secret or a localhost base URL. */
+export function assertProductionConfig(): void {
+  if (!config.isProduction) return;
+  const missing = [
+    !env.SESSION_SECRET?.trim() ? 'SESSION_SECRET' : '',
+    !env.APP_BASE_URL?.trim() ? 'APP_BASE_URL' : '',
+  ].filter(Boolean);
+  if (missing.length) {
+    throw new Error(`Production configuration is incomplete. Set ${missing.join(' and ')} in the server environment.`);
+  }
+}
 
 export function paypalConfigured(): boolean {
   return Boolean(config.paypal.clientId && config.paypal.clientSecret);
@@ -40,6 +70,18 @@ export function paypalWebhookConfigured(): boolean {
 
 export function geminiConfigured(): boolean {
   return Boolean(config.gemini.apiKey);
+}
+
+export function supabaseConfigured(): boolean {
+  return Boolean(config.supabase.url && config.supabase.anonKey);
+}
+
+export function googleAuthConfigured(): boolean {
+  return supabaseConfigured() && Boolean(config.google.clientId && config.google.clientSecret);
+}
+
+export function openrouterConfigured(): boolean {
+  return Boolean(config.openrouter.apiKey);
 }
 
 export function paypalApiBase(): string {

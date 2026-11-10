@@ -88,16 +88,67 @@ cp .env.example .env
 
 | Variable | Purpose |
 | --- | --- |
+| `NODE_ENV` | `development` (default) or `production`. Production also requires `SESSION_SECRET` and `APP_BASE_URL` |
 | `PORT` | API port (default `3001`) |
-| `APP_BASE_URL` | Public origin used in payment links (default `http://localhost:5173`) |
+| `TRUST_PROXY` | Number of reverse proxies in front of the API. Set `1` behind nginx/Caddy/a PaaS edge |
+| `APP_BASE_URL` | Public origin used in payment links and OAuth redirects (default `http://localhost:5173`) |
 | `DATABASE_URL` | SQLite location (default `file:./dev.db`) |
+| `SESSION_SECRET` | Cookie signing secret. Required in production; generate with `openssl rand -hex 32` |
+| `SUPABASE_URL` / `SUPABASE_ANON_KEY` | Supabase project URL and anon key. Server-side session validation |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only admin key. Never send to the browser |
+| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google OAuth client. Also paste both into Supabase |
 | `PAYPAL_ENV` | `sandbox` (default) or `live` |
 | `PAYPAL_CLIENT_ID` / `PAYPAL_CLIENT_SECRET` | Server-side PayPal OAuth. Never exposed to the browser |
 | `PAYPAL_WEBHOOK_ID` | Webhook ID used to verify signatures |
 | `PUBLIC_WEBHOOK_BASE_URL` | Optional public HTTPS base for webhooks |
-| `GEMINI_API_KEY` | Optional Gemini key, backend only |
-| `GEMINI_MODEL` | Gemini model ID; blank uses the deterministic local explanation |
-| `SESSION_SECRET` | Cookie signing secret; set a long random value in any shared environment |
+| `OPENROUTER_API_KEY` / `OPENROUTER_MODEL` | Production Copilot explanation provider |
+| `GEMINI_API_KEY` / `GEMINI_MODEL` | Legacy Copilot provider, kept until the OpenRouter migration lands |
+
+Security groundwork is active in every environment: security headers and CSP, a global API rate limit, a stricter
+limit on failed sign-in attempts, and a startup guard that refuses to run production without `SESSION_SECRET` and
+`APP_BASE_URL`.
+
+## Identity setup (phase 2 prerequisites)
+
+Authentication still uses the labelled local demo session. The environment and provider setup below is what Phase 2
+needs; adding credentials alone does not yet change the sign-in flow.
+
+### Supabase
+
+1. Create a project at <https://supabase.com/dashboard>.
+2. Open **Project Settings → API** and copy the project URL, anon key, and service-role key into `.env`.
+3. Under **Authentication → URL Configuration**, set the site URL to `APP_BASE_URL` and add
+   `http://localhost:5173/**` plus the production origin as redirect URLs.
+4. Under **Authentication → Providers**, enable Email and Google. Under **Authentication → Settings**, enable
+   passkeys when the project plan supports it.
+
+The service-role key bypasses row-level security. It belongs only in the server environment, never in Vite variables
+or client code.
+
+### Google OAuth
+
+1. In <https://console.cloud.google.com/>, create (or pick) a project.
+2. Configure the **OAuth consent screen** as an External app with the `email` and `profile` scopes.
+3. Open **APIs & Services → Credentials → Create credentials → OAuth client ID → Web application**.
+4. Add the authorised redirect URI `https://<project-ref>.supabase.co/auth/v1/callback`. Add
+   `http://localhost:5173` and the production origin as authorised JavaScript origins.
+5. Copy the client ID and secret into `.env` and into **Supabase → Authentication → Providers → Google**.
+
+Passkeys (WebAuthn) are registered against the production domain over HTTPS. Localhost works for development.
+
+### PayPal Sandbox credentials
+
+1. Sign in at <https://developer.paypal.com/dashboard/> and switch to **Sandbox**.
+2. Open **Apps & Credentials → Create App**. Name it (for example `MERGIN Sandbox`) and create it.
+3. Copy the **Client ID** and **Secret** from the app's Credentials tab into `.env`.
+4. Open the app's **Webhooks** tab and add `<PUBLIC_WEBHOOK_BASE_URL or APP_BASE_URL>/api/paypal/webhook`.
+5. Select the invoice events the server reconciles: `INVOICING.INVOICE.PAID`, `UPDATED`, `REFUNDED`, `CANCELLED`,
+   `CREATED`, `SENT`, and `SCHEDULED`.
+6. Copy the generated **Webhook ID** into `PAYPAL_WEBHOOK_ID`.
+7. Restart the API and use **Settings → Integrations → Test connection** to verify OAuth.
+
+Localhost webhooks are not reachable from PayPal. Use a tunnel (for example `ngrok http 3001`) and set
+`PUBLIC_WEBHOOK_BASE_URL` to the tunnel's HTTPS origin while testing.
 
 ### PayPal behaviour
 
@@ -156,9 +207,10 @@ docs/              Implementation status and notes
 
 ## Known limits (intentional MVP scope)
 
-- Authentication is a labelled demo session, not a real identity system.
+- Authentication is still a labelled demo session. Supabase, Google OAuth, and passkey wiring is Phase 2; Phase 1
+  adds provider configuration, security middleware, and CI.
 - Invoice "send" and "remind" are demo actions unless PayPal credentials are configured. No email is delivered.
 - Receipt files are referenced by name only; uploads are not stored.
 - The payment page only opens a genuine PayPal URL when the server has created a real hosted invoice. Otherwise it
   offers the labelled local simulation.
-- No CI configuration is included.
+- CI runs typecheck, lint, tests, and build on GitHub Actions; deployment automation is not included yet.
