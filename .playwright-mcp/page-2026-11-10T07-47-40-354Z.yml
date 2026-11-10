@@ -1,0 +1,192 @@
+- generic [ref=f8e6]:
+  - complementary [ref=f8e7]:
+    - generic [ref=f8e8]:
+      - link "MERGIN overview" [ref=f8e10] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f8e11]
+      - link "NC Northstar Creative Demo workspace" [ref=f8e13] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f8e14]: NC
+        - generic [ref=f8e15]:
+          - generic [ref=f8e16]: Northstar Creative
+          - generic [ref=f8e17]: Demo workspace
+        - generic [aria-hidden] [ref=f8e18]: unfold_more
+      - navigation "Primary" [ref=f8e19]:
+        - generic [ref=f8e20]:
+          - paragraph [ref=f8e21]: Workspace
+          - generic [ref=f8e22]:
+            - link "Overview" [ref=f8e23] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f8e24]: space_dashboard
+            - link "Invoices" [ref=f8e26] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f8e27]: receipt_long
+            - link "Transactions" [ref=f8e29] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f8e30]: swap_horiz
+        - generic [ref=f8e32]:
+          - paragraph [ref=f8e33]: Planning
+          - generic [ref=f8e34]:
+            - link "Expenses" [ref=f8e35] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f8e36]: credit_card
+            - link "Budgets" [ref=f8e38] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f8e39]: savings
+            - link "Cash Flow" [ref=f8e41] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f8e42]: monitoring
+        - generic [ref=f8e44]:
+          - paragraph [ref=f8e45]: Intelligence
+          - generic [ref=f8e46]:
+            - link "Sentinel" [ref=f8e47] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f8e48]: radar
+            - link "Copilot" [ref=f8e51] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f8e52]: forum
+      - generic [ref=f8e54]:
+        - link "Settings" [ref=f8e55] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f8e56]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f8e57] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f8e58]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f8e59]:
+          - generic [ref=f8e60]: MC
+          - generic [ref=f8e61]:
+            - paragraph [ref=f8e62]: Maya Chen
+            - paragraph [ref=f8e63]: Demo owner
+          - button "Sign out" [ref=f8e64] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e65]: logout
+  - generic [ref=f8e66]:
+    - banner [ref=f8e67]:
+      - generic [ref=f8e68]:
+        - search [ref=f8e69]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f8e70]
+          - generic: Ctrl K
+        - generic [ref=f8e71]:
+          - link "Demo data" [ref=f8e72] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f8e74] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e75]: help
+          - button "Notifications, 3 unread" [ref=f8e303] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e78]: notifications
+            - generic [ref=f8e304]: "3"
+          - link "Open profile settings" [ref=f8e79] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f8e80]:
+      - generic [ref=f8e82]:
+        - generic [ref=f8e83]:
+          - generic [ref=f8e84]:
+            - generic [ref=f8e85]: Treasury operations · liquidity forecast
+            - heading "Cash Flow" [level=1] [ref=f8e87]
+            - paragraph [ref=f8e88]: Recorded balance plus detected recurring outflows. Unpaid invoices are shown as receivables, never counted as cash.
+          - generic [ref=f8e89]:
+            - generic [ref=f8e90]:
+              - button "7 days" [active] [pressed] [ref=f8e91] [cursor=pointer]
+              - button "30 days" [ref=f8e92] [cursor=pointer]
+            - button "Export forecast" [ref=f8e93] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f8e94]: download
+              - text: Export forecast
+        - generic [ref=f8e95]:
+          - generic [ref=f8e96]:
+            - generic [aria-hidden] [ref=f8e97]: tune
+            - generic [ref=f8e98]:
+              - paragraph [ref=f8e99]: Forecast scenario
+              - paragraph [ref=f8e100]: Adds a 10% buffer to every estimated outflow. Receivables stay excluded.
+          - generic [ref=f8e101]:
+            - button "Baseline" [ref=f8e102] [cursor=pointer]
+            - button "Conservative" [pressed] [ref=f8e103] [cursor=pointer]
+        - region "Cash flow metrics" [ref=f8e482]:
+          - generic [ref=f8e483]:
+            - generic [ref=f8e484]:
+              - generic [ref=f8e485]: Recorded balance
+              - generic [aria-hidden] [ref=f8e488]: account_balance_wallet
+            - generic [ref=f8e489]:
+              - generic [ref=f8e490]: $22,920.50
+              - generic [ref=f8e491]: Opening balance plus settled demo ledger activity
+          - generic [ref=f8e492]:
+            - generic [ref=f8e493]:
+              - generic [ref=f8e494]: Confirmed receipts
+              - generic [aria-hidden] [ref=f8e497]: south_west
+            - generic [ref=f8e498]:
+              - generic [ref=f8e499]: $11,750.00
+              - generic [ref=f8e500]: Settled incoming transactions recorded this month
+          - generic [ref=f8e501]:
+            - generic [ref=f8e502]:
+              - generic [ref=f8e503]: Scheduled outflows · 7d
+              - generic [aria-hidden] [ref=f8e506]: north_east
+            - generic [ref=f8e507]:
+              - generic [ref=f8e508]: $0.00
+              - generic [ref=f8e509]: Includes a 10% scenario buffer
+          - generic [ref=f8e510]:
+            - generic [ref=f8e511]:
+              - generic [ref=f8e512]: Projected balance · day 7
+              - generic [aria-hidden] [ref=f8e515]: insights
+            - generic [ref=f8e516]:
+              - generic [ref=f8e517]: $22,920.50
+              - generic [ref=f8e518]: +$0.00 vs today
+        - generic [ref=f8e520]:
+          - generic [ref=f8e521]:
+            - generic [ref=f8e522]:
+              - generic [ref=f8e523]:
+                - heading "7-day liquidity trajectory" [level=2] [ref=f8e524]
+                - generic [ref=f8e525]: Conservative
+              - paragraph [ref=f8e526]: Recorded balances through today, then forecast balances after detected recurring outflows.
+            - generic [ref=f8e527]:
+              - generic [ref=f8e528]: Recorded
+              - generic [ref=f8e530]: Forecast
+          - generic [ref=f8e534]:
+            - img "Projected balance chart with 14 points" [ref=f8e535]
+            - generic: "Nov 17, 2026: $23K"
+          - generic [ref=f8e567]:
+            - generic [ref=f8e568]: Sep 29, 2026
+            - generic [ref=f8e569]: Today · Nov 10, 2026
+            - generic [ref=f8e570]: Nov 17, 2026
+          - paragraph [ref=f8e571]: Only balances after today are forecast. All amounts are USD integer cents.
+        - generic [ref=f8e572]:
+          - generic [ref=f8e573]:
+            - generic [ref=f8e574]:
+              - heading "Forecast assumptions" [level=2] [ref=f8e575]
+              - generic [ref=f8e576]: Deterministic
+            - list [ref=f8e577]:
+              - listitem [ref=f8e578]:
+                - generic [aria-hidden] [ref=f8e579]: check
+                - generic [ref=f8e580]: "Forecast horizon: 7 days from Nov 10, 2026."
+              - listitem [ref=f8e581]:
+                - generic [aria-hidden] [ref=f8e582]: check
+                - generic [ref=f8e583]: Unpaid invoices are excluded. They appear as outstanding receivables, never guaranteed income.
+              - listitem [ref=f8e584]:
+                - generic [aria-hidden] [ref=f8e585]: check
+                - generic [ref=f8e586]: Outflows use Sentinel-detected recurring charges (minimum 3 observations). One-off spend is not predicted.
+              - listitem [ref=f8e587]:
+                - generic [aria-hidden] [ref=f8e588]: check
+                - generic [ref=f8e589]: Conservative scenario adds a 10% buffer to every forecast outflow. It does not assume any receivable is collected.
+              - listitem [ref=f8e590]:
+                - generic [aria-hidden] [ref=f8e591]: check
+                - generic [ref=f8e592]: The starting balance is the recorded demo ledger balance, not a live bank feed.
+              - listitem [ref=f8e593]:
+                - generic [aria-hidden] [ref=f8e594]: check
+                - generic [ref=f8e595]: All figures are USD. No cross-currency conversion is applied.
+          - generic [ref=f8e596]:
+            - generic [ref=f8e597]:
+              - heading "Receivables context" [level=2] [ref=f8e598]
+              - generic [aria-hidden] [ref=f8e599]: receipt_long
+            - generic [ref=f8e600]:
+              - text: Outstanding invoices
+              - paragraph [ref=f8e601]: $5,490.00
+              - paragraph [ref=f8e602]: This amount is not included in any projected balance. An invoice becomes cash only when a settled receipt is recorded.
+            - generic [ref=f8e603]:
+              - generic [ref=f8e604]:
+                - generic [ref=f8e605]: Recorded balance
+                - generic [ref=f8e606]: $22,920.50
+              - generic [ref=f8e607]:
+                - generic [ref=f8e608]: Scheduled outflows
+                - generic [ref=f8e609]: −$0.00
+              - generic [ref=f8e610]:
+                - generic [ref=f8e611]: Projected day 7
+                - generic [ref=f8e612]: $22,920.50

@@ -1,0 +1,243 @@
+- generic [ref=f9e3]:
+  - complementary [ref=f9e4]:
+    - generic [ref=f9e5]:
+      - link "MERGIN overview" [ref=f9e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f9e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f9e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f9e11]: NC
+        - generic [ref=f9e12]:
+          - generic [ref=f9e13]: Northstar Creative
+          - generic [ref=f9e14]: Demo workspace
+        - generic [aria-hidden] [ref=f9e15]: unfold_more
+      - navigation "Primary" [ref=f9e16]:
+        - generic [ref=f9e17]:
+          - paragraph [ref=f9e18]: Workspace
+          - generic [ref=f9e19]:
+            - link "Overview" [ref=f9e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f9e21]: space_dashboard
+            - link "Invoices" [ref=f9e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f9e24]: receipt_long
+            - link "Transactions" [ref=f9e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f9e27]: swap_horiz
+        - generic [ref=f9e29]:
+          - paragraph [ref=f9e30]: Planning
+          - generic [ref=f9e31]:
+            - link "Expenses" [ref=f9e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f9e33]: credit_card
+            - link "Budgets" [ref=f9e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f9e36]: savings
+            - link "Cash Flow" [ref=f9e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f9e39]: monitoring
+        - generic [ref=f9e41]:
+          - paragraph [ref=f9e42]: Intelligence
+          - generic [ref=f9e43]:
+            - link "Sentinel" [ref=f9e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f9e45]: radar
+            - link "Copilot" [ref=f9e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f9e49]: forum
+      - generic [ref=f9e51]:
+        - link "Settings" [ref=f9e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f9e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f9e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f9e56]:
+          - generic [ref=f9e57]: MC
+          - generic [ref=f9e58]:
+            - paragraph [ref=f9e59]: Maya Chen
+            - paragraph [ref=f9e60]: Demo owner
+          - button "Sign out" [ref=f9e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e62]: logout
+  - generic [ref=f9e63]:
+    - banner [ref=f9e64]:
+      - generic [ref=f9e65]:
+        - search [ref=f9e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f9e67]
+          - generic: Ctrl K
+        - generic [ref=f9e68]:
+          - link "Demo data" [ref=f9e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f9e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e72]: help
+          - button "Notifications, 3 unread" [ref=f9e113] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e75]: notifications
+            - generic [ref=f9e114]: "3"
+          - link "Open profile settings" [ref=f9e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f9e77]:
+      - generic [ref=f9e272]:
+        - generic [ref=f9e273]:
+          - link "Sentinel" [ref=f9e274] [cursor=pointer]:
+            - /url: /app/sentinel
+            - generic [aria-hidden] [ref=f9e275]: arrow_back
+            - text: Sentinel
+          - generic [ref=f9e276]:
+            - generic [ref=f9e277]:
+              - generic [ref=f9e278]:
+                - heading "CloudDesk Pro" [level=1] [ref=f9e279]
+                - generic [ref=f9e280]:
+                  - generic [aria-hidden] [ref=f9e281]: circle
+                  - text: Open
+                - generic [ref=f9e282]: Price change
+              - paragraph [ref=f9e283]: Price increased 8.9% at renewal
+              - paragraph [ref=f9e284]: Detected Nov 3, 2026 · last updated Nov 2, 2026, 7:00 PM
+            - generic [ref=f9e285]:
+              - text: Detected charge
+              - paragraph [ref=f9e286]: $49.00 / mo
+              - paragraph [ref=f9e287]: Previous $45.00
+        - generic [ref=f9e288]:
+          - generic [ref=f9e289]: info
+          - generic [ref=f9e290]:
+            - paragraph [ref=f9e291]: Usage data is not connected
+            - generic [ref=f9e292]: This signal is based on charges in the ledger only. MERGIN cannot tell whether the service is used, unused, or necessary. Your decision records judgment, not a verified usage fact.
+        - generic [ref=f9e293]:
+          - generic [ref=f9e294]:
+            - generic [ref=f9e295]:
+              - generic [ref=f9e296]:
+                - heading "Signal summary" [level=2] [ref=f9e297]
+                - generic [ref=f9e298]: Evidence-based
+              - paragraph [ref=f9e299]: Five monthly charges detected. The latest two charges were $49.00, up from a $45.00 baseline. No usage data is connected, so value cannot be verified.
+            - generic [ref=f9e300]:
+              - generic [ref=f9e301]:
+                - heading "Detected pattern" [level=2] [ref=f9e302]
+                - generic [ref=f9e303]: High confidence
+              - generic [ref=f9e304]:
+                - generic [ref=f9e305]:
+                  - term [ref=f9e306]: Cadence
+                  - definition [ref=f9e307]: Monthly
+                - generic [ref=f9e308]:
+                  - term [ref=f9e309]: Observations
+                  - definition [ref=f9e310]: "5"
+                - generic [ref=f9e311]:
+                  - term [ref=f9e312]: Last charge
+                  - definition [ref=f9e313]: Nov 2, 2026
+                - generic [ref=f9e314]:
+                  - term [ref=f9e315]: Next expected
+                  - definition [ref=f9e316]: Dec 2, 2026
+                - generic [ref=f9e317]:
+                  - term [ref=f9e318]: Evidence note
+                  - definition [ref=f9e319]: 5 matching monthly charges; median interval 30 days, 4/4 intervals within tolerance.
+                - generic [ref=f9e320]:
+                  - term [ref=f9e321]: Price change
+                  - definition [ref=f9e322]: +8.9% · $45.00 → $49.00
+            - generic [ref=f9e323]:
+              - generic [ref=f9e324]:
+                - generic [ref=f9e325]:
+                  - heading "Transaction evidence" [level=2] [ref=f9e326]
+                  - paragraph [ref=f9e327]: Recorded charges that formed this pattern
+                - generic [ref=f9e328]: 5 charges
+              - table [ref=f9e330]:
+                - rowgroup [ref=f9e331]:
+                  - row [ref=f9e332]:
+                    - columnheader "Date" [ref=f9e333]
+                    - columnheader "Description" [ref=f9e334]
+                    - columnheader "Status" [ref=f9e335]
+                    - columnheader "Amount" [ref=f9e336]
+                - rowgroup [ref=f9e337]:
+                  - row [ref=f9e338]:
+                    - cell "Jul 5, 2026" [ref=f9e339]
+                    - cell [ref=f9e340]:
+                      - paragraph [ref=f9e341]: CloudDesk Pro
+                      - paragraph [ref=f9e342]: Workspace subscription
+                    - cell "settled" [ref=f9e343]
+                    - cell "$45.00" [ref=f9e345]
+                  - row [ref=f9e346]:
+                    - cell "Aug 4, 2026" [ref=f9e347]
+                    - cell [ref=f9e348]:
+                      - paragraph [ref=f9e349]: CloudDesk Pro
+                      - paragraph [ref=f9e350]: Workspace subscription
+                    - cell "settled" [ref=f9e351]
+                    - cell "$45.00" [ref=f9e353]
+                  - row [ref=f9e354]:
+                    - cell "Sep 3, 2026" [ref=f9e355]
+                    - cell [ref=f9e356]:
+                      - paragraph [ref=f9e357]: CloudDesk Pro
+                      - paragraph [ref=f9e358]: Workspace subscription
+                    - cell "settled" [ref=f9e359]
+                    - cell "$45.00" [ref=f9e361]
+                  - row [ref=f9e362]:
+                    - cell "Oct 3, 2026" [ref=f9e363]
+                    - cell [ref=f9e364]:
+                      - paragraph [ref=f9e365]: CloudDesk Pro
+                      - paragraph [ref=f9e366]: Workspace subscription
+                    - cell "settled" [ref=f9e367]
+                    - cell "$49.00" [ref=f9e369]
+                  - row [ref=f9e370]:
+                    - cell "Nov 2, 2026" [ref=f9e371]
+                    - cell [ref=f9e372]:
+                      - paragraph [ref=f9e373]: CloudDesk Pro
+                      - paragraph [ref=f9e374]: Workspace subscription
+                    - cell "settled" [ref=f9e375]
+                    - cell "$49.00" [ref=f9e377]
+              - generic [ref=f9e378]: Evidence is stored locally. No bank or subscription-provider API is queried.
+          - complementary [ref=f9e379]:
+            - generic [ref=f9e380]:
+              - generic [ref=f9e381]:
+                - heading "Record decision" [level=2] [ref=f9e382]
+                - generic [ref=f9e383]: Open
+              - generic [ref=f9e384]:
+                - button "Keep and monitor Accept the charge and keep watching this pattern." [ref=f9e385] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f9e387]: check
+                  - generic [ref=f9e388]:
+                    - generic [ref=f9e389]: Keep and monitor
+                    - generic [ref=f9e390]: Accept the charge and keep watching this pattern.
+                - button "Remind me Keep the signal open for a later reminder." [ref=f9e391] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f9e393]: notifications
+                  - generic [ref=f9e394]:
+                    - generic [ref=f9e395]: Remind me
+                    - generic [ref=f9e396]: Keep the signal open for a later reminder.
+                - button "Follow up Mark that you will review this with the vendor or team." [active] [pressed] [ref=f9e397] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f9e399]: schedule
+                  - generic [ref=f9e400]:
+                    - generic [ref=f9e401]: Follow up
+                    - generic [ref=f9e402]: Mark that you will review this with the vendor or team.
+                - button "Dismiss Close the signal without further action." [ref=f9e403] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f9e405]: close
+                  - generic [ref=f9e406]:
+                    - generic [ref=f9e407]: Dismiss
+                    - generic [ref=f9e408]: Close the signal without further action.
+              - generic [ref=f9e409]:
+                - generic [ref=f9e410]: Decision note (optional)
+                - textbox "Decision note (optional)" [ref=f9e411]:
+                  - /placeholder: Why this decision? e.g. confirmed with the team, or waiting on vendor reply.
+                - paragraph [ref=f9e412]: 0/500 · Stored in the local audit trail.
+              - button "Record decision" [ref=f9e413] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f9e414]: save
+                - text: Record decision
+              - paragraph [ref=f9e415]: Decisions do not cancel the vendor subscription. MERGIN does not contact the merchant.
+            - generic [ref=f9e416]:
+              - heading "Signal reference" [level=2] [ref=f9e417]
+              - generic [ref=f9e418]:
+                - generic [ref=f9e419]:
+                  - term [ref=f9e420]: Review ID
+                  - definition [ref=f9e421]: rev_2001
+                - generic [ref=f9e422]:
+                  - term [ref=f9e423]: Pattern ID
+                  - definition [ref=f9e424]: pat_1
+                - generic [ref=f9e425]:
+                  - term [ref=f9e426]: Reason
+                  - definition [ref=f9e427]: Price change
+                - generic [ref=f9e428]:
+                  - term [ref=f9e429]: Severity
+                  - definition [ref=f9e430]: Attention
+                - generic [ref=f9e431]:
+                  - term [ref=f9e432]: Currency
+                  - definition [ref=f9e433]: USD
+            - link "Back to review queue" [ref=f9e434] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f9e435]: arrow_back
+              - text: Back to review queue

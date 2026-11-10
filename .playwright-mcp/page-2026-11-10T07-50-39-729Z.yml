@@ -1,0 +1,153 @@
+- generic [ref=f12e2]:
+  - generic [ref=f12e3]:
+    - complementary [ref=f12e4]:
+      - generic [ref=f12e5]:
+        - link "MERGIN overview" [ref=f12e7] [cursor=pointer]:
+          - /url: /app
+          - img "MERGIN" [ref=f12e8]
+        - link "NC Northstar Creative QA Demo workspace" [ref=f12e440] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [ref=f12e11]: NC
+          - generic [ref=f12e12]:
+            - generic [ref=f12e13]: Northstar Creative QA
+            - generic [ref=f12e14]: Demo workspace
+          - generic [aria-hidden] [ref=f12e15]: unfold_more
+        - navigation "Primary" [ref=f12e16]:
+          - generic [ref=f12e17]:
+            - paragraph [ref=f12e18]: Workspace
+            - generic [ref=f12e19]:
+              - link "Overview" [ref=f12e20] [cursor=pointer]:
+                - /url: /app
+                - generic [aria-hidden] [ref=f12e21]: space_dashboard
+              - link "Invoices" [ref=f12e23] [cursor=pointer]:
+                - /url: /app/invoices
+                - generic [aria-hidden] [ref=f12e24]: receipt_long
+              - link "Transactions" [ref=f12e26] [cursor=pointer]:
+                - /url: /app/transactions
+                - generic [aria-hidden] [ref=f12e27]: swap_horiz
+          - generic [ref=f12e29]:
+            - paragraph [ref=f12e30]: Planning
+            - generic [ref=f12e31]:
+              - link "Expenses" [ref=f12e32] [cursor=pointer]:
+                - /url: /app/expenses
+                - generic [aria-hidden] [ref=f12e33]: credit_card
+              - link "Budgets" [ref=f12e35] [cursor=pointer]:
+                - /url: /app/budgets
+                - generic [aria-hidden] [ref=f12e36]: savings
+              - link "Cash Flow" [ref=f12e38] [cursor=pointer]:
+                - /url: /app/cash-flow
+                - generic [aria-hidden] [ref=f12e39]: monitoring
+          - generic [ref=f12e41]:
+            - paragraph [ref=f12e42]: Intelligence
+            - generic [ref=f12e43]:
+              - link "Sentinel" [ref=f12e44] [cursor=pointer]:
+                - /url: /app/sentinel
+                - generic [aria-hidden] [ref=f12e45]: radar
+              - link "Copilot" [ref=f12e48] [cursor=pointer]:
+                - /url: /app/copilot
+                - generic [aria-hidden] [ref=f12e49]: forum
+        - generic [ref=f12e51]:
+          - link "Settings" [ref=f12e52] [cursor=pointer]:
+            - /url: /app/settings
+            - generic [aria-hidden] [ref=f12e53]: settings
+            - text: Settings
+          - button "Onboarding" [ref=f12e54] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e55]: rocket_launch
+            - text: Onboarding
+          - generic [ref=f12e56]:
+            - generic [ref=f12e57]: MC
+            - generic [ref=f12e58]:
+              - paragraph [ref=f12e59]: Maya Chen
+              - paragraph [ref=f12e60]: Demo owner
+            - button "Sign out" [ref=f12e61] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f12e62]: logout
+    - generic [ref=f12e63]:
+      - banner [ref=f12e64]:
+        - generic [ref=f12e65]:
+          - search [ref=f12e66]:
+            - generic [aria-hidden]: search
+            - searchbox "Search invoices" [ref=f12e67]
+            - generic: Ctrl K
+          - generic [ref=f12e68]:
+            - link "Demo data" [ref=f12e69] [cursor=pointer]:
+              - /url: /app/settings
+            - button "About this demo" [ref=f12e71] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f12e72]: help
+            - button "Notifications, 3 unread" [ref=f12e88] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f12e75]: notifications
+              - generic [ref=f12e89]: "3"
+            - link "Open profile settings" [ref=f12e76] [cursor=pointer]:
+              - /url: /app/settings
+              - text: MC
+      - main [ref=f12e77]:
+        - generic [ref=f12e79]:
+          - generic [ref=f12e90]:
+            - generic [ref=f12e91]:
+              - generic [ref=f12e92]: Workspace configuration
+              - heading "Settings" [level=1] [ref=f12e94]
+              - paragraph [ref=f12e95]: Payment gateway status, deterministic policy, audit history, and the local demo profile. Secrets are never shown.
+            - generic [ref=f12e96]: Demo mode
+          - generic [ref=f12e99]:
+            - button "PayPal gateway" [ref=f12e100] [cursor=pointer]
+            - button "AI & Sentinel" [ref=f12e101] [cursor=pointer]
+            - button "Audit & webhooks" [ref=f12e102] [cursor=pointer]
+            - button "Business profile" [pressed] [ref=f12e103] [cursor=pointer]
+          - generic [ref=f12e387]:
+            - generic [ref=f12e388]:
+              - generic [ref=f12e389]:
+                - heading "Workspace & profile" [level=2] [ref=f12e390]
+                - generic [ref=f12e391]: Demo session
+              - generic [ref=f12e392]:
+                - generic [ref=f12e393]:
+                  - generic [ref=f12e394]: Workspace name
+                  - textbox "Workspace name" [ref=f12e395]: Northstar Creative QA
+                  - paragraph [ref=f12e396]: Shown in the sidebar and on payment pages.
+                - generic [ref=f12e397]:
+                  - generic [ref=f12e398]: Your name
+                  - textbox "Your name" [ref=f12e399]: Maya Chen
+                - generic [ref=f12e400]:
+                  - generic [ref=f12e401]: Email
+                  - textbox "Email" [disabled] [ref=f12e402]: demo@mergin.example
+                  - paragraph [ref=f12e403]: Sign-in email is fixed in this demo.
+                - generic [ref=f12e404]:
+                  - generic [ref=f12e405]: Workspace identifier
+                  - generic [ref=f12e406]: mergin.example / northstar-creative
+                - generic [ref=f12e407]:
+                  - generic [ref=f12e408]: Currency & timezone
+                  - generic [ref=f12e409]: USD · America/New_York
+                  - paragraph [ref=f12e410]: Fixed demo values; all money is stored in integer cents.
+              - button "Save changes" [ref=f12e411] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f12e441]: save
+                - text: Save changes
+            - generic [ref=f12e413]:
+              - generic [ref=f12e414]:
+                - heading "Session" [level=2] [ref=f12e415]
+                - generic [ref=f12e416]:
+                  - generic [ref=f12e417]:
+                    - term [ref=f12e418]: Signed in as
+                    - definition [ref=f12e419]: Maya Chen
+                  - generic [ref=f12e420]:
+                    - term [ref=f12e421]: Email
+                    - definition [ref=f12e422]: demo@mergin.example
+                  - generic [ref=f12e423]:
+                    - term [ref=f12e424]: Session type
+                    - definition [ref=f12e425]: One-click demo session
+                  - generic [ref=f12e426]:
+                    - term [ref=f12e427]: App base URL
+                    - definition [ref=f12e428]: http://localhost:5173
+              - generic [ref=f12e429]:
+                - generic [ref=f12e430]:
+                  - generic [aria-hidden] [ref=f12e431]: restart_alt
+                  - heading "Reset demo data" [level=2] [ref=f12e432]
+                - paragraph [ref=f12e433]: Restores the seeded Northstar workspace. Local changes, including demo payments and Sentinel decisions, are discarded. PayPal is never contacted.
+                - button "Reset demo data" [ref=f12e434] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f12e435]: restart_alt
+                  - text: Reset demo data
+              - generic [ref=f12e437]:
+                - generic [aria-hidden] [ref=f12e438]: info
+                - generic [ref=f12e439]: This build has a single demo user and no team invitation or role system. No email is sent by the app.
+  - status [ref=f12e442]:
+    - generic [ref=f12e443]: check_circle
+    - paragraph [ref=f12e444]: Workspace and profile names saved.
+    - button "Dismiss notification" [ref=f12e445] [cursor=pointer]:
+      - generic [ref=f12e446]: close

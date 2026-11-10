@@ -1,0 +1,225 @@
+- generic [ref=f7e3]:
+  - complementary [ref=f7e4]:
+    - generic [ref=f7e5]:
+      - link "MERGIN overview" [ref=f7e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f7e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f7e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f7e11]: NC
+        - generic [ref=f7e12]:
+          - generic [ref=f7e13]: Northstar Creative
+          - generic [ref=f7e14]: Demo workspace
+        - generic [aria-hidden] [ref=f7e15]: unfold_more
+      - navigation "Primary" [ref=f7e16]:
+        - generic [ref=f7e17]:
+          - paragraph [ref=f7e18]: Workspace
+          - generic [ref=f7e19]:
+            - link "Overview" [ref=f7e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f7e21]: space_dashboard
+            - link "Invoices" [ref=f7e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f7e24]: receipt_long
+            - link "Transactions" [ref=f7e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f7e27]: swap_horiz
+        - generic [ref=f7e29]:
+          - paragraph [ref=f7e30]: Planning
+          - generic [ref=f7e31]:
+            - link "Expenses" [ref=f7e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f7e33]: credit_card
+            - link "Budgets" [ref=f7e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f7e36]: savings
+            - link "Cash Flow" [ref=f7e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f7e39]: monitoring
+        - generic [ref=f7e41]:
+          - paragraph [ref=f7e42]: Intelligence
+          - generic [ref=f7e43]:
+            - link "Sentinel" [ref=f7e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f7e45]: radar
+            - link "Copilot" [ref=f7e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f7e49]: forum
+      - generic [ref=f7e51]:
+        - link "Settings" [ref=f7e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f7e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f7e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f7e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f7e56]:
+          - generic [ref=f7e57]: MC
+          - generic [ref=f7e58]:
+            - paragraph [ref=f7e59]: Maya Chen
+            - paragraph [ref=f7e60]: Demo owner
+          - button "Sign out" [ref=f7e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f7e62]: logout
+  - generic [ref=f7e63]:
+    - banner [ref=f7e64]:
+      - generic [ref=f7e65]:
+        - search [ref=f7e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f7e67]
+          - generic: Ctrl K
+        - generic [ref=f7e68]:
+          - link "Demo data" [ref=f7e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f7e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f7e72]: help
+          - button "Notifications, 3 unread" [ref=f7e140] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f7e75]: notifications
+            - generic [ref=f7e141]: "3"
+          - link "Open profile settings" [ref=f7e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f7e77]:
+      - generic [ref=f7e79]:
+        - generic [ref=f7e80]:
+          - generic [ref=f7e81]:
+            - generic [ref=f7e82]: Treasury operations · variance & control
+            - heading "Budgets" [level=1] [ref=f7e84]
+            - paragraph [ref=f7e85]: Category spending limits calculated from recorded expenses. Utilisation is recomputed server-side.
+          - generic [ref=f7e86]:
+            - generic [ref=f7e87]:
+              - button "Previous month" [ref=f7e88] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f7e89]: chevron_left
+              - generic [ref=f7e90]: November 2026
+              - button "Next month" [ref=f7e91] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f7e92]: chevron_right
+            - button "Create budget" [ref=f7e93] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f7e94]: add
+              - text: Create budget
+        - region "Budget totals" [ref=f7e95]:
+          - generic [ref=f7e96]:
+            - generic [ref=f7e97]:
+              - generic [ref=f7e98]: Total limit
+              - generic [aria-hidden] [ref=f7e101]: savings
+            - generic [ref=f7e102]:
+              - generic [ref=f7e103]: $6,500.00
+              - generic [ref=f7e104]: 4 category budgets · November 2026
+          - generic [ref=f7e105]:
+            - generic [ref=f7e106]:
+              - generic [ref=f7e107]: Spent against limits
+              - generic [aria-hidden] [ref=f7e110]: credit_card
+            - generic [ref=f7e111]:
+              - generic [ref=f7e112]: $4,503.65
+              - generic [ref=f7e113]: 69.3% of combined limits
+          - generic [ref=f7e114]:
+            - generic [ref=f7e115]:
+              - generic [ref=f7e116]: Remaining
+              - generic [aria-hidden] [ref=f7e119]: wallet
+            - generic [ref=f7e120]:
+              - generic [ref=f7e121]: $1,996.35
+              - generic [ref=f7e122]: Under combined limits
+          - generic [ref=f7e123]:
+            - generic [ref=f7e124]:
+              - generic [ref=f7e125]: Needs attention
+              - generic [aria-hidden] [ref=f7e128]: priority_high
+            - generic [ref=f7e129]:
+              - generic [ref=f7e130]: "2"
+              - generic [ref=f7e131]: 0 over · 2 near limit
+        - generic [ref=f7e142]:
+          - generic [ref=f7e143]:
+            - generic [ref=f7e144]:
+              - heading "Category budgets" [level=2] [ref=f7e145]
+              - paragraph [ref=f7e146]: Under 80% is on track. 80–99% is near limit. 100% or more is over.
+            - generic [ref=f7e147]: November 2026
+          - list [ref=f7e148]:
+            - listitem [ref=f7e149]:
+              - generic [ref=f7e150]:
+                - generic [ref=f7e151]:
+                  - generic [ref=f7e152]:
+                    - generic [ref=f7e153]:
+                      - heading "Software" [level=3] [ref=f7e154]
+                      - generic [ref=f7e155]: On track
+                    - paragraph [ref=f7e156]: $1,341.65 spent of $2,600.00 · $1,258.35 remaining
+                  - generic [ref=f7e157]:
+                    - generic [ref=f7e158]: 51.6%
+                    - button "Edit Software budget" [ref=f7e159] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e160]: edit
+                    - button "Delete Software budget" [ref=f7e161] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e162]: delete
+                - progressbar "Software budget utilisation" [ref=f7e163]
+            - listitem [ref=f7e165]:
+              - generic [ref=f7e166]:
+                - generic [ref=f7e167]:
+                  - generic [ref=f7e168]:
+                    - generic [ref=f7e169]:
+                      - heading "Contractors" [level=3] [ref=f7e170]
+                      - generic [ref=f7e171]: On track
+                    - paragraph [ref=f7e172]: $1,850.00 spent of $2,500.00 · $650.00 remaining
+                  - generic [ref=f7e173]:
+                    - generic [ref=f7e174]: 74.0%
+                    - button "Edit Contractors budget" [ref=f7e175] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e176]: edit
+                    - button "Delete Contractors budget" [ref=f7e177] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e178]: delete
+                - progressbar "Contractors budget utilisation" [ref=f7e179]
+            - listitem [ref=f7e181]:
+              - generic [ref=f7e182]:
+                - generic [ref=f7e183]:
+                  - generic [ref=f7e184]:
+                    - generic [ref=f7e185]:
+                      - heading "Marketing" [level=3] [ref=f7e186]
+                      - generic [ref=f7e187]: Near limit
+                    - paragraph [ref=f7e188]: $792.00 spent of $800.00 · $8.00 remaining
+                  - generic [ref=f7e189]:
+                    - generic [ref=f7e190]: 99.0%
+                    - button "Edit Marketing budget" [ref=f7e191] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e192]: edit
+                    - button "Delete Marketing budget" [ref=f7e193] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e194]: delete
+                - progressbar "Marketing budget utilisation" [ref=f7e195]
+            - listitem [ref=f7e197]:
+              - generic [ref=f7e198]:
+                - generic [ref=f7e199]:
+                  - generic [ref=f7e200]:
+                    - generic [ref=f7e201]:
+                      - heading "Travel & Ops" [level=3] [ref=f7e202]
+                      - generic [ref=f7e203]: Near limit
+                    - paragraph [ref=f7e204]: $520.00 spent of $600.00 · $80.00 remaining
+                  - generic [ref=f7e205]:
+                    - generic [ref=f7e206]: 86.7%
+                    - button "Edit Travel & Ops budget" [ref=f7e207] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e208]: edit
+                    - button "Delete Travel & Ops budget" [ref=f7e209] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f7e210]: delete
+                - progressbar "Travel & Ops budget utilisation" [ref=f7e211]
+          - generic [ref=f7e213]:
+            - generic [ref=f7e214]: $4,503.65 of $6,500.00 combined limits · 69.3%
+            - generic [ref=f7e215]:
+              - generic [aria-hidden] [ref=f7e216]: info
+              - text: Spending counts recorded expenses only. Pending items are not counted.
+        - generic [ref=f7e217]:
+          - button "Close dialog" [ref=f7e218]
+          - dialog [active] [ref=f7e219]:
+            - generic [ref=f7e220]:
+              - generic [ref=f7e221]:
+                - heading "Create budget" [level=2] [ref=f7e222]
+                - paragraph [ref=f7e223]: A budget is a category limit for one calendar month in the local demo ledger.
+              - button "Close dialog" [ref=f7e224] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f7e225]: close
+            - generic [ref=f7e227]:
+              - generic [ref=f7e228]:
+                - generic [ref=f7e229]: Category
+                - combobox "Category" [ref=f7e230]: Software
+                - paragraph [ref=f7e231]: Must match the expense category exactly to count spending.
+              - generic [ref=f7e232]:
+                - generic [ref=f7e233]:
+                  - generic [ref=f7e234]: Month
+                  - textbox "Month" [ref=f7e235]: 2026-11
+                - generic [ref=f7e236]:
+                  - generic [ref=f7e237]: Limit (USD)
+                  - textbox "Limit (USD)" [ref=f7e238]:
+                    - /placeholder: "0.00"
+            - generic [ref=f7e239]:
+              - button "Cancel" [ref=f7e240] [cursor=pointer]
+              - button "Create budget" [ref=f7e241] [cursor=pointer]:
+                - generic [aria-hidden] [ref=f7e242]: save
+                - text: Create budget

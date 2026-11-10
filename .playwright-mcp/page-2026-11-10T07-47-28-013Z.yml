@@ -1,0 +1,103 @@
+- generic [ref=f8e6]:
+  - complementary [ref=f8e7]:
+    - generic [ref=f8e8]:
+      - link "MERGIN overview" [ref=f8e10] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f8e11]
+      - link "NC Northstar Creative Demo workspace" [ref=f8e13] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f8e14]: NC
+        - generic [ref=f8e15]:
+          - generic [ref=f8e16]: Northstar Creative
+          - generic [ref=f8e17]: Demo workspace
+        - generic [aria-hidden] [ref=f8e18]: unfold_more
+      - navigation "Primary" [ref=f8e19]:
+        - generic [ref=f8e20]:
+          - paragraph [ref=f8e21]: Workspace
+          - generic [ref=f8e22]:
+            - link "Overview" [ref=f8e23] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f8e24]: space_dashboard
+            - link "Invoices" [ref=f8e26] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f8e27]: receipt_long
+            - link "Transactions" [ref=f8e29] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f8e30]: swap_horiz
+        - generic [ref=f8e32]:
+          - paragraph [ref=f8e33]: Planning
+          - generic [ref=f8e34]:
+            - link "Expenses" [ref=f8e35] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f8e36]: credit_card
+            - link "Budgets" [ref=f8e38] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f8e39]: savings
+            - link "Cash Flow" [ref=f8e41] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f8e42]: monitoring
+        - generic [ref=f8e44]:
+          - paragraph [ref=f8e45]: Intelligence
+          - generic [ref=f8e46]:
+            - link "Sentinel" [ref=f8e47] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f8e48]: radar
+            - link "Copilot" [ref=f8e51] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f8e52]: forum
+      - generic [ref=f8e54]:
+        - link "Settings" [ref=f8e55] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f8e56]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f8e57] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f8e58]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f8e59]:
+          - generic [ref=f8e60]: MC
+          - generic [ref=f8e61]:
+            - paragraph [ref=f8e62]: Maya Chen
+            - paragraph [ref=f8e63]: Demo owner
+          - button "Sign out" [ref=f8e64] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e65]: logout
+  - generic [ref=f8e66]:
+    - banner [ref=f8e67]:
+      - generic [ref=f8e68]:
+        - search [ref=f8e69]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f8e70]
+          - generic: Ctrl K
+        - generic [ref=f8e71]:
+          - link "Demo data" [ref=f8e72] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f8e74] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e75]: help
+          - button "Notifications" [ref=f8e77] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f8e78]: notifications
+          - link "Open profile settings" [ref=f8e79] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f8e80]:
+      - generic [ref=f8e82]:
+        - generic [ref=f8e83]:
+          - generic [ref=f8e84]:
+            - generic [ref=f8e85]: Treasury operations · liquidity forecast
+            - heading "Cash Flow" [level=1] [ref=f8e87]
+            - paragraph [ref=f8e88]: Recorded balance plus detected recurring outflows. Unpaid invoices are shown as receivables, never counted as cash.
+          - generic [ref=f8e89]:
+            - generic [ref=f8e90]:
+              - button "7 days" [ref=f8e91] [cursor=pointer]
+              - button "30 days" [pressed] [ref=f8e92] [cursor=pointer]
+            - button "Export forecast" [disabled] [ref=f8e93]:
+              - generic [aria-hidden] [ref=f8e94]: download
+              - text: Export forecast
+        - generic [ref=f8e95]:
+          - generic [ref=f8e96]:
+            - generic [aria-hidden] [ref=f8e97]: tune
+            - generic [ref=f8e98]:
+              - paragraph [ref=f8e99]: Forecast scenario
+              - paragraph [ref=f8e100]: Uses detected recurring charge amounts without an extra buffer.
+          - generic [ref=f8e101]:
+            - button "Baseline" [pressed] [ref=f8e102] [cursor=pointer]
+            - button "Conservative" [ref=f8e103] [cursor=pointer]
+        - status "Loading cash flow" [ref=f8e118]

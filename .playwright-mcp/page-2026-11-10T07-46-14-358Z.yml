@@ -1,0 +1,142 @@
+- generic [ref=f5e3]:
+  - complementary [ref=f5e4]:
+    - generic [ref=f5e5]:
+      - link "MERGIN overview" [ref=f5e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f5e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f5e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f5e11]: NC
+        - generic [ref=f5e12]:
+          - generic [ref=f5e13]: Northstar Creative
+          - generic [ref=f5e14]: Demo workspace
+        - generic [aria-hidden] [ref=f5e15]: unfold_more
+      - navigation "Primary" [ref=f5e16]:
+        - generic [ref=f5e17]:
+          - paragraph [ref=f5e18]: Workspace
+          - generic [ref=f5e19]:
+            - link "Overview" [ref=f5e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f5e21]: space_dashboard
+            - link "Invoices" [ref=f5e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f5e24]: receipt_long
+            - link "Transactions" [ref=f5e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f5e27]: swap_horiz
+        - generic [ref=f5e29]:
+          - paragraph [ref=f5e30]: Planning
+          - generic [ref=f5e31]:
+            - link "Expenses" [ref=f5e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f5e33]: credit_card
+            - link "Budgets" [ref=f5e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f5e36]: savings
+            - link "Cash Flow" [ref=f5e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f5e39]: monitoring
+        - generic [ref=f5e41]:
+          - paragraph [ref=f5e42]: Intelligence
+          - generic [ref=f5e43]:
+            - link "Sentinel" [ref=f5e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f5e45]: radar
+            - link "Copilot" [ref=f5e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f5e49]: forum
+      - generic [ref=f5e51]:
+        - link "Settings" [ref=f5e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f5e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f5e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f5e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f5e56]:
+          - generic [ref=f5e57]: MC
+          - generic [ref=f5e58]:
+            - paragraph [ref=f5e59]: Maya Chen
+            - paragraph [ref=f5e60]: Demo owner
+          - button "Sign out" [ref=f5e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f5e62]: logout
+  - generic [ref=f5e63]:
+    - banner [ref=f5e64]:
+      - generic [ref=f5e65]:
+        - search [ref=f5e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f5e67]
+          - generic: Ctrl K
+        - generic [ref=f5e68]:
+          - link "Demo data" [ref=f5e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f5e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f5e72]: help
+          - button "Notifications" [ref=f5e74] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f5e75]: notifications
+          - link "Open profile settings" [ref=f5e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f5e77]:
+      - generic [ref=f5e79]:
+        - generic [ref=f5e80]:
+          - generic [ref=f5e81]:
+            - generic [ref=f5e82]: Ledger module · verified records
+            - heading "Transactions" [level=1] [ref=f5e84]
+            - paragraph [ref=f5e85]: Searchable ledger of local demo records. Amounts are integer USD cents; nothing here is a live bank feed.
+          - generic [ref=f5e86]:
+            - button "Export CSV" [disabled] [ref=f5e87]:
+              - generic [aria-hidden] [ref=f5e88]: download
+              - text: Export CSV
+            - link "Record expense" [ref=f5e89] [cursor=pointer]:
+              - /url: /app/expenses?new=1
+              - generic [aria-hidden] [ref=f5e90]: add
+              - text: Record expense
+        - region "Ledger totals" [ref=f5e91]:
+          - generic [ref=f5e92]:
+            - generic [ref=f5e93]:
+              - generic [ref=f5e94]: Total inflow
+              - generic [aria-hidden] [ref=f5e97]: south_west
+            - generic [ref=f5e98]:
+              - generic [ref=f5e99]: $0.00
+              - generic [ref=f5e100]: 0 settled receipts
+          - generic [ref=f5e101]:
+            - generic [ref=f5e102]:
+              - generic [ref=f5e103]: Total outflow
+              - generic [aria-hidden] [ref=f5e106]: north_east
+            - generic [ref=f5e107]:
+              - generic [ref=f5e108]: $0.00
+              - generic [ref=f5e109]: 0 settled disbursements
+          - generic [ref=f5e110]:
+            - generic [ref=f5e111]:
+              - generic [ref=f5e112]: Net settled
+              - generic [aria-hidden] [ref=f5e115]: account_balance_wallet
+            - generic [ref=f5e116]:
+              - generic [ref=f5e117]: $0.00
+              - generic [ref=f5e118]: 0 settled records
+          - generic [ref=f5e119]:
+            - generic [ref=f5e120]:
+              - generic [ref=f5e121]: Pending
+              - generic [aria-hidden] [ref=f5e124]: schedule
+            - generic [ref=f5e125]:
+              - generic [ref=f5e126]: "0"
+              - generic [ref=f5e127]: No pending records
+        - generic [ref=f5e128]:
+          - generic [ref=f5e129]:
+            - generic [ref=f5e130]:
+              - generic [ref=f5e131]:
+                - button "All0" [pressed] [ref=f5e132] [cursor=pointer]
+                - button "Incoming0" [ref=f5e133] [cursor=pointer]
+                - button "Outgoing0" [ref=f5e134] [cursor=pointer]
+              - generic [ref=f5e135]:
+                - generic [aria-hidden]: search
+                - searchbox "Search transactions" [ref=f5e136]
+            - generic [ref=f5e137]:
+              - generic [ref=f5e138]: Status
+              - generic [ref=f5e139]:
+                - button "Any status" [pressed] [ref=f5e140] [cursor=pointer]
+                - button "Settled" [ref=f5e141] [cursor=pointer]
+                - button "Pending" [ref=f5e142] [cursor=pointer]
+                - button "Refunded" [ref=f5e143] [cursor=pointer]
+                - button "Failed" [ref=f5e144] [cursor=pointer]
+          - status "Loading transaction ledger" [ref=f5e146]

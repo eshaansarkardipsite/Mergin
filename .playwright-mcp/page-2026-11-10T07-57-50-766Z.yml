@@ -1,0 +1,139 @@
+- generic [ref=f15e7]:
+  - banner [ref=f15e8]:
+    - generic [ref=f15e9]:
+      - button "Open navigation" [ref=f15e10] [cursor=pointer]:
+        - generic [aria-hidden] [ref=f15e11]: menu
+      - link "MERGIN overview" [ref=f15e12] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f15e13]
+      - generic [ref=f15e14]:
+        - button "About this demo" [ref=f15e15] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f15e16]: help
+        - button "Notifications, 3 unread" [ref=f15e96] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f15e19]: notifications
+          - generic [ref=f15e97]: "3"
+        - link "Open profile settings" [ref=f15e20] [cursor=pointer]:
+          - /url: /app/settings
+          - text: MC
+  - main [ref=f15e21]:
+    - generic [ref=f15e23]:
+      - generic [ref=f15e24]:
+        - generic [ref=f15e25]:
+          - generic [ref=f15e26]: Grounded financial reasoning
+          - heading "Copilot" [level=1] [ref=f15e28]
+          - paragraph [ref=f15e29]: Answers are calculated by deterministic TypeScript against the local ledger. When Gemini is configured, it only explains those calculated facts.
+        - generic [ref=f15e31]:
+          - generic [aria-hidden] [ref=f15e32]: terminal
+          - text: Deterministic mode
+      - generic [ref=f15e33]:
+        - generic [ref=f15e34]:
+          - generic [ref=f15e35]:
+            - generic [ref=f15e36]:
+              - generic [aria-hidden] [ref=f15e37]: forum
+              - generic [ref=f15e38]: Workspace questions
+            - generic [ref=f15e39]: Local demo ledger
+          - generic [ref=f15e41]:
+            - generic [ref=f15e98]:
+              - generic [ref=f15e99]: You
+              - generic [ref=f15e100]: Which budgets are close to their limits?
+            - generic [ref=f15e101]:
+              - generic [ref=f15e102]:
+                - generic [aria-hidden] [ref=f15e104]: terminal
+                - generic [ref=f15e105]: MERGIN Copilot
+                - generic [ref=f15e106]: Deterministic · TypeScript
+              - generic [ref=f15e107]:
+                - paragraph [ref=f15e109]: Marketing, Travel & Ops are at or near the monthly limit.
+                - paragraph [ref=f15e110]: Budget spend is derived from the same expense records used across MERGIN. Marketing is at 99%; Travel & Ops is at 87%.
+                - generic [ref=f15e111]:
+                  - paragraph [ref=f15e112]: Evidence
+                  - list [ref=f15e113]:
+                    - listitem [ref=f15e114]:
+                      - link "Software budget $1,218.20 of $2,600.00 · 47% $1,381.80" [ref=f15e115] [cursor=pointer]:
+                        - /url: /app/budgets
+                        - generic [ref=f15e116]:
+                          - generic [ref=f15e117]: Software budget
+                          - generic [ref=f15e118]: $1,218.20 of $2,600.00 · 47%
+                        - generic [ref=f15e119]: $1,381.80
+                    - listitem [ref=f15e120]:
+                      - link "Contractors budget $1,850.00 of $2,500.00 · 74% $650.00" [ref=f15e121] [cursor=pointer]:
+                        - /url: /app/budgets
+                        - generic [ref=f15e122]:
+                          - generic [ref=f15e123]: Contractors budget
+                          - generic [ref=f15e124]: $1,850.00 of $2,500.00 · 74%
+                        - generic [ref=f15e125]: $650.00
+                    - listitem [ref=f15e126]:
+                      - link "Marketing budget $792.00 of $800.00 · 99% $8.00" [ref=f15e127] [cursor=pointer]:
+                        - /url: /app/budgets
+                        - generic [ref=f15e128]:
+                          - generic [ref=f15e129]: Marketing budget
+                          - generic [ref=f15e130]: $792.00 of $800.00 · 99%
+                        - generic [ref=f15e131]: $8.00
+                    - listitem [ref=f15e132]:
+                      - link "Travel & Ops budget $520.00 of $600.00 · 87% $80.00" [ref=f15e133] [cursor=pointer]:
+                        - /url: /app/budgets
+                        - generic [ref=f15e134]:
+                          - generic [ref=f15e135]: Travel & Ops budget
+                          - generic [ref=f15e136]: $520.00 of $600.00 · 87%
+                        - generic [ref=f15e137]: $80.00
+                - paragraph [ref=f15e138]: "Next step: Open Budgets to adjust a limit or review the underlying expenses."
+                - paragraph [ref=f15e139]: Calculated for November 1, 2026
+          - generic [ref=f15e48]:
+            - generic [ref=f15e49]:
+              - generic [aria-hidden]: help
+              - textbox "Ask Copilot a question" [ref=f15e50]:
+                - /placeholder: Ask about cash flow, receivables, budgets, or spend
+              - button "Ask" [disabled] [ref=f15e51]:
+                - generic [aria-hidden] [ref=f15e140]: auto_awesome
+                - text: Ask
+            - generic [ref=f15e53]: No model key configured. Answers are generated locally.
+        - complementary [ref=f15e55]:
+          - generic [ref=f15e56]:
+            - generic [ref=f15e57]:
+              - heading "Suggested questions" [level=2] [ref=f15e58]
+              - generic [aria-hidden] [ref=f15e59]: lightbulb
+            - generic [ref=f15e81]:
+              - button "Q1Why did expenses increase this month?" [ref=f15e82] [cursor=pointer]:
+                - generic [ref=f15e83]: Q1
+                - text: Why did expenses increase this month?
+              - button "Q2Which invoices are overdue?" [ref=f15e84] [cursor=pointer]:
+                - generic [ref=f15e85]: Q2
+                - text: Which invoices are overdue?
+              - button "Q3Can we afford an additional $800 expense?" [ref=f15e86] [cursor=pointer]:
+                - generic [ref=f15e87]: Q3
+                - text: Can we afford an additional $800 expense?
+              - button "Q4Which recurring payments should be reviewed?" [ref=f15e88] [cursor=pointer]:
+                - generic [ref=f15e89]: Q4
+                - text: Which recurring payments should be reviewed?
+              - button "Q5What was our revenue this quarter?" [ref=f15e90] [cursor=pointer]:
+                - generic [ref=f15e91]: Q5
+                - text: What was our revenue this quarter?
+              - button "Q6What payments are expected next week?" [ref=f15e92] [cursor=pointer]:
+                - generic [ref=f15e93]: Q6
+                - text: What payments are expected next week?
+              - button "Q7Which budgets are close to their limits?" [ref=f15e94] [cursor=pointer]:
+                - generic [ref=f15e95]: Q7
+                - text: Which budgets are close to their limits?
+          - generic [ref=f15e61]:
+            - generic [ref=f15e62]:
+              - heading "Grounding & assumptions" [level=2] [ref=f15e63]
+              - generic [ref=f15e64]: Deterministic
+            - generic [ref=f15e65]:
+              - list [ref=f15e141]:
+                - listitem [ref=f15e142]:
+                  - generic [aria-hidden] [ref=f15e143]: check
+                  - generic [ref=f15e144]: Figures cover only the Northstar Creative demo workspace.
+                - listitem [ref=f15e145]:
+                  - generic [aria-hidden] [ref=f15e146]: check
+                  - generic [ref=f15e147]: Unpaid invoices are receivables, not guaranteed income.
+                - listitem [ref=f15e148]:
+                  - generic [aria-hidden] [ref=f15e149]: check
+                  - generic [ref=f15e150]: Usage data for recurring services is not connected.
+                - listitem [ref=f15e151]:
+                  - generic [aria-hidden] [ref=f15e152]: check
+                  - generic [ref=f15e153]: Budget utilisation includes expenses dated in the current calendar month.
+              - generic [ref=f15e154]:
+                - paragraph [ref=f15e155]: How this answer was built
+                - paragraph [ref=f15e156]: The server matched the question to a deterministic calculation over local invoices, transactions, budgets, and Sentinel patterns. No language model was called.
+          - generic [ref=f15e78]:
+            - generic [aria-hidden] [ref=f15e79]: info
+            - generic [ref=f15e80]: Copilot is an explanation layer, not an accountant. It cannot move money, send invoices, or change records. Review the linked evidence before acting.

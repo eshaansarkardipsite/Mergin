@@ -1,0 +1,97 @@
+- generic [ref=f9e3]:
+  - complementary [ref=f9e4]:
+    - generic [ref=f9e5]:
+      - link "MERGIN overview" [ref=f9e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f9e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f9e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f9e11]: NC
+        - generic [ref=f9e12]:
+          - generic [ref=f9e13]: Northstar Creative
+          - generic [ref=f9e14]: Demo workspace
+        - generic [aria-hidden] [ref=f9e15]: unfold_more
+      - navigation "Primary" [ref=f9e16]:
+        - generic [ref=f9e17]:
+          - paragraph [ref=f9e18]: Workspace
+          - generic [ref=f9e19]:
+            - link "Overview" [ref=f9e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f9e21]: space_dashboard
+            - link "Invoices" [ref=f9e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f9e24]: receipt_long
+            - link "Transactions" [ref=f9e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f9e27]: swap_horiz
+        - generic [ref=f9e29]:
+          - paragraph [ref=f9e30]: Planning
+          - generic [ref=f9e31]:
+            - link "Expenses" [ref=f9e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f9e33]: credit_card
+            - link "Budgets" [ref=f9e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f9e36]: savings
+            - link "Cash Flow" [ref=f9e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f9e39]: monitoring
+        - generic [ref=f9e41]:
+          - paragraph [ref=f9e42]: Intelligence
+          - generic [ref=f9e43]:
+            - link "Sentinel" [ref=f9e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f9e45]: radar
+            - link "Copilot" [ref=f9e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f9e49]: forum
+      - generic [ref=f9e51]:
+        - link "Settings" [ref=f9e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f9e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f9e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f9e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f9e56]:
+          - generic [ref=f9e57]: MC
+          - generic [ref=f9e58]:
+            - paragraph [ref=f9e59]: Maya Chen
+            - paragraph [ref=f9e60]: Demo owner
+          - button "Sign out" [ref=f9e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e62]: logout
+  - generic [ref=f9e63]:
+    - banner [ref=f9e64]:
+      - generic [ref=f9e65]:
+        - search [ref=f9e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f9e67]
+          - generic: Ctrl K
+        - generic [ref=f9e68]:
+          - link "Demo data" [ref=f9e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f9e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e72]: help
+          - button "Notifications" [ref=f9e74] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f9e75]: notifications
+          - link "Open profile settings" [ref=f9e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f9e77]:
+      - generic [ref=f9e79]:
+        - generic [ref=f9e80]:
+          - generic [ref=f9e81]:
+            - generic [ref=f9e82]:
+              - generic [aria-hidden] [ref=f9e83]: verified_user
+              - text: Recurring intelligence · evidence only
+            - heading "Sentinel" [level=1] [ref=f9e84]
+            - paragraph [ref=f9e85]: Recurring charges detected from at least three matching ledger observations. Sentinel never claims whether a service is used or unused.
+          - generic [ref=f9e86]:
+            - link "Policy settings" [ref=f9e87] [cursor=pointer]:
+              - /url: /app/settings
+              - generic [aria-hidden] [ref=f9e88]: tune
+              - text: Policy settings
+            - button "Run deep scan" [ref=f9e89] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f9e90]: radar
+              - text: Run deep scan
+        - status "Loading Sentinel" [ref=f9e105]

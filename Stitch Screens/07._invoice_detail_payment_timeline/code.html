@@ -1,0 +1,368 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"surface-container-high":"#e8e8e8","error":"#ba1a1a","on-tertiary-fixed-variant":"#464747","on-secondary-container":"#656464","secondary":"#5f5e5e","background":"#f9f9f9","surface":"#f9f9f9","on-secondary-fixed-variant":"#474747","error-container":"#ffdad6","on-secondary":"#ffffff","on-background":"#1a1c1c","surface-dim":"#dadada","tertiary-fixed":"#e4e2e2","on-primary-fixed":"#1c1b1b","primary-fixed-dim":"#c9c6c5","surface-hover":"#F0F0F0","on-secondary-fixed":"#1b1c1c","inverse-on-surface":"#f1f1f1","secondary-fixed-dim":"#c8c6c6","outline-variant":"#c4c7c7","on-tertiary-fixed":"#1b1c1c","surface-canvas":"#F6F6F6","ink-slate":"#686868","on-surface-variant":"#444748","surface-tint":"#5f5e5e","stroke-line":"#E6E6E6","inverse-primary":"#c9c6c5","tertiary":"#000000","surface-container-highest":"#e2e2e2","secondary-container":"#e4e2e1","tertiary-fixed-dim":"#c7c6c6","ink-muted":"#929292","secondary-fixed":"#e4e2e1","on-tertiary-container":"#848484","ink-graphite":"#333333","surface-bright":"#f9f9f9","surface-container-lowest":"#ffffff","primary-fixed":"#e5e2e1","on-error":"#ffffff","primary-container":"#1c1b1b","on-primary":"#ffffff","outline":"#747878","on-surface":"#1a1c1c","surface-raised":"#FFFFFF","tertiary-container":"#1b1c1c","on-primary-fixed-variant":"#474646","ink-solid":"#0A0A0A","on-tertiary":"#ffffff","stroke-subtle":"#EFEFEF","surface-container-low":"#f3f3f3","surface-dark":"#171717","on-error-container":"#93000a","on-primary-container":"#858383","surface-container":"#eeeeee","primary":"#000000","surface-variant":"#e2e2e2","inverse-surface":"#2f3131"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-sm":"0.5rem","margin":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","gutter-desktop":"2rem","gutter":"1.5rem","space-xl":"2rem","space-md":"1rem"},"fontFamily":{"body-md":["Inter"],"financial-metric-lg":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"],"display-hero":["Inter"],"headline-lg":["Inter"],"headline-md":["Inter"],"caption-micro":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Inter"],"body-md-strong":["Inter"],"display-hero-mobile":["Inter"],"label-md":["Inter"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"financial-metric-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["17px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption-micro":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.015em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-md-strong":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"600"}],"display-hero-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.025em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-raised border-r border-stroke-line z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-xs border-b border-stroke-line"><img alt="MERGIN Monogram & Wordmark" class="h-8 w-auto object-contain" src="../../public/brand/mergin-logo.png"/><span class="font-headline-sm text-headline-sm tracking-tight text-ink-solid">MERGIN</span></div><div class="px-space-md py-space-sm border-b border-stroke-line"><div class="flex items-center justify-between text-caption-micro font-caption-micro text-ink-muted uppercase tracking-wider mb-1">Workspace</div><button class="w-full flex items-center justify-between py-1 px-1.5 -mx-1.5 rounded-lg hover:bg-surface-hover text-left transition-colors" type="button"><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Northstar Creative</p><p class="font-caption-micro text-caption-micro text-ink-slate mt-0.5">Studio · USD</p></div><span class="material-symbols-outlined text-ink-slate text-sm ml-1">unfold_more</span></button></div><nav class="flex flex-col gap-1 p-space-sm" data-active-classes="bg-ink-solid text-on-primary font-body-md-strong"><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">space_dashboard</span><span class="font-body-md text-body-md">Overview</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="transactions" href="#"><span class="material-symbols-outlined text-[18px]">receipt_long</span><span class="font-body-md text-body-md">Transactions</span></a><a aria-current="page" class="flex items-center gap-2.5 px-3 py-2 rounded-lg transition-colors bg-ink-solid text-on-primary font-body-md-strong" data-path="invoices" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span class="font-body-md text-body-md">Invoices</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[18px]">credit_card</span><span class="font-body-md text-body-md">Expenses</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="cash-flow" href="#"><span class="material-symbols-outlined text-[18px]">stacked_line_chart</span><span class="font-body-md text-body-md">Cash Flow</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="budgets" href="#"><span class="material-symbols-outlined text-[18px]">pie_chart</span><span class="font-body-md text-body-md">Budgets</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="sentinel" href="#"><span class="material-symbols-outlined text-[18px]">verified_user</span><span class="font-body-md text-body-md">Sentinel</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="ai-copilot" href="#"><span class="material-symbols-outlined text-[18px]">smart_toy</span><span class="font-body-md text-body-md">AI Copilot</span></a></nav></div><div class="p-space-sm border-t border-stroke-line"><div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-hover transition-colors"><div class="flex items-center gap-2.5 min-w-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Alex Morgan</p><p class="font-caption-micro text-caption-micro text-ink-muted mt-0.5 truncate">Treasury Ops</p></div></div><button class="text-ink-slate hover:text-ink-solid ml-1 p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-raised/90 backdrop-blur-md border-b border-stroke-line z-40"><div class="h-16 w-full max-w-[1200px] mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex-1 max-w-[440px]"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-ink-muted text-[18px] pointer-events-none">search</span><input class="w-full h-10 pl-9 pr-3 bg-surface-canvas border border-stroke-line rounded-lg text-body-md font-body-md text-ink-solid placeholder:text-ink-muted focus:outline-none focus:border-ink-solid transition-colors" placeholder="Search invoices, merchants, transactions..." type="text"/></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-raised border border-stroke-line rounded-lg text-label-md font-label-md text-ink-graphite"><span class="material-symbols-outlined text-ink-slate text-[16px]">calendar_today</span><span>This Month: Oct 2026</span></div><button class="relative p-2 rounded-lg hover:bg-surface-hover text-ink-slate hover:text-ink-solid transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-1.5 h-1.5 bg-ink-solid rounded-full"></span></button><button class="flex items-center gap-1.5 px-3 py-2 bg-ink-solid text-on-primary rounded-lg font-label-md text-label-md hover:bg-ink-graphite transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">terminal</span><span>Ask Copilot</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface-canvas"><div class="max-w-[1200px] mx-auto p-margin-desktop"><div class="flex flex-col w-full">
+<!-- Sub-header / Breadcrumbs & Context Bar -->
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-2 text-label-md font-label-md text-ink-muted">
+<span class="hover:text-ink-solid transition-colors cursor-pointer">Invoices</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-ink-solid font-body-md-strong">INV-1054</span>
+<span class="text-ink-muted">·</span>
+<span class="text-caption-micro font-caption-micro px-2 py-0.5 rounded-full bg-surface-container-high text-ink-graphite tracking-wide">ID: 8849-014</span>
+</div>
+<!-- Title & Primary Metrics Action Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-stroke-line">
+<div class="flex flex-wrap items-center gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-ink-solid tracking-tight">INV-1054 — Forma Labs</h1>
+<div class="flex items-center gap-3 mt-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-ink-solid text-on-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+              Paid via PayPal
+            </span>
+<span class="text-label-md font-label-md text-ink-muted">Issued 14 days ago</span>
+<span class="w-1 h-1 rounded-full bg-stroke-line"></span>
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-slate font-medium">Reconciled in USD Ledger</span>
+</div>
+</div>
+</div>
+<div class="flex items-center flex-wrap gap-3">
+<div class="text-right mr-3 hidden sm:block">
+<span class="block text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted">Total Amount</span>
+<span class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight">$3,200.00 <span class="text-label-sm font-label-sm text-ink-muted uppercase">USD</span></span>
+</div>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-surface-raised border border-stroke-line text-ink-solid rounded-xl font-label-md text-label-md hover:bg-surface-hover transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download PDF</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-surface-raised border border-stroke-line text-ink-solid rounded-xl font-label-md text-label-md hover:bg-surface-hover transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+<span>Resend receipt</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 bg-ink-solid text-on-primary rounded-xl font-label-md text-label-md hover:bg-ink-graphite transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>View in ledger</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Content Grid (65% / 35%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT COLUMN (65% -> 8 of 12 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Top Overview Card -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl p-6 shadow-sm">
+<div class="flex items-center justify-between pb-5 border-b border-stroke-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-slate text-[20px]">account_balance_wallet</span>
+<span class="font-headline-sm text-headline-sm text-ink-solid">Invoice Overview</span>
+</div>
+<span class="text-caption-micro font-caption-micro px-2.5 py-0.5 rounded bg-surface-container-low text-ink-graphite uppercase tracking-wider">Automated Capture</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pt-5">
+<div class="flex flex-col">
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted mb-1">Billed Recipient</span>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Forma Labs Inc.</p>
+<p class="text-label-sm font-label-sm text-ink-slate truncate mt-0.5">finance@formalabs.io</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted mt-1">Tax ID: US-9481029</span>
+</div>
+<div class="flex flex-col">
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted mb-1">Issue & Due Date</span>
+<p class="font-body-md text-body-md text-ink-solid">Issued: Oct 10, 2026</p>
+<p class="text-body-md text-body-md text-ink-solid mt-0.5">Due: Oct 24, 2026</p>
+<span class="text-caption-micro font-caption-micro text-ink-slate mt-1">Terms: Net 14</span>
+</div>
+<div class="flex flex-col">
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted mb-1">Payment Timestamp</span>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid">Oct 23, 2026</p>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">11:03:42 AM UTC</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted mt-1">Cleared in 13 days</span>
+</div>
+<div class="flex flex-col">
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted mb-1">Settlement Method</span>
+<div class="flex items-center gap-1.5">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">PayPal Sandbox</span>
+</div>
+<p class="font-label-sm font-label-sm text-ink-slate mt-0.5 truncate font-mono">#PAY-8921-XF</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted mt-1">Direct API Settlement</span>
+</div>
+</div>
+</div>
+<!-- Line Items Breakdown Card -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl overflow-hidden shadow-sm">
+<div class="px-6 py-5 border-b border-stroke-line flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-slate text-[20px]">format_list_bulleted</span>
+<span class="font-headline-sm text-headline-sm text-ink-solid">Line Items & Deliverables</span>
+</div>
+<span class="text-label-sm font-label-sm text-ink-muted">2 Deliverables billed</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-stroke-line bg-surface-canvas/60">
+<th class="py-3.5 px-6 text-label-sm font-label-sm uppercase tracking-wider text-ink-slate">Item & Description</th>
+<th class="py-3.5 px-4 text-label-sm font-label-sm uppercase tracking-wider text-ink-slate text-center w-28">Qty / Hrs</th>
+<th class="py-3.5 px-4 text-label-sm font-label-sm uppercase tracking-wider text-ink-slate text-right w-36">Rate</th>
+<th class="py-3.5 px-6 text-label-sm font-label-sm uppercase tracking-wider text-ink-slate text-right w-40">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-stroke-subtle">
+<tr class="hover:bg-surface-hover/50 transition-colors">
+<td class="py-5 px-6 align-top">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid">Product Design Sprint & UX Prototyping</p>
+<p class="text-label-sm font-label-sm text-ink-slate mt-1 leading-relaxed">
+                    Iterative design architecture, multi-platform design tokens, micro-interaction models, and high-fidelity prototype flows for Series B expansion.
+                  </p>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-caption-micro font-caption-micro px-2 py-0.5 rounded bg-surface-container text-ink-graphite font-mono">TASK-ID: 4190</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted">Approved by Design Council</span>
+</div>
+</td>
+<td class="py-5 px-4 text-center align-top font-body-md text-body-md text-ink-solid">
+                  40.00 <span class="text-ink-muted text-label-sm">hrs</span>
+</td>
+<td class="py-5 px-4 text-right align-top font-body-md text-body-md text-ink-solid tabular-nums">
+                  $60.00
+                </td>
+<td class="py-5 px-6 text-right align-top font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  $2,400.00
+                </td>
+</tr>
+<tr class="hover:bg-surface-hover/50 transition-colors">
+<td class="py-5 px-6 align-top">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid">Interactive Design System Handover</p>
+<p class="text-label-sm font-label-sm text-ink-slate mt-1 leading-relaxed">
+                    Full Figma asset library sync, semantic CSS variables spec, zero-dependency Tailwind tokens, and institutional components package.
+                  </p>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-caption-micro font-caption-micro px-2 py-0.5 rounded bg-surface-container text-ink-graphite font-mono">SPEC-REV: 1.4</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted">Package Completed</span>
+</div>
+</td>
+<td class="py-5 px-4 text-center align-top font-body-md text-body-md text-ink-solid">
+                  1.00 <span class="text-ink-muted text-label-sm">pkg</span>
+</td>
+<td class="py-5 px-4 text-right align-top font-body-md text-body-md text-ink-solid tabular-nums">
+                  $800.00
+                </td>
+<td class="py-5 px-6 text-right align-top font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  $800.00
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Calculation Summary -->
+<div class="bg-surface-canvas/40 border-t border-stroke-line p-6 flex flex-col items-end">
+<div class="w-full sm:w-80 flex flex-col gap-3">
+<div class="flex items-center justify-between text-body-md font-body-md text-ink-slate">
+<span>Subtotal</span>
+<span class="tabular-nums font-body-md-strong text-ink-solid">$3,200.00 USD</span>
+</div>
+<div class="flex items-center justify-between text-body-md font-body-md text-ink-slate">
+<span class="flex items-center gap-1.5">
+                Sales Tax (0.0%)
+                <span class="material-symbols-outlined text-[14px] text-ink-muted cursor-help" title="Exempt under B2B Digital Services Provision">info</span>
+</span>
+<span class="tabular-nums font-body-md-strong text-ink-solid">$0.00 USD</span>
+</div>
+<div class="flex items-center justify-between text-body-md font-body-md text-ink-slate">
+<span>Discounts Applied</span>
+<span class="tabular-nums font-body-md-strong text-ink-solid">$0.00 USD</span>
+</div>
+<div class="h-px bg-stroke-line my-1"></div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="font-headline-sm text-headline-sm text-ink-solid block">Total Paid</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted uppercase tracking-wider">Settled Full Balance</span>
+</div>
+<span class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight tabular-nums">
+                $3,200.00 <span class="text-label-sm font-label-sm text-ink-slate">USD</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notes, Legal & Terms Card -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-ink-slate text-[18px]">article</span>
+<span class="font-label-md font-label-md text-ink-solid uppercase tracking-wider">Terms & Performance Notes</span>
+</div>
+<p class="text-body-md font-body-md text-ink-slate leading-relaxed">
+          Payment received and settled electronically through Mergin's PayPal Gateway integration. Intellectual property rights for UX specifications and deliverables outlined under INV-1054 have been fully assigned to Forma Labs Inc. as of transaction execution timestamp Oct 23, 2026.
+        </p>
+<div class="mt-4 pt-4 border-t border-stroke-subtle flex flex-wrap items-center justify-between gap-4 text-caption-micro font-caption-micro text-ink-muted">
+<div>Auditor Reference: <span class="font-mono text-ink-graphite">ZLV-AUD-2026-X992</span></div>
+<div>Cryptographic Receipt: <span class="font-mono text-ink-graphite">SHA256: 9b2d8...f810c</span></div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN (35% -> 4 of 12 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Linked PayPal Transaction Card -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b border-stroke-subtle">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-solid text-[20px]">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-ink-solid">PayPal Settlement</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-caption-micro font-caption-micro bg-surface-container text-ink-solid font-mono font-medium">
+            SANDBOX
+          </span>
+</div>
+<div class="mt-5 flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-ink-muted">Transaction ID</span>
+<span class="font-mono text-label-md font-label-md text-ink-solid">TXN-89210-PL</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-ink-muted">Gross Captured</span>
+<span class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$3,200.00 USD</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-ink-muted">Processor Fee (2.75%)</span>
+<span class="font-body-md text-body-md text-ink-slate tabular-nums">-$88.20 USD</span>
+</div>
+<div class="p-3.5 bg-surface-canvas rounded-xl flex items-center justify-between border border-stroke-subtle">
+<div>
+<span class="text-caption-micro font-caption-micro uppercase tracking-wider text-ink-muted block">Net Received</span>
+<span class="font-headline-sm text-headline-sm text-ink-solid tabular-nums">+$3,111.80 USD</span>
+</div>
+<span class="material-symbols-outlined text-ink-solid text-[22px]">check_circle</span>
+</div>
+<div class="pt-2 flex flex-col gap-1 text-label-sm font-label-sm text-ink-slate">
+<span class="text-ink-muted text-caption-micro uppercase tracking-wider">Settlement Target</span>
+<span class="font-body-md-strong text-ink-solid">Connected PayPal Treasury Vault</span>
+<span class="font-mono text-caption-micro text-ink-muted">Routing: Mergin Institutional Primary (•••• 9024)</span>
+</div>
+<div class="pt-3 border-t border-stroke-subtle">
+<a class="inline-flex items-center gap-1.5 text-label-md font-label-md text-ink-solid hover:underline group" href="#">
+<span>Open in Transaction Ledger</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Payment & Audit Timeline Card -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b border-stroke-subtle mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-slate text-[20px]">history</span>
+<span class="font-headline-sm text-headline-sm text-ink-solid">Payment & Audit Timeline</span>
+</div>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">6 Events</span>
+</div>
+<!-- Vertical Stepped Timeline -->
+<div class="relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1.5px] before:bg-stroke-line">
+<!-- Event 1 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-surface-raised border-2 border-ink-solid flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-solid"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Invoice Created</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">09:14 AM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">Author: Alex Morgan (Treasury Ops)</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted block mt-0.5">Oct 10, 2026</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-surface-raised border-2 border-ink-solid flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-solid"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Sent to Client</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">09:16 AM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">Delivered via automated mailer & PayPal link</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted block mt-0.5">Oct 10, 2026</span>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-surface-raised border-2 border-ink-solid flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-solid"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Viewed by Client</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">02:40 PM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">Recipient opened portal link (Forma Labs)</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted block mt-0.5">Oct 14, 2026</span>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-surface-raised border-2 border-ink-solid flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-solid"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Checkout Initiated</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">11:02 AM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">PayPal Sandbox session opened (#SES-901)</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted block mt-0.5">Oct 23, 2026</span>
+</div>
+</div>
+<!-- Event 5 -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-surface-raised border-2 border-ink-solid flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-ink-solid font-bold">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Payment Captured</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">11:03 AM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">Webhook: PAYMENT.CAPTURE.COMPLETED</p>
+<span class="text-caption-micro font-caption-micro font-mono text-ink-muted block mt-0.5">Oct 23, 2026 · Sig: Verified</span>
+</div>
+</div>
+<!-- Event 6 (Terminal) -->
+<div class="relative group">
+<div class="absolute -left-[23px] top-1 w-4 h-4 rounded-full bg-ink-solid flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[10px] text-on-primary font-bold">done_all</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Auto-Reconciled</span>
+<span class="text-caption-micro font-caption-micro text-ink-muted font-mono">11:03 AM</span>
+</div>
+<p class="text-label-sm font-label-sm text-ink-slate mt-0.5">Marked PAID; General ledger balance matched</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted block mt-0.5">Oct 23, 2026 · System Bot</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-stroke-subtle flex items-center justify-between">
+<span class="text-caption-micro font-caption-micro text-ink-muted">Audit Hash: 7c4e-22fa-90</span>
+<button class="text-label-sm font-label-sm text-ink-solid hover:underline" type="button">Download Audit Log</button>
+</div>
+</div>
+<!-- Quick Action / Assistance Widget -->
+<div class="bg-surface-raised border border-stroke-line rounded-2xl p-5 shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-canvas border border-stroke-subtle flex items-center justify-center text-ink-solid">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+</div>
+<div>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid">Need dispute assistance?</p>
+<p class="text-caption-micro font-caption-micro text-ink-slate">Contact Treasury Desk or flag discrepancy</p>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg border border-stroke-line text-label-sm font-label-sm text-ink-solid hover:bg-surface-hover transition-colors" type="button">
+          Support
+        </button>
+</div>
+</div>
+</div>
+</div></div></main></div></body></html>

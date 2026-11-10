@@ -1,0 +1,182 @@
+- generic [ref=f10e3]:
+  - complementary [ref=f10e4]:
+    - generic [ref=f10e5]:
+      - link "MERGIN overview" [ref=f10e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f10e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f10e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f10e11]: NC
+        - generic [ref=f10e12]:
+          - generic [ref=f10e13]: Northstar Creative
+          - generic [ref=f10e14]: Demo workspace
+        - generic [aria-hidden] [ref=f10e15]: unfold_more
+      - navigation "Primary" [ref=f10e16]:
+        - generic [ref=f10e17]:
+          - paragraph [ref=f10e18]: Workspace
+          - generic [ref=f10e19]:
+            - link "Overview" [ref=f10e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f10e21]: space_dashboard
+            - link "Invoices" [ref=f10e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f10e24]: receipt_long
+            - link "Transactions" [ref=f10e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f10e27]: swap_horiz
+        - generic [ref=f10e29]:
+          - paragraph [ref=f10e30]: Planning
+          - generic [ref=f10e31]:
+            - link "Expenses" [ref=f10e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f10e33]: credit_card
+            - link "Budgets" [ref=f10e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f10e36]: savings
+            - link "Cash Flow" [ref=f10e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f10e39]: monitoring
+        - generic [ref=f10e41]:
+          - paragraph [ref=f10e42]: Intelligence
+          - generic [ref=f10e43]:
+            - link "Sentinel" [ref=f10e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f10e45]: radar
+            - link "Copilot" [ref=f10e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f10e49]: forum
+      - generic [ref=f10e51]:
+        - link "Settings" [ref=f10e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f10e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f10e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f10e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f10e56]:
+          - generic [ref=f10e57]: MC
+          - generic [ref=f10e58]:
+            - paragraph [ref=f10e59]: Maya Chen
+            - paragraph [ref=f10e60]: Demo owner
+          - button "Sign out" [ref=f10e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f10e62]: logout
+  - generic [ref=f10e63]:
+    - banner [ref=f10e64]:
+      - generic [ref=f10e65]:
+        - search [ref=f10e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f10e67]
+          - generic: Ctrl K
+        - generic [ref=f10e68]:
+          - link "Demo data" [ref=f10e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f10e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f10e72]: help
+          - button "Notifications, 3 unread" [ref=f10e138] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f10e75]: notifications
+            - generic [ref=f10e139]: "3"
+          - link "Open profile settings" [ref=f10e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f10e77]:
+      - generic [ref=f10e79]:
+        - generic [ref=f10e80]:
+          - generic [ref=f10e81]:
+            - generic [ref=f10e82]: Grounded financial reasoning
+            - heading "Copilot" [level=1] [ref=f10e84]
+            - paragraph [ref=f10e85]: Answers are calculated by deterministic TypeScript against the local ledger. When Gemini is configured, it only explains those calculated facts.
+          - generic [ref=f10e87]:
+            - generic [aria-hidden] [ref=f10e88]: terminal
+            - text: Deterministic mode
+        - generic [ref=f10e89]:
+          - generic [ref=f10e90]:
+            - generic [ref=f10e91]:
+              - generic [ref=f10e92]:
+                - generic [aria-hidden] [ref=f10e93]: forum
+                - generic [ref=f10e94]: Workspace questions
+              - generic [ref=f10e95]: Local demo ledger
+            - generic [ref=f10e97]:
+              - generic [ref=f10e155]:
+                - generic [ref=f10e156]: You
+                - generic [ref=f10e157]: Which invoices are overdue?
+              - generic [ref=f10e158]:
+                - generic [ref=f10e159]:
+                  - generic [aria-hidden] [ref=f10e161]: terminal
+                  - generic [ref=f10e162]: MERGIN Copilot
+                  - generic [ref=f10e163]: Deterministic · TypeScript
+                - generic [ref=f10e164]:
+                  - generic [ref=f10e165]:
+                    - paragraph [ref=f10e166]: 1 invoice is overdue, totalling $2,400.00.
+                    - generic [ref=f10e167]: $2,400.00
+                  - paragraph [ref=f10e168]: Overdue means the due date has passed and the invoice is not fully paid. These balances are outstanding, not guaranteed income.
+                  - generic [ref=f10e169]:
+                    - paragraph [ref=f10e170]: Evidence
+                    - list [ref=f10e171]:
+                      - listitem [ref=f10e172]:
+                        - link "INV-1048 · Acme Studios Due Oct 30, 2026 $2,400.00" [ref=f10e173] [cursor=pointer]:
+                          - /url: /app/invoices/inv_1048
+                          - generic [ref=f10e174]:
+                            - generic [ref=f10e175]: INV-1048 · Acme Studios
+                            - generic [ref=f10e176]: Due Oct 30, 2026
+                          - generic [ref=f10e177]: $2,400.00
+                  - paragraph [ref=f10e178]: "Next step: Open the oldest invoice and send a reminder."
+                  - paragraph [ref=f10e179]: Calculated for As of Nov 10, 2026
+            - generic [ref=f10e104]:
+              - generic [ref=f10e105]:
+                - generic [aria-hidden]: help
+                - textbox "Ask Copilot a question" [ref=f10e106]:
+                  - /placeholder: Ask about cash flow, receivables, budgets, or spend
+                - button "Ask" [disabled] [ref=f10e107]:
+                  - generic [aria-hidden] [ref=f10e180]: auto_awesome
+                  - text: Ask
+              - generic [ref=f10e109]:
+                - generic [ref=f10e110]: No model key configured. Answers are generated locally.
+                - generic [ref=f10e111]: Enter ↵
+          - complementary [ref=f10e112]:
+            - generic [ref=f10e113]:
+              - generic [ref=f10e114]:
+                - heading "Suggested questions" [level=2] [ref=f10e115]
+                - generic [aria-hidden] [ref=f10e116]: lightbulb
+              - generic [ref=f10e140]:
+                - button "Q1Why did expenses increase this month?" [ref=f10e141] [cursor=pointer]:
+                  - generic [ref=f10e142]: Q1
+                  - text: Why did expenses increase this month?
+                - button "Q2Which invoices are overdue?" [ref=f10e143] [cursor=pointer]:
+                  - generic [ref=f10e144]: Q2
+                  - text: Which invoices are overdue?
+                - button "Q3Can we afford an additional $800 expense?" [ref=f10e145] [cursor=pointer]:
+                  - generic [ref=f10e146]: Q3
+                  - text: Can we afford an additional $800 expense?
+                - button "Q4Which recurring payments should be reviewed?" [ref=f10e147] [cursor=pointer]:
+                  - generic [ref=f10e148]: Q4
+                  - text: Which recurring payments should be reviewed?
+                - button "Q5What was our revenue this quarter?" [ref=f10e149] [cursor=pointer]:
+                  - generic [ref=f10e150]: Q5
+                  - text: What was our revenue this quarter?
+                - button "Q6What payments are expected next week?" [ref=f10e151] [cursor=pointer]:
+                  - generic [ref=f10e152]: Q6
+                  - text: What payments are expected next week?
+                - button "Q7Which budgets are close to their limits?" [ref=f10e153] [cursor=pointer]:
+                  - generic [ref=f10e154]: Q7
+                  - text: Which budgets are close to their limits?
+            - generic [ref=f10e118]:
+              - generic [ref=f10e119]:
+                - heading "Grounding & assumptions" [level=2] [ref=f10e120]
+                - generic [ref=f10e121]: Deterministic
+              - generic [ref=f10e122]:
+                - list [ref=f10e181]:
+                  - listitem [ref=f10e182]:
+                    - generic [aria-hidden] [ref=f10e183]: check
+                    - generic [ref=f10e184]: Figures cover only the Northstar Creative demo workspace.
+                  - listitem [ref=f10e185]:
+                    - generic [aria-hidden] [ref=f10e186]: check
+                    - generic [ref=f10e187]: Unpaid invoices are receivables, not guaranteed income.
+                  - listitem [ref=f10e188]:
+                    - generic [aria-hidden] [ref=f10e189]: check
+                    - generic [ref=f10e190]: Usage data for recurring services is not connected.
+                - generic [ref=f10e191]:
+                  - paragraph [ref=f10e192]: How this answer was built
+                  - paragraph [ref=f10e193]: The server matched the question to a deterministic calculation over local invoices, transactions, budgets, and Sentinel patterns. No language model was called.
+            - generic [ref=f10e135]:
+              - generic [aria-hidden] [ref=f10e136]: info
+              - generic [ref=f10e137]: Copilot is an explanation layer, not an accountant. It cannot move money, send invoices, or change records. Review the linked evidence before acting.

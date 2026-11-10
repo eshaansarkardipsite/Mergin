@@ -1,0 +1,71 @@
+- generic [ref=f15e7]:
+  - banner [ref=f15e8]:
+    - generic [ref=f15e9]:
+      - button "Open navigation" [ref=f15e10] [cursor=pointer]:
+        - generic [aria-hidden] [ref=f15e11]: menu
+      - link "MERGIN overview" [ref=f15e12] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f15e13]
+      - generic [ref=f15e14]:
+        - button "About this demo" [ref=f15e15] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f15e16]: help
+        - button "Notifications" [ref=f15e18] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f15e19]: notifications
+        - link "Open profile settings" [ref=f15e20] [cursor=pointer]:
+          - /url: /app/settings
+          - text: MC
+  - main [ref=f15e21]:
+    - generic [ref=f15e23]:
+      - generic [ref=f15e24]:
+        - generic [ref=f15e25]:
+          - generic [ref=f15e26]: Grounded financial reasoning
+          - heading "Copilot" [level=1] [ref=f15e28]
+          - paragraph [ref=f15e29]: Answers are calculated by deterministic TypeScript against the local ledger. When Gemini is configured, it only explains those calculated facts.
+        - generic [ref=f15e31]:
+          - generic [aria-hidden] [ref=f15e32]: terminal
+          - text: Deterministic mode
+      - generic [ref=f15e33]:
+        - generic [ref=f15e34]:
+          - generic [ref=f15e35]:
+            - generic [ref=f15e36]:
+              - generic [aria-hidden] [ref=f15e37]: forum
+              - generic [ref=f15e38]: Workspace questions
+            - generic [ref=f15e39]: Local demo ledger
+          - generic [ref=f15e42]:
+            - generic [aria-hidden] [ref=f15e44]: forum
+            - heading "Ask about the ledger" [level=2] [ref=f15e45]
+            - paragraph [ref=f15e46]: Try an overdue invoice question or a spending question. Every answer comes with its calculated amount and the records used.
+          - generic [ref=f15e48]:
+            - generic [ref=f15e49]:
+              - generic [aria-hidden]: help
+              - textbox "Ask Copilot a question" [ref=f15e50]:
+                - /placeholder: Ask about cash flow, receivables, budgets, or spend
+              - button "Ask" [disabled] [ref=f15e51]:
+                - generic [aria-hidden] [ref=f15e52]: auto_awesome
+                - text: Ask
+            - generic [ref=f15e53]: No model key configured. Answers are generated locally.
+        - complementary [ref=f15e55]:
+          - generic [ref=f15e56]:
+            - generic [ref=f15e57]:
+              - heading "Suggested questions" [level=2] [ref=f15e58]
+              - generic [aria-hidden] [ref=f15e59]: lightbulb
+            - paragraph [ref=f15e60]: Suggestions could not load. Type a question below the conversation.
+          - generic [ref=f15e61]:
+            - generic [ref=f15e62]:
+              - heading "Grounding & assumptions" [level=2] [ref=f15e63]
+              - generic [ref=f15e64]: Deterministic
+            - generic [ref=f15e65]:
+              - paragraph [ref=f15e66]: Ask a question to see the exact facts and assumptions used.
+              - list [ref=f15e67]:
+                - listitem [ref=f15e68]:
+                  - generic [aria-hidden] [ref=f15e69]: database
+                  - generic [ref=f15e70]: "Source: local SQLite demo ledger."
+                - listitem [ref=f15e71]:
+                  - generic [aria-hidden] [ref=f15e72]: calculate
+                  - generic [ref=f15e73]: All money math uses integer USD cents.
+                - listitem [ref=f15e74]:
+                  - generic [aria-hidden] [ref=f15e75]: visibility_off
+                  - generic [ref=f15e76]: No usage or non-usage claims about subscriptions.
+          - generic [ref=f15e78]:
+            - generic [aria-hidden] [ref=f15e79]: info
+            - generic [ref=f15e80]: Copilot is an explanation layer, not an accountant. It cannot move money, send invoices, or change records. Review the linked evidence before acting.

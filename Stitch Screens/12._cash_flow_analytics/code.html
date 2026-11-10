@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"surface-container-high":"#e8e8e8","error":"#ba1a1a","on-tertiary-fixed-variant":"#464747","on-secondary-container":"#656464","secondary":"#5f5e5e","background":"#f9f9f9","surface":"#f9f9f9","on-secondary-fixed-variant":"#474747","error-container":"#ffdad6","on-secondary":"#ffffff","on-background":"#1a1c1c","surface-dim":"#dadada","tertiary-fixed":"#e4e2e2","on-primary-fixed":"#1c1b1b","primary-fixed-dim":"#c9c6c5","surface-hover":"#F0F0F0","on-secondary-fixed":"#1b1c1c","inverse-on-surface":"#f1f1f1","secondary-fixed-dim":"#c8c6c6","outline-variant":"#c4c7c7","on-tertiary-fixed":"#1b1c1c","surface-canvas":"#F6F6F6","ink-slate":"#686868","on-surface-variant":"#444748","surface-tint":"#5f5e5e","stroke-line":"#E6E6E6","inverse-primary":"#c9c6c5","tertiary":"#000000","surface-container-highest":"#e2e2e2","secondary-container":"#e4e2e1","tertiary-fixed-dim":"#c7c6c6","ink-muted":"#929292","secondary-fixed":"#e4e2e1","on-tertiary-container":"#848484","ink-graphite":"#333333","surface-bright":"#f9f9f9","surface-container-lowest":"#ffffff","primary-fixed":"#e5e2e1","on-error":"#ffffff","primary-container":"#1c1b1b","on-primary":"#ffffff","outline":"#747878","on-surface":"#1a1c1c","surface-raised":"#FFFFFF","tertiary-container":"#1b1c1c","on-primary-fixed-variant":"#474646","ink-solid":"#0A0A0A","on-tertiary":"#ffffff","stroke-subtle":"#EFEFEF","surface-container-low":"#f3f3f3","surface-dark":"#171717","on-error-container":"#93000a","on-primary-container":"#858383","surface-container":"#eeeeee","primary":"#000000","surface-variant":"#e2e2e2","inverse-surface":"#2f3131"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-sm":"0.5rem","margin":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","gutter-desktop":"2rem","gutter":"1.5rem","space-xl":"2rem","space-md":"1rem"},"fontFamily":{"body-md":["Inter"],"financial-metric-lg":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"],"display-hero":["Inter"],"headline-lg":["Inter"],"headline-md":["Inter"],"caption-micro":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Inter"],"body-md-strong":["Inter"],"display-hero-mobile":["Inter"],"label-md":["Inter"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"financial-metric-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["17px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption-micro":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.015em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-md-strong":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"600"}],"display-hero-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.025em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-raised border-r border-stroke-line z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-xs border-b border-stroke-line"><img alt="MERGIN Monogram &amp; Wordmark" class="h-8 w-auto object-contain" src="../../public/brand/mergin-logo.png"/><span class="font-headline-sm text-headline-sm tracking-tight text-ink-solid">MERGIN</span></div><div class="px-space-md py-space-sm border-b border-stroke-line"><div class="flex items-center justify-between text-caption-micro font-caption-micro text-ink-muted uppercase tracking-wider mb-1">Workspace</div><button class="w-full flex items-center justify-between py-1 px-1.5 -mx-1.5 rounded-lg hover:bg-surface-hover text-left transition-colors" type="button"><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Northstar Creative</p><p class="font-caption-micro text-caption-micro text-ink-slate mt-0.5">Studio · USD</p></div><span class="material-symbols-outlined text-ink-slate text-sm ml-1">unfold_more</span></button></div><nav class="flex flex-col gap-1 p-space-sm" data-active-classes="bg-ink-solid text-on-primary font-body-md-strong"><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">space_dashboard</span><span class="font-body-md text-body-md">Overview</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="transactions" href="#"><span class="material-symbols-outlined text-[18px]">receipt_long</span><span class="font-body-md text-body-md">Transactions</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="invoices" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span class="font-body-md text-body-md">Invoices</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[18px]">credit_card</span><span class="font-body-md text-body-md">Expenses</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="cash-flow" href="#"><span class="material-symbols-outlined text-[18px]">stacked_line_chart</span><span class="font-body-md text-body-md">Cash Flow</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="budgets" href="#"><span class="material-symbols-outlined text-[18px]">pie_chart</span><span class="font-body-md text-body-md">Budgets</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="sentinel" href="#"><span class="material-symbols-outlined text-[18px]">verified_user</span><span class="font-body-md text-body-md">Sentinel</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="ai-copilot" href="#"><span class="material-symbols-outlined text-[18px]">smart_toy</span><span class="font-body-md text-body-md">AI Copilot</span></a></nav></div><div class="p-space-sm border-t border-stroke-line"><div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-hover transition-colors"><div class="flex items-center gap-2.5 min-w-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Alex Morgan</p><p class="font-caption-micro text-caption-micro text-ink-muted mt-0.5 truncate">Treasury Ops</p></div></div><button class="text-ink-slate hover:text-ink-solid ml-1 p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-raised/90 backdrop-blur-md border-b border-stroke-line z-40"><div class="h-16 w-full max-w-[1200px] mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex-1 max-w-[440px]"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-ink-muted text-[18px] pointer-events-none">search</span><input class="w-full h-10 pl-9 pr-3 bg-surface-canvas border border-stroke-line rounded-lg text-body-md font-body-md text-ink-solid placeholder:text-ink-muted focus:outline-none focus:border-ink-solid transition-colors" placeholder="Search invoices, merchants, transactions..." type="text"/></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-raised border border-stroke-line rounded-lg text-label-md font-label-md text-ink-graphite"><span class="material-symbols-outlined text-ink-slate text-[16px]">calendar_today</span><span>This Month: Oct 2026</span></div><button class="relative p-2 rounded-lg hover:bg-surface-hover text-ink-slate hover:text-ink-solid transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-1.5 h-1.5 bg-ink-solid rounded-full"></span></button><button class="flex items-center gap-1.5 px-3 py-2 bg-ink-solid text-on-primary rounded-lg font-label-md text-label-md hover:bg-ink-graphite transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">terminal</span><span>Ask Copilot</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface-canvas"><div class="flex flex-col w-full">
+<script>
+    (function highlightNav() {
+      const links = document.querySelectorAll('aside nav a');
+      links.forEach(l => {
+        if (l.getAttribute('data-path') === 'cash-flow') {
+          l.className = 'flex items-center gap-2.5 px-3 py-2 rounded-lg bg-ink-solid text-on-primary font-body-md-strong transition-colors';
+        } else {
+          l.className = 'flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors';
+        }
+      });
+    })();
+  </script>
+<div class="w-full max-w-[1360px] mx-auto px-gutter-desktop py-space-xl flex flex-col gap-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-1 max-w-[680px]">
+<div class="flex items-center gap-2 text-caption-micro font-caption-micro text-ink-muted uppercase tracking-wider">
+<span>Treasury Operations</span>
+<span>/</span>
+<span class="text-ink-solid font-body-md-strong">Cash Flow Ledger</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink-solid tracking-tight">Cash Flow</h1>
+<p class="font-body-md text-body-md text-ink-slate">
+          30-day liquidity trajectory, deterministic receivables settlement, and scheduled obligation forecasting.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-low p-0.5 rounded-lg shadow-sm">
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-raised text-ink-solid font-body-md-strong transition-all shadow-sm" id="btn-horizon-30" onclick="setHorizon(30)">30 Days (Deterministic)</button>
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all" id="btn-horizon-60" onclick="setHorizon(60)">60 Days (Projected)</button>
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all" id="btn-horizon-90" onclick="setHorizon(90)">90 Days</button>
+</div>
+<div class="flex items-center bg-surface-container-low p-0.5 rounded-lg shadow-sm">
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-raised text-ink-solid font-body-md-strong transition-all shadow-sm" id="scenario-baseline" onclick="setScenario('baseline')">Baseline</button>
+<button class="px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all" id="scenario-conservative" onclick="setScenario('conservative')">Conservative · Excl. Overdue</button>
+</div>
+<button class="flex items-center gap-2 px-3 py-2 bg-surface-raised text-ink-solid rounded-lg font-label-md text-label-md hover:bg-surface-hover shadow-sm transition-colors" onclick="exportForecastCSV()">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export Forecast CSV</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-ink-slate uppercase tracking-wider">Recorded Balance</span>
+<span class="material-symbols-outlined text-ink-slate text-[18px]">account_balance_wallet</span>
+</div>
+<div class="my-3">
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight font-semibold tabular-nums">$18,420.50</div>
+</div>
+<div class="flex items-center gap-1.5 font-caption-micro text-caption-micro text-ink-muted">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-solid"></span>
+<span>Verified PayPal &amp; Corporate Treasury</span>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-ink-slate uppercase tracking-wider">Expected Receivables</span>
+<span class="material-symbols-outlined text-ink-slate text-[18px]">south_west</span>
+</div>
+<div class="my-3">
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight font-semibold tabular-nums" id="kpi-receivables">+$12,800.00</div>
+</div>
+<div class="flex items-center gap-1.5 font-caption-micro text-caption-micro text-ink-slate">
+<span class="font-body-md-strong text-ink-solid">3 Invoices:</span>
+<span class="tabular-nums">INV-1048, 1051, 1055</span>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-ink-slate uppercase tracking-wider">Scheduled Outflows</span>
+<span class="material-symbols-outlined text-ink-slate text-[18px]">north_east</span>
+</div>
+<div class="my-3">
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight font-semibold tabular-nums">-$4,380.20</div>
+</div>
+<div class="flex items-center gap-1.5 font-caption-micro text-caption-micro text-ink-slate">
+<span>Committed payroll, contractors, SaaS</span>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<span class="font-label-sm text-label-sm text-ink-slate uppercase tracking-wider">Projected Period-End</span>
+<span class="material-symbols-outlined text-ink-solid text-[18px]">insights</span>
+</div>
+<div class="my-3">
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid tracking-tight font-semibold tabular-nums" id="kpi-projected">+$26,840.30</div>
+</div>
+<div class="flex items-center gap-1.5 font-caption-micro text-caption-micro text-ink-solid">
+<span class="font-body-md-strong">Net Velocity:</span>
+<span class="tabular-nums font-body-md-strong" id="kpi-velocity">+$8,419.80 (30d)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-xl rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-sm text-headline-sm text-ink-solid">30-Day Liquidity Timeline</h2>
+<span class="px-2 py-0.5 rounded text-caption-micro font-caption-micro uppercase tracking-wider bg-surface-container-low text-ink-graphite">Oct 01 – Nov 15, 2026</span>
+</div>
+<div class="flex flex-wrap items-center gap-4 text-caption-micro font-caption-micro text-ink-slate">
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 bg-ink-solid inline-block"></span>
+<span>Verified Historical</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 border-t-2 border-dashed border-ink-solid inline-block"></span>
+<span>Deterministic Forecast</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-0.5 border-t border-dotted border-ink-muted inline-block"></span>
+<span>Safe Operating Floor ($10k)</span>
+</div>
+</div>
+</div>
+<div class="w-full relative select-none">
+<div class="w-full overflow-x-auto">
+<svg class="w-full h-auto min-w-[760px] text-ink-solid" viewbox="0 0 1000 340">
+<defs>
+<lineargradient id="curveGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#0A0A0A" stop-opacity="0.06"></stop>
+<stop offset="100%" stop-color="#0A0A0A" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<line stroke="#EFEFEF" stroke-width="1" x1="60" x2="960" y1="50" y2="50"></line>
+<text class="text-caption-micro fill-[#929292] font-caption-micro tabular-nums" text-anchor="end" x="50" y="54">$30,000</text>
+<line stroke="#EFEFEF" stroke-width="1" x1="60" x2="960" y1="120" y2="120"></line>
+<text class="text-caption-micro fill-[#929292] font-caption-micro tabular-nums" text-anchor="end" x="50" y="124">$20,000</text>
+<line stroke="#929292" stroke-dasharray="3,3" stroke-width="1" x1="60" x2="960" y1="210" y2="210"></line>
+<text class="text-caption-micro fill-[#686868] font-caption-micro tabular-nums" text-anchor="end" x="50" y="214">$10,000</text>
+<text class="text-caption-micro fill-[#686868] font-caption-micro font-medium uppercase tracking-wider" text-anchor="end" x="955" y="204">Minimum Safe Operating Floor ($10,000.00)</text>
+<line stroke="#EFEFEF" stroke-width="1" x1="60" x2="960" y1="280" y2="280"></line>
+<text class="text-caption-micro fill-[#929292] font-caption-micro tabular-nums" text-anchor="end" x="50" y="284">$0</text>
+<line stroke="#E6E6E6" stroke-width="1" x1="620" x2="620" y1="40" y2="280"></line>
+<text class="text-caption-micro fill-[#0A0A0A] font-caption-micro font-semibold uppercase tracking-wider" text-anchor="middle" x="620" y="32">Today · Oct 29</text>
+<path d="M 80 180 Q 180 160, 260 170 T 420 145 T 520 138 T 620 131 L 620 280 L 80 280 Z" fill="url(#curveGradient)"></path>
+<path d="M 620 131 L 700 118 L 740 125 L 780 108 L 860 135 L 940 73 L 940 280 L 620 280 Z" fill="url(#curveGradient)" opacity="0.5"></path>
+<path d="M 80 180 Q 180 160, 260 170 T 420 145 T 520 138 T 620 131" fill="none" stroke="#0A0A0A" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M 620 131 L 700 118 L 740 125 L 780 108 L 860 135 L 940 73" fill="none" id="forecast-path" stroke="#0A0A0A" stroke-dasharray="5,4" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="620" cy="131" fill="#0A0A0A" r="5"></circle>
+<circle cx="620" cy="131" fill="none" opacity="0.3" r="9" stroke="#0A0A0A" stroke-width="1.5"></circle>
+<rect fill="#0A0A0A" height="24" rx="4" width="120" x="560" y="96"></rect>
+<text class="text-caption-micro fill-white font-caption-micro font-semibold tabular-nums" text-anchor="middle" x="620" y="112">$18,420.50</text>
+<g class="cursor-pointer group" transform="translate(700, 118)">
+<line stroke="#E6E6E6" stroke-width="1" x1="0" x2="0" y1="0" y2="40"></line>
+<circle cx="0" cy="0" fill="#0A0A0A" r="4"></circle>
+<rect class="shadow-sm" fill="#FFFFFF" height="28" rx="6" stroke="#E6E6E6" stroke-width="1" width="90" x="-45" y="-36"></rect>
+<text class="text-caption-micro fill-[#0A0A0A] font-body-md-strong tabular-nums" text-anchor="middle" x="0" y="-22">+ $1,850.00</text>
+<text class="text-[9px] fill-[#686868] font-caption-micro" text-anchor="middle" x="0" y="-12">Cedar &amp; Co.</text>
+</g>
+<g class="cursor-pointer group" transform="translate(740, 125)">
+<circle cx="0" cy="0" fill="#0A0A0A" r="3.5"></circle>
+<rect fill="#0A0A0A" height="22" rx="4" width="70" x="-35" y="10"></rect>
+<text class="text-[10px] fill-white font-body-md-strong tabular-nums" text-anchor="middle" x="0" y="24">- $850.00</text>
+</g>
+<g class="cursor-pointer group" id="pin-acme" transform="translate(780, 108)">
+<circle cx="0" cy="0" fill="#0A0A0A" r="4"></circle>
+<rect class="shadow-sm" fill="#FFFFFF" height="28" rx="6" stroke="#E6E6E6" stroke-width="1" width="90" x="-45" y="-36"></rect>
+<text class="text-caption-micro fill-[#0A0A0A] font-body-md-strong tabular-nums" text-anchor="middle" x="0" y="-22">+ $2,400.00</text>
+<text class="text-[9px] fill-[#686868] font-caption-micro" text-anchor="middle" x="0" y="-12">Acme Studio</text>
+</g>
+<g class="cursor-pointer group" transform="translate(860, 135)">
+<circle cx="0" cy="0" fill="#0A0A0A" r="3.5"></circle>
+<rect fill="#0A0A0A" height="22" rx="4" width="84" x="-42" y="10"></rect>
+<text class="text-[10px] fill-white font-body-md-strong tabular-nums" text-anchor="middle" x="0" y="24">- $3,200.00</text>
+</g>
+<g transform="translate(940, 73)">
+<circle cx="0" cy="0" fill="#0A0A0A" r="5"></circle>
+<circle cx="0" cy="0" fill="none" r="8" stroke="#0A0A0A" stroke-dasharray="2,2" stroke-width="1"></circle>
+<rect fill="#0A0A0A" height="26" rx="4" width="130" x="-65" y="-36"></rect>
+<text class="text-caption-micro fill-white font-caption-micro font-semibold tabular-nums" id="chart-final-text" text-anchor="middle" x="0" y="-20">Nov 15 · $26,840.30</text>
+</g>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="80" y="304">Oct 01</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="260" y="304">Oct 10</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="440" y="304">Oct 20</text>
+<text class="text-caption-micro fill-[#0A0A0A] font-body-md-strong" text-anchor="middle" x="620" y="304">Oct 29</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="700" y="304">Nov 01</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="780" y="304">Nov 05</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="860" y="304">Nov 12</text>
+<text class="text-caption-micro fill-[#929292] font-caption-micro" text-anchor="middle" x="940" y="304">Nov 15</text>
+</svg>
+</div>
+<div class="mt-4 pt-4 flex flex-wrap items-center justify-between gap-space-sm bg-surface-canvas p-space-md rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">event_upcoming</span>
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Key Forecast Driver:</span>
+<span class="font-body-md text-body-md text-ink-slate">Nov 01 &amp; Nov 05 settlements deliver +$4,250.00 liquidity buffer prior to payroll disbursement.</span>
+</div>
+<div class="text-caption-micro font-caption-micro text-ink-muted">
+            Deterministic confidence: 94.2%
+          </div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-solid">Expected Inflows &amp; Receivables</h3>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Verified invoices scheduled for ledger receipt</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container-low text-ink-solid font-label-sm text-label-sm tabular-nums">4 Invoices</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">check</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Forma Labs</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted">INV-1054</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Settled Yesterday · Oct 28</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$3,200.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-container-low text-ink-solid">Settled</span>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">schedule</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Cedar &amp; Co.</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted">INV-1051</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Due Nov 01 · Net-14 Terms</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$1,850.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-container text-ink-graphite font-body-md-strong">Sent · 98% Conf.</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low transition-colors flex items-center justify-between gap-3" id="row-acme">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-ink-solid text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Acme Studio</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted">INV-1048</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-solid font-medium">Overdue by 12d · Projected Nov 05</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$2,400.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-ink-solid text-on-primary">Delinquent Risk</span>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">hourglass_empty</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Baseline Media</p>
+<span class="text-caption-micro font-caption-micro text-ink-muted">INV-1055</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Due Nov 05 · Awaiting counterparty review</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$1,240.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-container-low text-ink-slate">Pending Review</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-caption-micro font-caption-micro text-ink-muted">
+<span>Decay model: Net-14 counterparty rolling settlement</span>
+<button class="text-ink-solid font-body-md-strong hover:underline">View Invoices Panel →</button>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-ink-solid">Scheduled Outflows &amp; Commitments</h3>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Committed operational liabilities and disbursements</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container-low text-ink-solid font-label-sm text-label-sm tabular-nums">4 Payables</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">person</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Contractor Sprint (David Hughes)</p>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Execution Date: Nov 04 · Wire ACH</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">-$850.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-ink-solid text-on-primary">Mandatory</span>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">cloud_queue</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">CloudDesk &amp; Infrastructure Renewals</p>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Nov 08 · Corporate Visa Debit card ending 4410</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">-$433.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-container-low text-ink-graphite">Recurring SaaS</span>
+</div>
+</div>
+<div class="p-3 rounded-lg hover:bg-surface-canvas transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">groups</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Team Payroll &amp; Operations</p>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">Nov 15 · Direct Deposit Batched</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">-$3,200.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-container-low text-ink-solid font-medium">Scheduled</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low transition-colors flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-raised flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">shield</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Sentinel Identified Waste Offset</p>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate">2 unutilized seats flagged (Loom &amp; Figma)</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">+$188.00</p>
+<span class="inline-block px-2 py-0.5 rounded text-[11px] font-caption-micro bg-surface-raised text-ink-solid font-body-md-strong shadow-sm">Optimization</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-caption-micro font-caption-micro text-ink-muted">
+<span>Committed balance reserve: $4,483.00</span>
+<button class="text-ink-solid font-body-md-strong hover:underline">Manage Expenses →</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] text-ink-solid">menu_book</span>
+</div>
+<div class="flex flex-col gap-1 max-w-[900px]">
+<h4 class="font-body-md-strong text-body-md-strong text-ink-solid">Forecasting Assumptions &amp; Mathematical Methodology</h4>
+<p class="font-body-md text-body-md text-ink-slate leading-relaxed">
+            All projections are calculated deterministically from verified PayPal Sandbox ledger records and active invoice terms (Net-14). Late invoices are projected using historic counterparty payment decay curves. MERGIN does not speculate on unbilled revenue or unconfirmed agreements.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="material-symbols-outlined text-[16px] text-ink-muted">verified</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider">Deterministic Engine v2.4</span>
+</div>
+</div>
+</div>
+<script>
+    let currentScenario = 'baseline';
+    let currentHorizon = 30;
+
+    function setHorizon(days) {
+      currentHorizon = days;
+      const buttons = [
+        { id: 'btn-horizon-30', d: 30 },
+        { id: 'btn-horizon-60', d: 60 },
+        { id: 'btn-horizon-90', d: 90 }
+      ];
+      buttons.forEach(b => {
+        const el = document.getElementById(b.id);
+        if (b.d === days) {
+          el.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-raised text-ink-solid font-body-md-strong transition-all shadow-sm';
+        } else {
+          el.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all';
+        }
+      });
+      applyScenarioModel();
+    }
+
+    function setScenario(sc) {
+      currentScenario = sc;
+      const bBaseline = document.getElementById('scenario-baseline');
+      const bConservative = document.getElementById('scenario-conservative');
+
+      if (sc === 'baseline') {
+        bBaseline.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-raised text-ink-solid font-body-md-strong transition-all shadow-sm';
+        bConservative.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all';
+      } else {
+        bConservative.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md bg-surface-raised text-ink-solid font-body-md-strong transition-all shadow-sm';
+        bBaseline.className = 'px-3 py-1.5 rounded-md font-label-md text-label-md text-ink-slate hover:text-ink-solid transition-all';
+      }
+      applyScenarioModel();
+    }
+
+    function applyScenarioModel() {
+      const rec = document.getElementById('kpi-receivables');
+      const proj = document.getElementById('kpi-projected');
+      const vel = document.getElementById('kpi-velocity');
+      const acmeRow = document.getElementById('row-acme');
+      const acmePin = document.getElementById('pin-acme');
+      const forecastPath = document.getElementById('forecast-path');
+      const finalText = document.getElementById('chart-final-text');
+
+      if (currentScenario === 'conservative') {
+        rec.textContent = '+$10,400.00';
+        proj.textContent = '+$24,440.30';
+        vel.textContent = '+$6,019.80 (' + currentHorizon + 'd)';
+        acmeRow.classList.add('opacity-40');
+        if (acmePin) acmePin.style.opacity = '0.2';
+        if (forecastPath) {
+          forecastPath.setAttribute('d', 'M 620 131 L 700 118 L 740 125 L 780 125 L 860 152 L 940 95');
+        }
+        if (finalText) {
+          finalText.textContent = 'Nov 15 · $24,440.30';
+        }
+      } else {
+        rec.textContent = '+$12,800.00';
+        proj.textContent = '+$26,840.30';
+        vel.textContent = '+$8,419.80 (' + currentHorizon + 'd)';
+        acmeRow.classList.remove('opacity-40');
+        if (acmePin) acmePin.style.opacity = '1';
+        if (forecastPath) {
+          forecastPath.setAttribute('d', 'M 620 131 L 700 118 L 740 125 L 780 108 L 860 135 L 940 73');
+        }
+        if (finalText) {
+          finalText.textContent = 'Nov 15 · $26,840.30';
+        }
+      }
+    }
+
+    function exportForecastCSV() {
+      const csvData = [
+        ['Date', 'Type', 'Counterparty', 'Description', 'Amount', 'Confidence', 'Scenario'],
+        ['2026-10-29', 'Balance', 'MERGIN Treasury', 'Current Recorded Balance', '18420.50', '100%', 'Actual'],
+        ['2026-11-01', 'Inflow', 'Cedar & Co.', 'INV-1051 Net-14 Settlement', '+1850.00', '98%', currentScenario],
+        ['2026-11-04', 'Outflow', 'David Hughes', 'Contractor Sprint ACH', '-850.00', '100%', 'Committed'],
+        ['2026-11-05', 'Inflow', 'Acme Studio', 'INV-1048 Overdue Settlement', '+2400.00', currentScenario === 'conservative' ? '0%' : '65%', currentScenario],
+        ['2026-11-05', 'Inflow', 'Baseline Media', 'INV-1055 Review Settlement', '+1240.00', '80%', currentScenario],
+        ['2026-11-08', 'Outflow', 'CloudDesk', 'Infrastructure Recurring SaaS', '-433.00', '100%', 'Committed'],
+        ['2026-11-15', 'Outflow', 'Payroll Ops', 'Batched Direct Deposit', '-3200.00', '100%', 'Committed']
+      ];
+
+      const csvContent = 'data:text/csv;charset=utf-8,' + csvData.map(e => e.join(',')).join('\\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', 'mergin-cash-flow-forecast-' + currentScenario + '.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</div></main></div></body></html>

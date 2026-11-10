@@ -1,0 +1,102 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - img "MERGIN" [ref=e6]
+      - generic [ref=e7]: Finance, without the noise.
+    - generic [ref=e8]:
+      - generic [ref=e9]: Demo build
+      - button "Need help?" [ref=e10] [cursor=pointer]
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]: Institutional workspace access
+          - heading "Sign in to MERGIN" [level=1] [ref=e18]
+          - paragraph [ref=e19]: Your business finances. One deterministic workspace.
+        - generic [ref=e21]:
+          - generic [ref=e22]:
+            - generic [ref=e23]:
+              - generic [aria-hidden] [ref=e24]: bolt
+              - generic [ref=e25]: Evaluator sandbox
+            - paragraph [ref=e26]: Explore the demo workspace
+            - paragraph [ref=e27]: Instant access to Northstar Creative's seeded local data. No credentials needed.
+          - button "Launch demo" [ref=e28] [cursor=pointer]:
+            - text: Launch demo
+            - generic [aria-hidden] [ref=e29]: arrow_forward
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]: Business email
+            - generic [ref=e33]:
+              - generic [aria-hidden]: mail
+              - textbox "Business email" [ref=e34]:
+                - /placeholder: demo@mergin.example
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e37]: Password
+              - button "Forgot password?" [ref=e38] [cursor=pointer]
+            - generic [ref=e39]:
+              - generic [aria-hidden]: lock
+              - textbox "Password" [ref=e40]:
+                - /placeholder: Enter your password
+              - button "Show password" [ref=e41] [cursor=pointer]:
+                - generic [aria-hidden] [ref=e42]: visibility_off
+          - paragraph [ref=e43]: "Seeded credentials: demo@mergin.example · password mergin-demo"
+          - button "Continue to workspace" [ref=e44] [cursor=pointer]:
+            - text: Continue to workspace
+            - generic [aria-hidden] [ref=e45]: arrow_forward
+        - generic [ref=e46]: Enterprise single sign-on
+        - generic [ref=e49]:
+          - button "Passkey" [disabled] [ref=e50]:
+            - generic [aria-hidden] [ref=e51]: passkey
+            - text: Passkey
+          - button "Google Workspace" [disabled] [ref=e52]:
+            - generic [aria-hidden] [ref=e53]: corporate_fare
+            - text: Google Workspace
+        - paragraph [ref=e54]: "Passkey and Google Workspace are disabled: no identity provider is configured in this demo."
+        - generic [ref=e55]:
+          - generic [aria-hidden] [ref=e56]: verified_user
+          - paragraph [ref=e57]:
+            - text: Demo build. Data stays in local SQLite.
+            - button "Terms" [ref=e58] [cursor=pointer]
+            - text: and
+            - button "privacy notice" [ref=e59] [cursor=pointer]
+            - text: .
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: "N"
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: Northstar Creative
+              - paragraph [ref=e67]: Seeded demo workspace
+          - generic [ref=e68]: Preview
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - generic [ref=e72]: Recorded balance
+              - generic [ref=e73]: USD · demo ledger
+            - generic [ref=e74]: $18,420.50
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - text: Outstanding invoices
+              - paragraph [ref=e78]: $5,490.00
+            - generic [ref=e79]:
+              - text: PayPal gateway
+              - paragraph [ref=e80]: Demo mode unless configured
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [aria-hidden] [ref=e84]: notifications_active
+            - generic [ref=e85]:
+              - paragraph [ref=e86]: "Sentinel: CloudDesk Pro"
+              - paragraph [ref=e87]: $49.00/mo · price up from $45.00
+          - generic [ref=e88]: Evidence
+        - generic [ref=e90]:
+          - generic [ref=e91]: Liquidity trajectory · preview
+          - generic [ref=e92]: Seeded series
+        - paragraph [ref=e95]: Deterministic reconciliation, Sentinel recurring-pattern evidence, and a grounded copilot for growing studios. Figures above are from the seeded demo, not a live feed.
+  - contentinfo [ref=e96]:
+    - generic [ref=e97]: © 2026 MERGIN. Demonstration build.
+    - generic [ref=e98]:
+      - button "Privacy notice" [ref=e99] [cursor=pointer]
+      - button "Terms of service" [ref=e100] [cursor=pointer]
+      - link "PayPal developer" [ref=e101] [cursor=pointer]:
+        - /url: https://developer.paypal.com/

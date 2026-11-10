@@ -1,0 +1,239 @@
+- generic [ref=f12e3]:
+  - complementary [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - link "MERGIN overview" [ref=f12e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f12e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f12e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f12e11]: NC
+        - generic [ref=f12e12]:
+          - generic [ref=f12e13]: Northstar Creative
+          - generic [ref=f12e14]: Demo workspace
+        - generic [aria-hidden] [ref=f12e15]: unfold_more
+      - navigation "Primary" [ref=f12e16]:
+        - generic [ref=f12e17]:
+          - paragraph [ref=f12e18]: Workspace
+          - generic [ref=f12e19]:
+            - link "Overview" [ref=f12e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f12e21]: space_dashboard
+            - link "Invoices" [ref=f12e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f12e24]: receipt_long
+            - link "Transactions" [ref=f12e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f12e27]: swap_horiz
+        - generic [ref=f12e29]:
+          - paragraph [ref=f12e30]: Planning
+          - generic [ref=f12e31]:
+            - link "Expenses" [ref=f12e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f12e33]: credit_card
+            - link "Budgets" [ref=f12e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f12e36]: savings
+            - link "Cash Flow" [ref=f12e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f12e39]: monitoring
+        - generic [ref=f12e41]:
+          - paragraph [ref=f12e42]: Intelligence
+          - generic [ref=f12e43]:
+            - link "Sentinel" [ref=f12e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f12e45]: radar
+            - link "Copilot" [ref=f12e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f12e49]: forum
+      - generic [ref=f12e51]:
+        - link "Settings" [ref=f12e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f12e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f12e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f12e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f12e56]:
+          - generic [ref=f12e57]: MC
+          - generic [ref=f12e58]:
+            - paragraph [ref=f12e59]: Maya Chen
+            - paragraph [ref=f12e60]: Demo owner
+          - button "Sign out" [ref=f12e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e62]: logout
+  - generic [ref=f12e63]:
+    - banner [ref=f12e64]:
+      - generic [ref=f12e65]:
+        - search [ref=f12e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f12e67]
+          - generic: Ctrl K
+        - generic [ref=f12e68]:
+          - link "Demo data" [ref=f12e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f12e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e72]: help
+          - button "Notifications, 3 unread" [ref=f12e88] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e75]: notifications
+            - generic [ref=f12e89]: "3"
+          - link "Open profile settings" [ref=f12e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f12e77]:
+      - generic [ref=f12e79]:
+        - generic [ref=f12e90]:
+          - generic [ref=f12e91]:
+            - generic [ref=f12e92]: Workspace configuration
+            - heading "Settings" [level=1] [ref=f12e94]
+            - paragraph [ref=f12e95]: Payment gateway status, deterministic policy, audit history, and the local demo profile. Secrets are never shown.
+          - generic [ref=f12e96]: Demo mode
+        - generic [ref=f12e99]:
+          - button "PayPal gateway" [ref=f12e100] [cursor=pointer]
+          - button "AI & Sentinel" [ref=f12e101] [cursor=pointer]
+          - button "Audit & webhooks" [active] [pressed] [ref=f12e102] [cursor=pointer]
+          - button "Business profile" [ref=f12e103] [cursor=pointer]
+        - generic [ref=f12e241]:
+          - generic [ref=f12e242]:
+            - generic [ref=f12e243]:
+              - generic [ref=f12e244]:
+                - heading "Audit history" [level=2] [ref=f12e245]
+                - paragraph [ref=f12e246]: Local records of actions taken in this workspace
+              - generic [ref=f12e247]: "16"
+            - list [ref=f12e248]:
+              - listitem [ref=f12e249]:
+                - generic [ref=f12e250]:
+                  - generic [ref=f12e251]:
+                    - paragraph [ref=f12e252]: Settings · Sentinel Updated
+                    - paragraph [ref=f12e253]: Min observations 4 · threshold 5.0% · lead 7d
+                  - generic [ref=f12e254]:
+                    - paragraph [ref=f12e255]: Maya Chen
+                    - paragraph [ref=f12e256]: Nov 10, 2026, 2:50 AM
+              - listitem [ref=f12e257]:
+                - generic [ref=f12e258]:
+                  - generic [ref=f12e259]:
+                    - paragraph [ref=f12e260]: Settings · Paypal Tested
+                    - paragraph [ref=f12e261]: OAuth failed · sandbox
+                  - generic [ref=f12e262]:
+                    - paragraph [ref=f12e263]: Maya Chen
+                    - paragraph [ref=f12e264]: Nov 10, 2026, 2:49 AM
+              - listitem [ref=f12e265]:
+                - generic [ref=f12e266]:
+                  - generic [ref=f12e267]:
+                    - paragraph [ref=f12e268]: Sentinel · Follow Up
+                    - paragraph [ref=f12e269]: CloudDesk Pro · Price increased 8.9% at renewal
+                  - generic [ref=f12e270]:
+                    - paragraph [ref=f12e271]: Maya Chen
+                    - paragraph [ref=f12e272]: Nov 10, 2026, 2:48 AM
+              - listitem [ref=f12e273]:
+                - generic [ref=f12e274]:
+                  - generic [ref=f12e275]:
+                    - paragraph [ref=f12e276]: Sentinel · Scan
+                    - paragraph [ref=f12e277]: Scanned transaction evidence; 0 new signals
+                  - generic [ref=f12e278]:
+                    - paragraph [ref=f12e279]: Maya Chen
+                    - paragraph [ref=f12e280]: Nov 10, 2026, 2:47 AM
+              - listitem [ref=f12e281]:
+                - generic [ref=f12e282]:
+                  - generic [ref=f12e283]:
+                    - paragraph [ref=f12e284]: Budget · Created
+                    - paragraph [ref=f12e285]: Other · limit updated
+                  - generic [ref=f12e286]:
+                    - paragraph [ref=f12e287]: Maya Chen
+                    - paragraph [ref=f12e288]: Nov 10, 2026, 2:47 AM
+              - listitem [ref=f12e289]:
+                - generic [ref=f12e290]:
+                  - generic [ref=f12e291]:
+                    - paragraph [ref=f12e292]: Expense · Created
+                    - paragraph [ref=f12e293]: Test Vendor · Software
+                  - generic [ref=f12e294]:
+                    - paragraph [ref=f12e295]: Maya Chen
+                    - paragraph [ref=f12e296]: Nov 10, 2026, 2:47 AM
+              - listitem [ref=f12e297]:
+                - generic [ref=f12e298]:
+                  - generic [ref=f12e299]:
+                    - paragraph [ref=f12e300]: Invoice · Draft Created
+                    - paragraph [ref=f12e301]: Created draft INV-1059 for Test Client
+                  - generic [ref=f12e302]:
+                    - paragraph [ref=f12e303]: Maya Chen
+                    - paragraph [ref=f12e304]: Nov 10, 2026, 2:46 AM
+              - listitem [ref=f12e305]:
+                - generic [ref=f12e306]:
+                  - generic [ref=f12e307]:
+                    - paragraph [ref=f12e308]: Settings · Paypal Tested
+                    - paragraph [ref=f12e309]: OAuth failed · sandbox
+                  - generic [ref=f12e310]:
+                    - paragraph [ref=f12e311]: Maya Chen
+                    - paragraph [ref=f12e312]: Nov 10, 2026, 2:45 AM
+              - listitem [ref=f12e313]:
+                - generic [ref=f12e314]:
+                  - generic [ref=f12e315]:
+                    - paragraph [ref=f12e316]: Onboarding · Business Updated
+                    - paragraph [ref=f12e317]: Workspace renamed to Northstar Creative
+                  - generic [ref=f12e318]:
+                    - paragraph [ref=f12e319]: Maya Chen
+                    - paragraph [ref=f12e320]: Nov 10, 2026, 2:45 AM
+              - listitem [ref=f12e321]:
+                - generic [ref=f12e322]:
+                  - generic [ref=f12e323]:
+                    - paragraph [ref=f12e324]: Payment · Demo Simulated
+                    - paragraph [ref=f12e325]: Simulated 450000 minor units for INV-1058 · no PayPal funds moved
+                  - generic [ref=f12e326]:
+                    - paragraph [ref=f12e327]: Customer simulator
+                    - paragraph [ref=f12e328]: Nov 10, 2026, 2:45 AM
+              - listitem [ref=f12e329]:
+                - generic [ref=f12e330]:
+                  - generic [ref=f12e331]:
+                    - paragraph [ref=f12e332]: Invoice · Sent Demo
+                    - paragraph [ref=f12e333]: Marked INV-1058 sent in demo mode · no email or PayPal invoice created
+                  - generic [ref=f12e334]:
+                    - paragraph [ref=f12e335]: Maya Chen
+                    - paragraph [ref=f12e336]: Nov 10, 2026, 2:44 AM
+              - listitem [ref=f12e337]:
+                - generic [ref=f12e338]:
+                  - generic [ref=f12e339]:
+                    - paragraph [ref=f12e340]: Invoice · Draft Created
+                    - paragraph [ref=f12e341]: Created draft INV-1058 · $4,500.00
+                  - generic [ref=f12e342]:
+                    - paragraph [ref=f12e343]: Maya Chen
+                    - paragraph [ref=f12e344]: Nov 8, 2026, 6:20 AM
+              - listitem [ref=f12e345]:
+                - generic [ref=f12e346]:
+                  - generic [ref=f12e347]:
+                    - paragraph [ref=f12e348]: Payment · Recorded
+                    - paragraph [ref=f12e349]: Recorded $3,200.00 payment for INV-1054
+                  - generic [ref=f12e350]:
+                    - paragraph [ref=f12e351]: Demo ledger
+                    - paragraph [ref=f12e352]: Nov 6, 2026, 10:20 AM
+              - listitem [ref=f12e353]:
+                - generic [ref=f12e354]:
+                  - generic [ref=f12e355]:
+                    - paragraph [ref=f12e356]: Settings · Reviewed
+                    - paragraph [ref=f12e357]: Confirmed Sentinel minimum observations at 3
+                  - generic [ref=f12e358]:
+                    - paragraph [ref=f12e359]: Maya Chen
+                    - paragraph [ref=f12e360]: Nov 5, 2026, 4:40 AM
+              - listitem [ref=f12e361]:
+                - generic [ref=f12e362]:
+                  - generic [ref=f12e363]:
+                    - paragraph [ref=f12e364]: Invoice · Sent
+                    - paragraph [ref=f12e365]: Sent INV-1055 to Baseline Health · demo mode
+                  - generic [ref=f12e366]:
+                    - paragraph [ref=f12e367]: Maya Chen
+                    - paragraph [ref=f12e368]: Nov 3, 2026, 5:02 AM
+              - listitem [ref=f12e369]:
+                - generic [ref=f12e370]:
+                  - generic [ref=f12e371]:
+                    - paragraph [ref=f12e372]: Sentinel · Pattern Detected
+                    - paragraph [ref=f12e373]: Detected CloudDesk Pro monthly pattern across 5 charges
+                  - generic [ref=f12e374]:
+                    - paragraph [ref=f12e375]: Mergin Sentinel
+                    - paragraph [ref=f12e376]: Nov 3, 2026, 3:00 AM
+          - generic [ref=f12e377]:
+            - generic [ref=f12e378]:
+              - generic [ref=f12e379]:
+                - heading "Webhook deliveries" [level=2] [ref=f12e380]
+                - paragraph [ref=f12e381]: Verified PayPal events received by the server
+              - generic [ref=f12e382]: "0"
+            - generic [ref=f12e383]:
+              - generic [aria-hidden] [ref=f12e384]: webhook
+              - paragraph [ref=f12e385]: No webhook events received.
+              - paragraph [ref=f12e386]: Configure PAYPAL_WEBHOOK_ID to verify deliveries.

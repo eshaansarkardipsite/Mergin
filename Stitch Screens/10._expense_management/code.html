@@ -1,0 +1,605 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"surface-container-high":"#e8e8e8","error":"#ba1a1a","on-tertiary-fixed-variant":"#464747","on-secondary-container":"#656464","secondary":"#5f5e5e","background":"#f9f9f9","surface":"#f9f9f9","on-secondary-fixed-variant":"#474747","error-container":"#ffdad6","on-secondary":"#ffffff","on-background":"#1a1c1c","surface-dim":"#dadada","tertiary-fixed":"#e4e2e2","on-primary-fixed":"#1c1b1b","primary-fixed-dim":"#c9c6c5","surface-hover":"#F0F0F0","on-secondary-fixed":"#1b1c1c","inverse-on-surface":"#f1f1f1","secondary-fixed-dim":"#c8c6c6","outline-variant":"#c4c7c7","on-tertiary-fixed":"#1b1c1c","surface-canvas":"#F6F6F6","ink-slate":"#686868","on-surface-variant":"#444748","surface-tint":"#5f5e5e","stroke-line":"#E6E6E6","inverse-primary":"#c9c6c5","tertiary":"#000000","surface-container-highest":"#e2e2e2","secondary-container":"#e4e2e1","tertiary-fixed-dim":"#c7c6c6","ink-muted":"#929292","secondary-fixed":"#e4e2e1","on-tertiary-container":"#848484","ink-graphite":"#333333","surface-bright":"#f9f9f9","surface-container-lowest":"#ffffff","primary-fixed":"#e5e2e1","on-error":"#ffffff","primary-container":"#1c1b1b","on-primary":"#ffffff","outline":"#747878","on-surface":"#1a1c1c","surface-raised":"#FFFFFF","tertiary-container":"#1b1c1c","on-primary-fixed-variant":"#474646","ink-solid":"#0A0A0A","on-tertiary":"#ffffff","stroke-subtle":"#EFEFEF","surface-container-low":"#f3f3f3","surface-dark":"#171717","on-error-container":"#93000a","on-primary-container":"#858383","surface-container":"#eeeeee","primary":"#000000","surface-variant":"#e2e2e2","inverse-surface":"#2f3131"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-lg":"1.5rem","space-sm":"0.5rem","margin":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","gutter-desktop":"2rem","gutter":"1.5rem","space-xl":"2rem","space-md":"1rem"},"fontFamily":{"body-md":["Inter"],"financial-metric-lg":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"],"display-hero":["Inter"],"headline-lg":["Inter"],"headline-md":["Inter"],"caption-micro":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Inter"],"body-md-strong":["Inter"],"display-hero-mobile":["Inter"],"label-md":["Inter"]},"fontSize":{"body-md":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"400"}],"financial-metric-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-sm":["17px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"600"}],"headline-md":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption-micro":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.015em","fontWeight":"500"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-md-strong":["14px",{"lineHeight":"20px","letterSpacing":"0em","fontWeight":"600"}],"display-hero-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.025em","fontWeight":"600"}],"label-md":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"500"}]}}}};</script></head><body class="bg-surface-canvas font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-raised border-r border-stroke-line z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-xs border-b border-stroke-line"><img alt="MERGIN Monogram &amp; Wordmark" class="h-8 w-auto object-contain" src="../../public/brand/mergin-logo.png"/><span class="font-headline-sm text-headline-sm tracking-tight text-ink-solid">MERGIN</span></div><div class="px-space-md py-space-sm border-b border-stroke-line"><div class="flex items-center justify-between text-caption-micro font-caption-micro text-ink-muted uppercase tracking-wider mb-1">Workspace</div><button class="w-full flex items-center justify-between py-1 px-1.5 -mx-1.5 rounded-lg hover:bg-surface-hover text-left transition-colors" type="button"><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Northstar Creative</p><p class="font-caption-micro text-caption-micro text-ink-slate mt-0.5">Studio · USD</p></div><span class="material-symbols-outlined text-ink-slate text-sm ml-1">unfold_more</span></button></div><nav class="flex flex-col gap-1 p-space-sm" data-active-classes="bg-ink-solid text-on-primary font-body-md-strong"><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="overview" href="#"><span class="material-symbols-outlined text-[18px]">space_dashboard</span><span class="font-body-md text-body-md">Overview</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="transactions" href="#"><span class="material-symbols-outlined text-[18px]">receipt_long</span><span class="font-body-md text-body-md">Transactions</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="invoices" href="#"><span class="material-symbols-outlined text-[18px]">description</span><span class="font-body-md text-body-md">Invoices</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="expenses" href="#"><span class="material-symbols-outlined text-[18px]">credit_card</span><span class="font-body-md text-body-md">Expenses</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="cash-flow" href="#"><span class="material-symbols-outlined text-[18px]">stacked_line_chart</span><span class="font-body-md text-body-md">Cash Flow</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="budgets" href="#"><span class="material-symbols-outlined text-[18px]">pie_chart</span><span class="font-body-md text-body-md">Budgets</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="sentinel" href="#"><span class="material-symbols-outlined text-[18px]">verified_user</span><span class="font-body-md text-body-md">Sentinel</span></a><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-ink-slate hover:bg-surface-hover hover:text-ink-solid transition-colors" data-path="ai-copilot" href="#"><span class="material-symbols-outlined text-[18px]">smart_toy</span><span class="font-body-md text-body-md">AI Copilot</span></a></nav></div><div class="p-space-sm border-t border-stroke-line"><div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-hover transition-colors"><div class="flex items-center gap-2.5 min-w-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/><div class="truncate"><p class="font-body-md-strong text-body-md-strong text-ink-solid truncate leading-none">Alex Morgan</p><p class="font-caption-micro text-caption-micro text-ink-muted mt-0.5 truncate">Treasury Ops</p></div></div><button class="text-ink-slate hover:text-ink-solid ml-1 p-1" type="button"><span class="material-symbols-outlined text-[18px]">more_vert</span></button></div></div></aside><div class="pl-[240px]"><header class="fixed top-0 left-[240px] right-0 h-16 bg-surface-raised/90 backdrop-blur-md border-b border-stroke-line z-40"><div class="h-16 w-full max-w-[1200px] mx-auto px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex-1 max-w-[440px]"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-ink-muted text-[18px] pointer-events-none">search</span><input class="w-full h-10 pl-9 pr-3 bg-surface-canvas border border-stroke-line rounded-lg text-body-md font-body-md text-ink-solid placeholder:text-ink-muted focus:outline-none focus:border-ink-solid transition-colors" placeholder="Search invoices, merchants, transactions..." type="text"/></div></div><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-3 py-1.5 bg-surface-raised border border-stroke-line rounded-lg text-label-md font-label-md text-ink-graphite"><span class="material-symbols-outlined text-ink-slate text-[16px]">calendar_today</span><span>This Month: Oct 2026</span></div><button class="relative p-2 rounded-lg hover:bg-surface-hover text-ink-slate hover:text-ink-solid transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2 right-2 w-1.5 h-1.5 bg-ink-solid rounded-full"></span></button><button class="flex items-center gap-1.5 px-3 py-2 bg-ink-solid text-on-primary rounded-lg font-label-md text-label-md hover:bg-ink-graphite transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">terminal</span><span>Ask Copilot</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4AhH5_dTeKfmpjHo7waSS0l9rBj2KldcfUk9m1G8C88EgoC8YsOMvD9sTv4yRY8mGQWCXA145Uxq0LK162Awrjzd41j9NnFmvlFpQGCuSCoZw0x5I1uYnt1CUSoiZD9ten0khtBKqv5yl6UzjJD3FmM6TnCp4VYUEU_po3ycGLOiL4jaxmSZmjqw8rZOnxAeI4WQuJxc181q17wgEkXKFJkzXiZV6dmrWInJuFmB-"/></div></div></header><main class="relative pt-16 min-h-screen bg-surface-canvas"><div class="flex flex-col w-full">
+<script>
+    (() => {
+      const navLinks = document.querySelectorAll('aside nav a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('data-path') === 'expenses') {
+          link.classList.remove('text-ink-slate', 'hover:bg-surface-hover', 'hover:text-ink-solid');
+          link.classList.add('bg-ink-solid', 'text-on-primary', 'font-body-md-strong');
+        } else {
+          link.classList.remove('bg-ink-solid', 'text-on-primary', 'font-body-md-strong');
+          link.classList.add('text-ink-slate');
+        }
+      });
+    })();
+  </script>
+<div class="w-full max-w-[1440px] mx-auto px-margin-desktop py-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-[680px]">
+<div class="flex items-center gap-2">
+<span class="font-caption-micro text-caption-micro uppercase tracking-wider text-ink-muted">Disbursements &amp; Claims</span>
+<span class="w-1 h-1 rounded-full bg-ink-muted"></span>
+<span class="font-caption-micro text-caption-micro text-ink-slate">Audit Loop Active</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink-solid tracking-tight">Expenses</h1>
+<p class="font-body-md text-body-md text-ink-slate leading-relaxed">
+          Track business spend, manage team disbursements, and audit attached receipts with automated ledger syncing.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="h-12 px-space-md bg-surface-raised text-ink-solid rounded-lg font-label-md text-label-md hover:bg-surface-hover shadow-sm transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+<span>Upload Receipt</span>
+</button>
+<button class="h-12 px-space-md bg-ink-solid text-on-primary rounded-lg font-label-md text-label-md hover:bg-ink-graphite shadow-sm transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Record Expense</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-ink-slate mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Total Spend (Oct)</span>
+<span class="material-symbols-outlined text-[18px] text-ink-slate">query_stats</span>
+</div>
+<div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid font-semibold tracking-tight tabular-nums">
+            $4,380.20
+          </div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-[14px] text-ink-solid">trending_up</span>
+<span class="font-caption-micro text-caption-micro text-ink-solid font-semibold">+8.4%</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted">vs Sep cap</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-ink-slate mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Pending Receipt / Audit</span>
+<span class="material-symbols-outlined text-[18px] text-ink-slate">visibility</span>
+</div>
+<div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid font-semibold tracking-tight tabular-nums">
+            3 items
+          </div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-[14px] text-ink-solid">priority_high</span>
+<span class="font-caption-micro text-caption-micro text-ink-solid font-medium">Action required</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted tabular-nums">($412.00)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-ink-slate mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Reimbursements Due</span>
+<span class="material-symbols-outlined text-[18px] text-ink-slate">payments</span>
+</div>
+<div>
+<div class="font-financial-metric-lg text-financial-metric-lg text-ink-solid font-semibold tracking-tight tabular-nums">
+            $850.00
+          </div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="material-symbols-outlined text-[14px] text-ink-slate">hourglass_top</span>
+<span class="font-caption-micro text-caption-micro text-ink-slate">1 team claim pending approval</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-ink-slate mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Top Category</span>
+<span class="material-symbols-outlined text-[18px] text-ink-slate">pie_chart</span>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-ink-solid font-semibold tracking-tight truncate">
+            Contractors &amp; Talent
+          </div>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-caption-micro text-caption-micro text-ink-solid font-medium tabular-nums">$1,850.00</span>
+<span class="text-ink-muted">·</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted">42.2% of total spend</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-raised p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-ink-solid tracking-tight">Category Spend Allocation</h2>
+<p class="font-caption-micro text-caption-micro text-ink-slate mt-0.5">Automated distribution of current billing period ledger entries</p>
+</div>
+<div class="flex items-center gap-1 text-caption-micro font-caption-micro text-ink-muted">
+<span class="material-symbols-outlined text-[14px]">calendar_view_week</span>
+<span>Rolling 30-Day Velocity</span>
+</div>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden flex">
+<div class="h-full bg-ink-solid transition-all duration-300" style="width: 42.2%;" title="Contractors: 42.2%"></div>
+<div class="h-full bg-ink-graphite transition-all duration-300 ml-0.5" style="width: 27.8%;" title="Software: 27.8%"></div>
+<div class="h-full bg-ink-slate transition-all duration-300 ml-0.5" style="width: 18.1%;" title="Marketing: 18.1%"></div>
+<div class="h-full bg-ink-muted transition-all duration-300 ml-0.5" style="width: 11.9%;" title="Operations &amp; Travel: 11.9%"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="flex items-center gap-2 p-2 bg-surface-canvas rounded-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-ink-solid shrink-0"></span>
+<div class="min-w-0 flex-1">
+<p class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider truncate">Contractors &amp; Dev</p>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">$1,850.00 <span class="text-caption-micro font-caption-micro text-ink-muted">(42.2%)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 bg-surface-canvas rounded-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-ink-graphite shrink-0"></span>
+<div class="min-w-0 flex-1">
+<p class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider truncate">Software &amp; SaaS</p>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">$1,218.20 <span class="text-caption-micro font-caption-micro text-ink-muted">(27.8%)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 bg-surface-canvas rounded-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-ink-slate shrink-0"></span>
+<div class="min-w-0 flex-1">
+<p class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider truncate">Marketing &amp; Growth</p>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">$792.00 <span class="text-caption-micro font-caption-micro text-ink-muted">(18.1%)</span></p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 bg-surface-canvas rounded-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-ink-muted shrink-0"></span>
+<div class="min-w-0 flex-1">
+<p class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider truncate">Travel &amp; Ops</p>
+<p class="font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">$520.00 <span class="text-caption-micro font-caption-micro text-ink-muted">(11.9%)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-sm bg-surface-raised p-space-sm rounded-xl shadow-sm">
+<div class="flex flex-wrap items-center gap-2 flex-1 min-w-[280px]">
+<div class="relative flex-1 min-w-[200px] max-w-[360px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted text-[18px]">search</span>
+<input class="w-full h-10 pl-9 pr-3 bg-surface-canvas rounded-lg font-body-md text-body-md text-ink-solid placeholder:text-ink-muted focus:outline-none focus:bg-surface-raised transition-colors" placeholder="Search merchant, category, team member..." type="text"/>
+</div>
+<div class="flex items-center gap-1.5 px-3 h-10 bg-surface-canvas rounded-lg text-ink-solid font-label-md text-label-md cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px] text-ink-slate">category</span>
+<span>All Categories</span>
+<span class="material-symbols-outlined text-[16px] text-ink-muted">expand_more</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 h-10 bg-surface-canvas rounded-lg text-ink-solid font-label-md text-label-md cursor-pointer hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px] text-ink-slate">group</span>
+<span>All Team</span>
+<span class="material-symbols-outlined text-[16px] text-ink-muted">expand_more</span>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<div class="flex items-center gap-1.5 px-3 h-10 bg-surface-canvas rounded-lg font-label-md text-label-md text-ink-solid">
+<span class="material-symbols-outlined text-[16px] text-ink-slate">date_range</span>
+<span>Oct 01 - Oct 31, 2026</span>
+</div>
+<button class="h-10 px-3 bg-surface-canvas hover:bg-surface-container rounded-lg text-ink-slate hover:text-ink-solid font-label-md text-label-md flex items-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>More Filters</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto pb-1">
+<button class="px-3.5 py-1.5 rounded-lg bg-ink-solid text-on-primary font-label-md text-label-md shadow-sm transition-colors" type="button">
+          All (42)
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-raised hover:bg-surface-hover text-ink-solid font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span>Needs Receipt</span>
+<span class="w-4 h-4 rounded-full bg-surface-container text-ink-solid font-caption-micro text-caption-micro flex items-center justify-center font-bold">3</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-raised hover:bg-surface-hover text-ink-solid font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span>Reimbursements</span>
+<span class="w-4 h-4 rounded-full bg-surface-container text-ink-solid font-caption-micro text-caption-micro flex items-center justify-center font-bold">2</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-lg bg-surface-raised hover:bg-surface-hover text-ink-solid font-label-md text-label-md shadow-sm transition-colors flex items-center gap-1.5" type="button">
+<span>Policy Flagged</span>
+<span class="w-4 h-4 rounded-full bg-surface-container text-ink-solid font-caption-micro text-caption-micro flex items-center justify-center font-bold">1</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<div class="lg:col-span-8 flex flex-col bg-surface-raised rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-md bg-surface-canvas/50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-ink-solid tracking-tight">Expense Ledger</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-caption-micro text-caption-micro text-ink-graphite font-semibold">6 Entries Displayed</span>
+</div>
+<div class="flex items-center gap-2 text-ink-slate font-label-sm text-label-sm">
+<button class="hover:text-ink-solid flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-canvas/20">
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Date</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Merchant / Description</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Category</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Paid By / Method</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Receipt</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Policy State</th>
+<th class="py-3 px-4 font-label-sm text-label-sm uppercase tracking-wider text-ink-muted text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-transparent">
+<tr class="hover:bg-surface-hover/80 transition-colors group cursor-pointer">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-slate whitespace-nowrap tabular-nums">
+                  Oct 28, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-solid shrink-0">
+<span class="material-symbols-outlined text-[16px]">cloud</span>
+</div>
+<div class="truncate">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">AWS Infrastructure</p>
+<p class="font-caption-micro text-caption-micro text-ink-muted truncate">Cloud hosting compute &amp; s3</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Infrastructure</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-ink-solid leading-none">Alex Morgan</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted mt-1">Corp Debit *4919</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro font-medium">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>OCR Verified</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Compliant</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  -$340.00
+                </td>
+</tr>
+<tr class="hover:bg-surface-hover/80 transition-colors group cursor-pointer">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-slate whitespace-nowrap tabular-nums">
+                  Oct 27, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-solid shrink-0">
+<span class="material-symbols-outlined text-[16px]">laptop_mac</span>
+</div>
+<div class="truncate">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">CloudDesk Pro Workspace</p>
+<p class="font-caption-micro text-caption-micro text-ink-muted truncate">Collaboration tool monthly</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Software Sub</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-ink-solid leading-none">Alex Morgan</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted mt-1">Corp Debit *4919</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">receipt</span>
+<span>Attached</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-ink-solid text-on-primary font-caption-micro text-caption-micro font-medium">
+<span class="material-symbols-outlined text-[13px]">policy</span>
+<span>Sentinel Flag</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  -$49.00
+                </td>
+</tr>
+<tr class="hover:bg-surface-hover/80 transition-colors group cursor-pointer">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-slate whitespace-nowrap tabular-nums">
+                  Oct 25, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-solid shrink-0">
+<span class="material-symbols-outlined text-[16px]">person_outline</span>
+</div>
+<div class="truncate">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">David Hughes</p>
+<p class="font-caption-micro text-caption-micro text-ink-muted truncate">Sprint milestone UI engineering</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Contractors</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-ink-solid leading-none">Direct Outflow</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted mt-1">ACH Dispatch</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">description</span>
+<span>INV-1051 Attached</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Compliant</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  -$850.00
+                </td>
+</tr>
+<tr class="bg-surface-hover/90 transition-colors group cursor-pointer shadow-[inset_3px_0_0_0_#0A0A0A]">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-solid font-semibold whitespace-nowrap tabular-nums">
+                  Oct 24, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-ink-solid text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">flight</span>
+</div>
+<div class="truncate">
+<div class="flex items-center gap-1.5">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Delta Air Lines</p>
+<span class="px-1.5 py-0.2 rounded bg-surface-container text-ink-solid font-caption-micro text-caption-micro">Active</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate truncate">Client design sprint travel to SF</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Travel &amp; Client</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md-strong text-body-md-strong text-ink-solid leading-none">Jordan Reed</span>
+<span class="font-caption-micro text-caption-micro text-ink-slate mt-1">Reimbursement Claim</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-ink-solid text-on-primary font-caption-micro text-caption-micro font-medium">
+<span class="material-symbols-outlined text-[13px]">no_sim</span>
+<span>Missing Receipt</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container text-ink-solid font-caption-micro text-caption-micro font-medium">
+<span class="material-symbols-outlined text-[13px]">pending</span>
+<span>Audit Pending</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-financial-metric-lg text-headline-sm text-ink-solid tabular-nums font-bold">
+                  -$412.00
+                </td>
+</tr>
+<tr class="hover:bg-surface-hover/80 transition-colors group cursor-pointer">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-slate whitespace-nowrap tabular-nums">
+                  Oct 22, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-solid shrink-0">
+<span class="material-symbols-outlined text-[16px]">code</span>
+</div>
+<div class="truncate">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">GitHub Team &amp; Copilot</p>
+<p class="font-caption-micro text-caption-micro text-ink-muted truncate">Developer tier seats</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Software Sub</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-ink-solid leading-none">Alex Morgan</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted mt-1">PayPal Business</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro font-medium">
+<span class="material-symbols-outlined text-[13px]">check_circle</span>
+<span>OCR Verified</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Compliant</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  -$44.00
+                </td>
+</tr>
+<tr class="hover:bg-surface-hover/80 transition-colors group cursor-pointer">
+<td class="py-4 px-4 font-caption-micro text-caption-micro text-ink-slate whitespace-nowrap tabular-nums">
+                  Oct 19, 2026
+                </td>
+<td class="py-4 px-4 min-w-[220px]">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-solid shrink-0">
+<span class="material-symbols-outlined text-[16px]">campaign</span>
+</div>
+<div class="truncate">
+<p class="font-body-md-strong text-body-md-strong text-ink-solid truncate">Global Ad Exchange</p>
+<p class="font-caption-micro text-caption-micro text-ink-muted truncate">Q4 performance acquisition</p>
+</div>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<span class="px-2 py-1 rounded bg-surface-canvas text-ink-graphite font-caption-micro text-caption-micro font-medium">Marketing</span>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-ink-solid leading-none">Alex Morgan</span>
+<span class="font-caption-micro text-caption-micro text-ink-muted mt-1">Corporate Debit *4919</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">receipt</span>
+<span>Attached</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-canvas text-ink-solid font-caption-micro text-caption-micro">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+<span>Compliant</span>
+</div>
+</td>
+<td class="py-4 px-4 whitespace-nowrap text-right font-body-md-strong text-body-md-strong text-ink-solid tabular-nums">
+                  -$320.00
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-space-md bg-surface-canvas/50 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2 text-ink-slate font-caption-micro text-caption-micro">
+<span>Showing 6 of 42 disbursements</span>
+<span class="text-ink-muted">·</span>
+<span>Ledger sync frequency: 60s</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-raised hover:bg-surface-hover flex items-center justify-center text-ink-slate hover:text-ink-solid transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<span class="px-2.5 py-1 font-caption-micro text-caption-micro text-ink-solid font-bold">1 / 7</span>
+<button class="w-8 h-8 rounded-lg bg-surface-raised hover:bg-surface-hover flex items-center justify-center text-ink-slate hover:text-ink-solid transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col bg-surface-raised rounded-xl shadow-sm overflow-hidden sticky top-20">
+<div class="p-space-md bg-surface-canvas flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-ink-solid">shield</span>
+<span class="font-label-md text-label-md text-ink-solid uppercase tracking-wider">Expense Inspection</span>
+</div>
+<span class="font-caption-micro text-caption-micro text-ink-muted tabular-nums">EXP-4910</span>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-baseline justify-between">
+<span class="font-financial-metric-lg text-financial-metric-lg text-ink-solid font-semibold tracking-tight tabular-nums">$412.00</span>
+<span class="font-label-sm text-label-sm text-ink-muted">USD · Outflow</span>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<img class="w-6 h-6 rounded-full object-cover shrink-0" data-alt="Corporate portrait avatar of Jordan Reed, product designer, soft monochrome studio portrait high contrast black and white lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlWHh8OnDCR4nwsHnFfzff2yWk7pVC9dWEoDkRyhvBhjEK0Eg3Nx1_0muhwUbEkkiMTcMBoNLJSDkeNESQYgZlW2xY-Xmcj8k_JlU8OKIsBuuBTil2X3aAFvvb0oyUFp8iFKQDQ-ZhjQkaFFn3HbdhLPTVbCMUpqzt66Dco9rk57xaVnbmFoNglW45PQsEuKKLtLOsb_kk0b9IptpNfgkViarqQww_gP_7OL_Rjnoq"/>
+<span class="font-body-md-strong text-body-md-strong text-ink-solid">Jordan Reed</span>
+<span class="text-ink-muted">·</span>
+<span class="font-caption-micro text-caption-micro text-ink-slate">Product Designer</span>
+</div>
+</div>
+<div class="p-space-md bg-ink-solid text-on-primary rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-on-primary shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md font-semibold text-on-primary">Missing Receipt Document</span>
+<p class="font-caption-micro text-caption-micro text-on-primary/80 leading-relaxed">
+                  Treasury protocol requires proof of payment or boarding pass verification for all air travel expenses exceeding $250.00.
+                </p>
+</div>
+</div>
+<button class="w-full h-9 mt-1 bg-surface-raised text-ink-solid hover:bg-surface-hover rounded-lg font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">send</span>
+<span>Request Receipt from Jordan</span>
+</button>
+</div>
+<div class="p-space-md bg-surface-canvas rounded-xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 text-ink-solid font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+<span>OCR Smart Match Context</span>
+</div>
+<p class="font-caption-micro text-caption-micro text-ink-slate leading-relaxed">
+              Matched booking reference <span class="font-body-md-strong text-ink-solid font-mono">DL-9941X</span> from connected calendar event: <span class="font-body-md-strong text-ink-solid">"Client Onsite - San Francisco HQ"</span> on Oct 24, 2026.
+            </p>
+<div class="mt-2 pt-2 flex items-center justify-between font-caption-micro text-caption-micro text-ink-muted">
+<span>Confidence: 94%</span>
+<span class="text-ink-solid font-medium cursor-pointer hover:underline">View Calendar Entry</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-caption-micro text-caption-micro text-ink-muted uppercase tracking-wider">Disbursement Metadata</span>
+<div class="flex flex-col gap-1.5 font-caption-micro text-caption-micro">
+<div class="flex justify-between py-1 bg-surface-canvas/50 px-2 rounded">
+<span class="text-ink-slate">Merchant Category Code</span>
+<span class="text-ink-solid font-medium">3000 (Airlines / Delta)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-canvas/50 px-2 rounded">
+<span class="text-ink-slate">Disbursement Route</span>
+<span class="text-ink-solid font-medium">Employee Checking (Direct)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-canvas/50 px-2 rounded">
+<span class="text-ink-slate">Tax Deduction Status</span>
+<span class="text-ink-solid font-medium">100% Ordinary &amp; Necessary</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-canvas/50 px-2 rounded">
+<span class="text-ink-slate">Policy Cap Ceiling</span>
+<span class="text-ink-solid font-medium">$500.00 / Leg</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full h-11 bg-surface-container text-ink-muted rounded-lg font-label-md text-label-md flex items-center justify-center gap-2 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Approve Reimbursement (Disabled)</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 px-3 bg-surface-canvas hover:bg-surface-hover text-ink-solid rounded-lg font-label-sm text-label-sm flex items-center justify-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">block</span>
+<span>Mark Out-of-Policy</span>
+</button>
+<button class="h-10 px-3 bg-surface-canvas hover:bg-surface-hover text-ink-solid rounded-lg font-label-sm text-label-sm flex items-center justify-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>Request Info</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-space-sm bg-surface-canvas flex items-center justify-center text-ink-muted text-caption-micro font-caption-micro gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Dual-Signatory Ledger Rule Enforced</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between py-space-md px-space-lg bg-surface-raised rounded-xl text-ink-muted font-caption-micro text-caption-micro gap-space-sm shadow-sm">
+<div class="flex items-center gap-4 flex-wrap">
+<span class="text-ink-solid font-medium">MERGIN Disbursement Protocol</span>
+<span>·</span>
+<span>ISO-20022 Schema Validated</span>
+<span>·</span>
+<span>Zero-Trust OCR Validation Pipeline</span>
+<span>·</span>
+<span>Achromatic Financial Architecture</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-ink-solid"></span>
+<span class="text-ink-solid">System Healthy: Sync Latency 14ms</span>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

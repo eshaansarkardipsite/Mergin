@@ -1,0 +1,22 @@
+﻿Date,Transaction ID,Counterparty,Description,Category,Invoice,Source,Direction,Status,Amount,Currency
+2026-11-10,demo_payment_inv_1058,Forma Labs,Simulated demo payment · INV-1058,Client payments,INV-1058,Demo simulator,incoming,settled,4500.00,USD
+2026-11-06,DEMO-TXN_1001,Forma Labs,Payment received · INV-1054,Client payments,INV-1054,Demo ledger,incoming,settled,3200.00,USD
+2026-11-03,DEMO-TXN_1002,Helio Ventures,Payment received · INV-1050,Client payments,INV-1050,Demo ledger,incoming,settled,2800.00,USD
+2026-11-02,DEMO-TXN_2001,CloudDesk Pro,Workspace subscription,Software,,Demo ledger,outgoing,settled,49.00,USD
+2026-11-01,DEMO-TXN_1003,Wren & Field,Payment received · INV-1052,Client payments,INV-1052,Demo ledger,incoming,settled,1250.00,USD
+2026-10-31,DEMO-TXN_2101,Amazon Web Services,Cloud hosting · monthly,Software,,Demo ledger,outgoing,settled,340.00,USD
+2026-10-29,DEMO-TXN_2401,WeWork,Studio membership · monthly,Rent & facilities,,Demo ledger,outgoing,settled,1200.00,USD
+2026-10-28,DEMO-TXN_2201,Figma,Team license · monthly,Software,,Demo ledger,outgoing,settled,75.00,USD
+2026-10-25,DEMO-TXN_2301,Global Metrics Hub,Analytics monitoring · monthly,Software,,Demo ledger,outgoing,settled,139.00,USD
+2026-10-22,DEMO-TXN_1004,Pixel & Co.,Brand consult · one-off,Client payments,,Demo ledger,incoming,settled,900.00,USD
+2026-10-15,DEMO-TXN_2402,Jules Ortega,Contractor payout · October,Contractors,,Demo ledger,outgoing,settled,1850.00,USD
+2026-10-03,DEMO-TXN_2002,CloudDesk Pro,Workspace subscription,Software,,Demo ledger,outgoing,settled,49.00,USD
+2026-10-01,DEMO-TXN_2102,Amazon Web Services,Cloud hosting · monthly,Software,,Demo ledger,outgoing,settled,340.00,USD
+2026-09-28,DEMO-TXN_2202,Figma,Team license · monthly,Software,,Demo ledger,outgoing,settled,75.00,USD
+2026-09-25,DEMO-TXN_2302,Global Metrics Hub,Analytics monitoring · monthly,Software,,Demo ledger,outgoing,settled,139.00,USD
+2026-09-03,DEMO-TXN_2003,CloudDesk Pro,Workspace subscription,Software,,Demo ledger,outgoing,settled,45.00,USD
+2026-09-01,DEMO-TXN_2103,Amazon Web Services,Cloud hosting · monthly,Software,,Demo ledger,outgoing,settled,340.00,USD
+2026-08-29,DEMO-TXN_2203,Figma,Team license · monthly,Software,,Demo ledger,outgoing,settled,75.00,USD
+2026-08-26,DEMO-TXN_2303,Global Metrics Hub,Analytics monitoring · monthly,Software,,Demo ledger,outgoing,settled,139.00,USD
+2026-08-04,DEMO-TXN_2004,CloudDesk Pro,Workspace subscription,Software,,Demo ledger,outgoing,settled,45.00,USD
+2026-07-05,DEMO-TXN_2005,CloudDesk Pro,Workspace subscription,Software,,Demo ledger,outgoing,settled,45.00,USD

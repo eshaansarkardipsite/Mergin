@@ -1,0 +1,81 @@
+- generic [ref=f12e3]:
+  - complementary [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - link "MERGIN overview" [ref=f12e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f12e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f12e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f12e11]: NC
+        - generic [ref=f12e12]:
+          - generic [ref=f12e13]: Northstar Creative
+          - generic [ref=f12e14]: Demo workspace
+        - generic [aria-hidden] [ref=f12e15]: unfold_more
+      - navigation "Primary" [ref=f12e16]:
+        - generic [ref=f12e17]:
+          - paragraph [ref=f12e18]: Workspace
+          - generic [ref=f12e19]:
+            - link "Overview" [ref=f12e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f12e21]: space_dashboard
+            - link "Invoices" [ref=f12e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f12e24]: receipt_long
+            - link "Transactions" [ref=f12e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f12e27]: swap_horiz
+        - generic [ref=f12e29]:
+          - paragraph [ref=f12e30]: Planning
+          - generic [ref=f12e31]:
+            - link "Expenses" [ref=f12e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f12e33]: credit_card
+            - link "Budgets" [ref=f12e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f12e36]: savings
+            - link "Cash Flow" [ref=f12e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f12e39]: monitoring
+        - generic [ref=f12e41]:
+          - paragraph [ref=f12e42]: Intelligence
+          - generic [ref=f12e43]:
+            - link "Sentinel" [ref=f12e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f12e45]: radar
+            - link "Copilot" [ref=f12e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f12e49]: forum
+      - generic [ref=f12e51]:
+        - link "Settings" [ref=f12e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f12e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f12e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f12e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f12e56]:
+          - generic [ref=f12e57]: MC
+          - generic [ref=f12e58]:
+            - paragraph [ref=f12e59]: Maya Chen
+            - paragraph [ref=f12e60]: Demo owner
+          - button "Sign out" [ref=f12e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e62]: logout
+  - generic [ref=f12e63]:
+    - banner [ref=f12e64]:
+      - generic [ref=f12e65]:
+        - search [ref=f12e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f12e67]
+          - generic: Ctrl K
+        - generic [ref=f12e68]:
+          - link "Demo data" [ref=f12e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f12e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e72]: help
+          - button "Notifications" [ref=f12e74] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f12e75]: notifications
+          - link "Open profile settings" [ref=f12e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f12e77]:
+      - status "Loading settings" [ref=f12e80]

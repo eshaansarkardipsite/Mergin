@@ -1,0 +1,298 @@
+- generic [ref=f6e3]:
+  - complementary [ref=f6e4]:
+    - generic [ref=f6e5]:
+      - link "MERGIN overview" [ref=f6e7] [cursor=pointer]:
+        - /url: /app
+        - img "MERGIN" [ref=f6e8]
+      - link "NC Northstar Creative Demo workspace" [ref=f6e10] [cursor=pointer]:
+        - /url: /app/settings
+        - generic [ref=f6e11]: NC
+        - generic [ref=f6e12]:
+          - generic [ref=f6e13]: Northstar Creative
+          - generic [ref=f6e14]: Demo workspace
+        - generic [aria-hidden] [ref=f6e15]: unfold_more
+      - navigation "Primary" [ref=f6e16]:
+        - generic [ref=f6e17]:
+          - paragraph [ref=f6e18]: Workspace
+          - generic [ref=f6e19]:
+            - link "Overview" [ref=f6e20] [cursor=pointer]:
+              - /url: /app
+              - generic [aria-hidden] [ref=f6e21]: space_dashboard
+            - link "Invoices" [ref=f6e23] [cursor=pointer]:
+              - /url: /app/invoices
+              - generic [aria-hidden] [ref=f6e24]: receipt_long
+            - link "Transactions" [ref=f6e26] [cursor=pointer]:
+              - /url: /app/transactions
+              - generic [aria-hidden] [ref=f6e27]: swap_horiz
+        - generic [ref=f6e29]:
+          - paragraph [ref=f6e30]: Planning
+          - generic [ref=f6e31]:
+            - link "Expenses" [ref=f6e32] [cursor=pointer]:
+              - /url: /app/expenses
+              - generic [aria-hidden] [ref=f6e33]: credit_card
+            - link "Budgets" [ref=f6e35] [cursor=pointer]:
+              - /url: /app/budgets
+              - generic [aria-hidden] [ref=f6e36]: savings
+            - link "Cash Flow" [ref=f6e38] [cursor=pointer]:
+              - /url: /app/cash-flow
+              - generic [aria-hidden] [ref=f6e39]: monitoring
+        - generic [ref=f6e41]:
+          - paragraph [ref=f6e42]: Intelligence
+          - generic [ref=f6e43]:
+            - link "Sentinel" [ref=f6e44] [cursor=pointer]:
+              - /url: /app/sentinel
+              - generic [aria-hidden] [ref=f6e45]: radar
+            - link "Copilot" [ref=f6e48] [cursor=pointer]:
+              - /url: /app/copilot
+              - generic [aria-hidden] [ref=f6e49]: forum
+      - generic [ref=f6e51]:
+        - link "Settings" [ref=f6e52] [cursor=pointer]:
+          - /url: /app/settings
+          - generic [aria-hidden] [ref=f6e53]: settings
+          - text: Settings
+        - button "Onboarding" [ref=f6e54] [cursor=pointer]:
+          - generic [aria-hidden] [ref=f6e55]: rocket_launch
+          - text: Onboarding
+        - generic [ref=f6e56]:
+          - generic [ref=f6e57]: MC
+          - generic [ref=f6e58]:
+            - paragraph [ref=f6e59]: Maya Chen
+            - paragraph [ref=f6e60]: Demo owner
+          - button "Sign out" [ref=f6e61] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f6e62]: logout
+  - generic [ref=f6e63]:
+    - banner [ref=f6e64]:
+      - generic [ref=f6e65]:
+        - search [ref=f6e66]:
+          - generic [aria-hidden]: search
+          - searchbox "Search invoices" [ref=f6e67]
+          - generic: Ctrl K
+        - generic [ref=f6e68]:
+          - link "Demo data" [ref=f6e69] [cursor=pointer]:
+            - /url: /app/settings
+          - button "About this demo" [ref=f6e71] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f6e72]: help
+          - button "Notifications, 3 unread" [ref=f6e141] [cursor=pointer]:
+            - generic [aria-hidden] [ref=f6e75]: notifications
+            - generic [ref=f6e142]: "3"
+          - link "Open profile settings" [ref=f6e76] [cursor=pointer]:
+            - /url: /app/settings
+            - text: MC
+    - main [ref=f6e77]:
+      - generic [ref=f6e79]:
+        - generic [ref=f6e80]:
+          - generic [ref=f6e81]:
+            - generic [ref=f6e82]: Disbursements & claims
+            - heading "Expenses" [level=1] [ref=f6e84]
+            - paragraph [ref=f6e85]: Track local demo spend and receipt references. Receipt files are not uploaded or stored in this build.
+          - generic [ref=f6e86]:
+            - button "Export CSV" [ref=f6e87] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f6e88]: download
+              - text: Export CSV
+            - button "Record expense" [ref=f6e89] [cursor=pointer]:
+              - generic [aria-hidden] [ref=f6e90]: add
+              - text: Record expense
+        - region "Expense metrics" [ref=f6e91]:
+          - generic [ref=f6e92]:
+            - generic [ref=f6e93]:
+              - generic [ref=f6e94]: Spend this month
+              - generic [aria-hidden] [ref=f6e97]: query_stats
+            - generic [ref=f6e98]:
+              - generic [ref=f6e99]: $4,380.20
+              - generic [ref=f6e100]: 10 records dated this month
+          - generic [ref=f6e101]:
+            - generic [ref=f6e102]:
+              - generic [ref=f6e103]: All recorded spend
+              - generic [aria-hidden] [ref=f6e106]: credit_card
+            - generic [ref=f6e107]:
+              - generic [ref=f6e108]: $4,380.20
+              - generic [ref=f6e109]: 10 expense records
+          - generic [ref=f6e110]:
+            - generic [ref=f6e111]:
+              - generic [ref=f6e112]: Top category
+              - generic [aria-hidden] [ref=f6e115]: pie_chart
+            - generic [ref=f6e116]:
+              - generic [ref=f6e117]: Contractors
+              - generic [ref=f6e118]: $1,850.00 recorded
+          - generic [ref=f6e119]:
+            - generic [ref=f6e120]:
+              - generic [ref=f6e121]: Missing receipts
+              - generic [aria-hidden] [ref=f6e124]: receipt_long
+            - generic [ref=f6e125]:
+              - generic [ref=f6e126]: "10"
+              - generic [ref=f6e127]: Receipt name not recorded
+        - generic [ref=f6e128]:
+          - generic [ref=f6e129]:
+            - generic [ref=f6e130]:
+              - button "All categories10" [pressed] [ref=f6e143] [cursor=pointer]
+              - button "Contractors1" [ref=f6e144] [cursor=pointer]
+              - button "Marketing1" [ref=f6e145] [cursor=pointer]
+              - button "Software7" [ref=f6e146] [cursor=pointer]
+              - button "Travel & Ops1" [ref=f6e147] [cursor=pointer]
+            - generic [ref=f6e132]:
+              - generic [aria-hidden]: search
+              - searchbox "Search expenses" [ref=f6e133]
+          - table [ref=f6e149]:
+            - rowgroup [ref=f6e150]:
+              - row [ref=f6e151]:
+                - columnheader "Date" [ref=f6e152]
+                - columnheader "Merchant" [ref=f6e153]
+                - columnheader "Category" [ref=f6e154]
+                - columnheader "Source" [ref=f6e155]
+                - columnheader "Receipt" [ref=f6e156]
+                - columnheader "Amount" [ref=f6e157]
+                - columnheader "Actions" [ref=f6e158]
+            - rowgroup [ref=f6e159]:
+              - row [ref=f6e160]:
+                - cell "Nov 7, 2026" [ref=f6e161]
+                - cell [ref=f6e162]:
+                  - paragraph [ref=f6e163]: Agency tooling bundle
+                  - paragraph [ref=f6e164]: Misc. seats and add-ons
+                - cell "Software" [ref=f6e165]
+                - cell "Corporate card •• 8921" [ref=f6e167]
+                - cell "Not recorded" [ref=f6e168]
+                - cell "$176.00" [ref=f6e169]
+                - cell [ref=f6e170]:
+                  - generic [ref=f6e171]:
+                    - button "Edit Agency tooling bundle" [ref=f6e172] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e173]: edit
+                    - button "Delete Agency tooling bundle" [ref=f6e174] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e175]: delete
+              - row [ref=f6e176]:
+                - cell "Nov 7, 2026" [ref=f6e177]
+                - cell [ref=f6e178]:
+                  - paragraph [ref=f6e179]: Jules Ortega
+                  - paragraph [ref=f6e180]: Design contractor · October
+                - cell "Contractors" [ref=f6e181]
+                - cell "Bank transfer" [ref=f6e183]
+                - cell "Not recorded" [ref=f6e184]
+                - cell "$1,850.00" [ref=f6e185]
+                - cell [ref=f6e186]:
+                  - generic [ref=f6e187]:
+                    - button "Edit Jules Ortega" [ref=f6e188] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e189]: edit
+                    - button "Delete Jules Ortega" [ref=f6e190] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e191]: delete
+              - row [ref=f6e192]:
+                - cell "Nov 6, 2026" [ref=f6e193]
+                - cell [ref=f6e194]:
+                  - paragraph [ref=f6e195]: Figma
+                  - paragraph [ref=f6e196]: Team license
+                - cell "Software" [ref=f6e197]
+                - cell "Corporate card •• 8921" [ref=f6e199]
+                - cell "Not recorded" [ref=f6e200]
+                - cell "$75.00" [ref=f6e201]
+                - cell [ref=f6e202]:
+                  - generic [ref=f6e203]:
+                    - button "Edit Figma" [ref=f6e204] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e205]: edit
+                    - button "Delete Figma" [ref=f6e206] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e207]: delete
+              - row [ref=f6e208]:
+                - cell "Nov 5, 2026" [ref=f6e209]
+                - cell [ref=f6e210]:
+                  - paragraph [ref=f6e211]: Global Metrics Hub
+                  - paragraph [ref=f6e212]: Analytics monitoring
+                - cell "Software" [ref=f6e213]
+                - cell "Corporate card •• 8921" [ref=f6e215]
+                - cell "Not recorded" [ref=f6e216]
+                - cell "$139.00" [ref=f6e217]
+                - cell [ref=f6e218]:
+                  - generic [ref=f6e219]:
+                    - button "Edit Global Metrics Hub" [ref=f6e220] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e221]: edit
+                    - button "Delete Global Metrics Hub" [ref=f6e222] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e223]: delete
+              - row [ref=f6e224]:
+                - cell "Nov 4, 2026" [ref=f6e225]
+                - cell [ref=f6e226]:
+                  - paragraph [ref=f6e227]: CloudDesk Pro
+                  - paragraph [ref=f6e228]: Workspace subscription
+                - cell "Software" [ref=f6e229]
+                - cell "Corporate card •• 8921" [ref=f6e231]
+                - cell "Not recorded" [ref=f6e232]
+                - cell "$49.00" [ref=f6e233]
+                - cell [ref=f6e234]:
+                  - generic [ref=f6e235]:
+                    - button "Edit CloudDesk Pro" [ref=f6e236] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e237]: edit
+                    - button "Delete CloudDesk Pro" [ref=f6e238] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e239]: delete
+              - row [ref=f6e240]:
+                - cell "Nov 3, 2026" [ref=f6e241]
+                - cell [ref=f6e242]:
+                  - paragraph [ref=f6e243]: Adobe Creative Cloud
+                  - paragraph [ref=f6e244]: Creative suite seats
+                - cell "Software" [ref=f6e245]
+                - cell "Corporate card •• 8921" [ref=f6e247]
+                - cell "Not recorded" [ref=f6e248]
+                - cell "$119.20" [ref=f6e249]
+                - cell [ref=f6e250]:
+                  - generic [ref=f6e251]:
+                    - button "Edit Adobe Creative Cloud" [ref=f6e252] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e253]: edit
+                    - button "Delete Adobe Creative Cloud" [ref=f6e254] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e255]: delete
+              - row [ref=f6e256]:
+                - cell "Nov 3, 2026" [ref=f6e257]
+                - cell [ref=f6e258]:
+                  - paragraph [ref=f6e259]: Meta Ads
+                  - paragraph [ref=f6e260]: Paid social · October flight
+                - cell "Marketing" [ref=f6e261]
+                - cell "Corporate card •• 4410" [ref=f6e263]
+                - cell "Not recorded" [ref=f6e264]
+                - cell "$792.00" [ref=f6e265]
+                - cell [ref=f6e266]:
+                  - generic [ref=f6e267]:
+                    - button "Edit Meta Ads" [ref=f6e268] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e269]: edit
+                    - button "Delete Meta Ads" [ref=f6e270] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e271]: delete
+              - row [ref=f6e272]:
+                - cell "Nov 2, 2026" [ref=f6e273]
+                - cell [ref=f6e274]:
+                  - paragraph [ref=f6e275]: Webflow
+                  - paragraph [ref=f6e276]: Site hosting and CMS
+                - cell "Software" [ref=f6e277]
+                - cell "Corporate card •• 8921" [ref=f6e279]
+                - cell "Not recorded" [ref=f6e280]
+                - cell "$320.00" [ref=f6e281]
+                - cell [ref=f6e282]:
+                  - generic [ref=f6e283]:
+                    - button "Edit Webflow" [ref=f6e284] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e285]: edit
+                    - button "Delete Webflow" [ref=f6e286] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e287]: delete
+              - row [ref=f6e288]:
+                - cell "Nov 1, 2026" [ref=f6e289]
+                - cell [ref=f6e290]:
+                  - paragraph [ref=f6e291]: Amazon Web Services
+                  - paragraph [ref=f6e292]: Cloud hosting · monthly
+                - cell "Software" [ref=f6e293]
+                - cell "Corporate card •• 8921" [ref=f6e295]
+                - cell "Not recorded" [ref=f6e296]
+                - cell "$340.00" [ref=f6e297]
+                - cell [ref=f6e298]:
+                  - generic [ref=f6e299]:
+                    - button "Edit Amazon Web Services" [ref=f6e300] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e301]: edit
+                    - button "Delete Amazon Web Services" [ref=f6e302] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e303]: delete
+              - row [ref=f6e304]:
+                - cell "Nov 1, 2026" [ref=f6e305]
+                - cell [ref=f6e306]:
+                  - paragraph [ref=f6e307]: SFO client visit
+                  - paragraph [ref=f6e308]: Flights and ground transport
+                - cell "Travel & Ops" [ref=f6e309]
+                - cell "Corporate card •• 4410" [ref=f6e311]
+                - cell "Not recorded" [ref=f6e312]
+                - cell "$520.00" [ref=f6e313]
+                - cell [ref=f6e314]:
+                  - generic [ref=f6e315]:
+                    - button "Edit SFO client visit" [ref=f6e316] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e317]: edit
+                    - button "Delete SFO client visit" [ref=f6e318] [cursor=pointer]:
+                      - generic [aria-hidden] [ref=f6e319]: delete
+          - generic [ref=f6e320]:
+            - generic [ref=f6e321]: Showing 10 of 10 expenses
+            - generic [ref=f6e322]: $4,380.20 filtered total

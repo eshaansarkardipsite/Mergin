@@ -1,0 +1,83 @@
+- generic [ref=f3e3]:
+  - banner [ref=f3e4]:
+    - link "MERGIN overview" [ref=f3e5] [cursor=pointer]:
+      - /url: /app
+      - img "MERGIN" [ref=f3e6]
+    - link "Skip setup" [ref=f3e7] [cursor=pointer]:
+      - /url: /app
+      - text: Skip setup
+      - generic [aria-hidden] [ref=f3e8]: arrow_forward
+  - main [ref=f3e9]:
+    - generic [ref=f3e10]:
+      - generic [ref=f3e11]:
+        - generic [ref=f3e12]:
+          - generic [ref=f3e13]:
+            - generic [ref=f3e14]: "1"
+            - generic [ref=f3e15]: Business profile
+          - generic [ref=f3e16]:
+            - generic [ref=f3e18]: "2"
+            - generic [ref=f3e19]: PayPal Sandbox
+          - generic [ref=f3e20]:
+            - generic [ref=f3e22]: "3"
+            - generic [ref=f3e23]: Dashboard
+        - generic [ref=f3e24]: Workspace initialization
+        - heading "Set up your business workspace" [level=1] [ref=f3e25]
+        - paragraph [ref=f3e26]: Configure the company identity that appears on invoices and across the workspace.
+      - generic [ref=f3e38]:
+        - generic [ref=f3e39]:
+          - generic [ref=f3e40]:
+            - generic [ref=f3e41]:
+              - generic [ref=f3e42]: Legal entity name
+              - textbox "Legal entity name" [ref=f3e43]:
+                - /placeholder: Your company name
+                - text: Northstar Creative
+              - paragraph [ref=f3e44]: Printed on invoices and shown in the workspace switcher.
+            - generic [ref=f3e45]:
+              - generic [ref=f3e46]: Workspace identifier
+              - generic [ref=f3e47]:
+                - generic [ref=f3e48]: mergin.example/
+                - generic [ref=f3e49]: northstar-creative
+                - button [ref=f3e50] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f3e51]: content_copy
+              - paragraph [ref=f3e52]: Display-only placeholder domain. No public portal is hosted.
+            - generic [ref=f3e53]:
+              - generic [ref=f3e54]: Operating currency
+              - generic [ref=f3e55]: USD — United States Dollar
+              - paragraph [ref=f3e56]: Fixed in this MVP. All money is stored in integer cents.
+            - generic [ref=f3e57]:
+              - generic [ref=f3e58]: Industry
+              - generic [ref=f3e59]: Design & digital product studio
+              - paragraph [ref=f3e60]: Fixed in this demo; chart-of-accounts presets are not configurable.
+            - generic [ref=f3e61]:
+              - generic [ref=f3e62]: Accounting timezone
+              - generic [ref=f3e63]: America/New_York
+              - paragraph [ref=f3e64]: Stored on the workspace record; not editable in this build.
+          - generic [ref=f3e65]:
+            - paragraph [ref=f3e66]: What saves now
+            - paragraph [ref=f3e67]: Only the business name is writable through this step. Currency, timezone, and industry remain fixed demo values so the seeded ledger stays internally consistent.
+          - button "Save and continue" [ref=f3e69] [cursor=pointer]:
+            - text: Save and continue
+            - generic [aria-hidden] [ref=f3e70]: arrow_forward
+        - complementary [ref=f3e71]:
+          - generic [ref=f3e72]:
+            - generic [aria-hidden] [ref=f3e74]: account_balance
+            - heading "Workspace defaults" [level=2] [ref=f3e75]
+          - list [ref=f3e76]:
+            - listitem [ref=f3e77]:
+              - generic [aria-hidden] [ref=f3e78]: check
+              - generic [ref=f3e79]: Single USD ledger with integer-cent arithmetic
+            - listitem [ref=f3e80]:
+              - generic [aria-hidden] [ref=f3e81]: check
+              - generic [ref=f3e82]: PayPal Invoicing API v2 connection on the next step
+            - listitem [ref=f3e83]:
+              - generic [aria-hidden] [ref=f3e84]: check
+              - generic [ref=f3e85]: Sentinel needs at least 3 matching charges before flagging a pattern
+            - listitem [ref=f3e86]:
+              - generic [aria-hidden] [ref=f3e87]: check
+              - generic [ref=f3e88]: Copilot answers only from deterministic server calculations
+          - generic [ref=f3e89]: Setup is reversible. The demo reset in Settings restores the seeded Northstar workspace without touching PayPal.
+          - link "Go to dashboard without saving" [ref=f3e90] [cursor=pointer]:
+            - /url: /app
+  - contentinfo [ref=f3e35]:
+    - generic [ref=f3e36]: © 2026 MERGIN. Demonstration build.
+    - generic [ref=f3e37]: Setup changes are saved to the local demo database.
