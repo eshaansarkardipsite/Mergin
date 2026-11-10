@@ -31,9 +31,10 @@ npm run dev           # API on :3001, Vite on :5173
 Open <http://localhost:5173>. Sign in with:
 
 - **Launch demo** — one click, no credentials
-- or `demo@mergin.example` / `mergin-demo`
+- **Google** or **PayPal** — when the provider credentials are configured
+- email and password — verified by Supabase when `SUPABASE_URL` is set, otherwise the seeded demo account
 
-The sign-in flow creates a signed, HTTP-only demo session cookie. There is no real identity provider.
+The sign-in flow creates a signed, HTTP-only session cookie. Provider passwords never reach MERGIN.
 
 ## Scripts
 
@@ -108,19 +109,20 @@ Security groundwork is active in every environment: security headers and CSP, a 
 limit on failed sign-in attempts, and a startup guard that refuses to run production without `SESSION_SECRET` and
 `APP_BASE_URL`.
 
-## Identity setup (phase 2 prerequisites)
+## Identity setup
 
-Authentication still uses the labelled local demo session. The environment and provider setup below is what Phase 2
-needs; adding credentials alone does not yet change the sign-in flow.
+Email/password, Google, and PayPal sign-in are wired through the server. The demo workspace remains available with
+**Launch demo**. Passkeys and self-service sign-up/recovery are not implemented yet.
 
 ### Supabase
 
 1. Create a project at <https://supabase.com/dashboard>.
 2. Open **Project Settings → API** and copy the project URL, anon key, and service-role key into `.env`.
 3. Under **Authentication → URL Configuration**, set the site URL to `APP_BASE_URL` and add
-   `http://localhost:5173/**` plus the production origin as redirect URLs.
+   `${APP_BASE_URL}/api/auth/google/callback` plus the production origin as redirect URLs.
 4. Under **Authentication → Providers**, enable Email and Google. Under **Authentication → Settings**, enable
    passkeys when the project plan supports it.
+5. Create email/password accounts in **Authentication → Users** until self-service sign-up ships.
 
 The service-role key bypasses row-level security. It belongs only in the server environment, never in Vite variables
 or client code.
@@ -146,6 +148,10 @@ Passkeys (WebAuthn) are registered against the production domain over HTTPS. Loc
    `CREATED`, `SENT`, and `SCHEDULED`.
 6. Copy the generated **Webhook ID** into `PAYPAL_WEBHOOK_ID`.
 7. Restart the API and use **Settings → Integrations → Test connection** to verify OAuth.
+
+For **Sign in with PayPal**, open the same app's **Features → Log in with PayPal** and enable it. Set the return URL
+to `${APP_BASE_URL}/api/auth/paypal/callback`. PayPal also asks for privacy-policy and user-agreement URLs. Without
+this feature the PayPal button returns a provider error; no local session is created.
 
 Localhost webhooks are not reachable from PayPal. Use a tunnel (for example `ngrok http 3001`) and set
 `PUBLIC_WEBHOOK_BASE_URL` to the tunnel's HTTPS origin while testing.
@@ -207,8 +213,9 @@ docs/              Implementation status and notes
 
 ## Known limits (intentional MVP scope)
 
-- Authentication is still a labelled demo session. Supabase, Google OAuth, and passkey wiring is Phase 2; Phase 1
-  adds provider configuration, security middleware, and CI.
+- Passkeys, self-service sign-up, and password recovery are not implemented yet. Email/password accounts are created
+  in the Supabase dashboard.
+- Provider sign-in verifies the external identity once, then issues a signed 7-day MERGIN session cookie.
 - Invoice "send" and "remind" are demo actions unless PayPal credentials are configured. No email is delivered.
 - Receipt files are referenced by name only; uploads are not stored.
 - The payment page only opens a genuine PayPal URL when the server has created a real hosted invoice. Otherwise it

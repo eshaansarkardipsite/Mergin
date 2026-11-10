@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { config, geminiConfigured } from '../config';
+import { config, geminiConfigured, openrouterConfigured } from '../config';
 import {
   getOpeningBalance,
   listBudgets,
@@ -378,55 +378,110 @@ interface ModelExplanation {
 
 export async function askCopilot(workspaceId: string, workspaceName: string, question: string): Promise<CopilotAnswer> {
   const facts = buildCopilotFacts(workspaceId, question);
-  if (!geminiConfigured()) return deterministicAnswer(facts);
 
-  const modelId = config.gemini.model || 'gemini-2.5-flash';
-  try {
-    const ai = new GoogleGenAI({ apiKey: config.gemini.apiKey });
-    const prompt = `Workspace: ${workspaceName}
+  // Try Gemini first; fall back to OpenRouter when it is unavailable or rate limited.
+  if (geminiConfigured()) {
+    try {
+      const modelId = config.gemini.model || 'gemini-2.5-flash';
+      const ai = new GoogleGenAI({ apiKey: config.gemini.apiKey });
+      const prompt = `Workspace: ${workspaceName}
 Question: ${question}
 Calculated facts (money values are already formatted; do not recompute):
 ${JSON.stringify(facts.facts, null, 2)}
 
 Explain these facts. Return JSON with directAnswer, explanation, nextStep.`;
-    const response = await ai.models.generateContent({
-      model: modelId,
-      contents: prompt,
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-        responseMimeType: 'application/json',
-        responseJsonSchema: {
-          type: 'object',
-          properties: {
-            directAnswer: { type: 'string' },
-            explanation: { type: 'string' },
-            nextStep: { type: 'string' },
+      const response = await ai.models.generateContent({
+        model: modelId,
+        contents: prompt,
+        config: {
+          systemInstruction: SYSTEM_INSTRUCTION,
+          responseMimeType: 'application/json',
+          responseJsonSchema: {
+            type: 'object',
+            properties: {
+              directAnswer: { type: 'string' },
+              explanation: { type: 'string' },
+              nextStep: { type: 'string' },
+            },
+            required: ['directAnswer', 'explanation', 'nextStep'],
           },
-          required: ['directAnswer', 'explanation', 'nextStep'],
+          temperature: 0.2,
+          maxOutputTokens: 700,
         },
-        temperature: 0.2,
-        maxOutputTokens: 700,
-      },
-    });
-    const text = response.text?.trim();
-    if (!text) return deterministicAnswer(facts, 'The configured model returned no text; deterministic explanation shown.');
-    const parsed = JSON.parse(text) as ModelExplanation;
-    if (!parsed.directAnswer || !parsed.explanation) {
-      return deterministicAnswer(facts, 'The model response was incomplete; deterministic explanation shown.');
+      });
+      const text = response.text?.trim();
+      if (!text) throw new Error('Gemini returned no text');
+      const parsed = JSON.parse(text) as ModelExplanation;
+      if (!parsed.directAnswer || !parsed.explanation) throw new Error('Gemini response incomplete');
+      return {
+        directAnswer: parsed.directAnswer,
+        explanation: parsed.explanation,
+        evidence: facts.evidence,
+        assumptions: facts.assumptions,
+        nextStep: parsed.nextStep || facts.nextStep,
+        amountMinor: facts.amountMinor,
+        currency: 'USD',
+        period: facts.period,
+        source: 'gemini',
+        model: modelId,
+      };
+    } catch {
+      // fall through to OpenRouter below
     }
-    return {
-      directAnswer: parsed.directAnswer,
-      explanation: parsed.explanation,
-      evidence: facts.evidence,
-      assumptions: facts.assumptions,
-      nextStep: parsed.nextStep || facts.nextStep,
-      amountMinor: facts.amountMinor,
-      currency: 'USD',
-      period: facts.period,
-      source: 'gemini',
-      model: modelId,
-    };
-  } catch {
-    return deterministicAnswer(facts, 'The live model was unavailable; this answer uses deterministic calculations only.');
   }
+
+  if (openrouterConfigured()) {
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${config.openrouter.apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: config.openrouter.model || 'openai/gpt-4o-mini',
+          messages: [
+            { role: 'system', content: SYSTEM_INSTRUCTION },
+            {
+              role: 'user',
+              content: `Workspace: ${workspaceName}
+Question: ${question}
+Calculated facts (money values are already formatted; do not recompute):
+${JSON.stringify(facts.facts, null, 2)}
+
+Explain these facts. Return JSON with directAnswer, explanation, nextStep.`,
+            },
+          ],
+          temperature: 0.2,
+          max_tokens: 700,
+          response_format: { type: 'json_object' },
+        }),
+        signal: AbortSignal.timeout(15_000),
+      });
+      if (!response.ok) throw new Error(`OpenRouter HTTP ${response.status}`);
+      const data = (await response.json()) as {
+        choices?: Array<{ message?: { content?: string } }>;
+      };
+      const text = data.choices?.[0]?.message?.content?.trim();
+      if (!text) throw new Error('OpenRouter returned no text');
+      const parsed = JSON.parse(text) as ModelExplanation;
+      if (!parsed.directAnswer || !parsed.explanation) throw new Error('OpenRouter response incomplete');
+      return {
+        directAnswer: parsed.directAnswer,
+        explanation: parsed.explanation,
+        evidence: facts.evidence,
+        assumptions: facts.assumptions,
+        nextStep: parsed.nextStep || facts.nextStep,
+        amountMinor: facts.amountMinor,
+        currency: 'USD',
+        period: facts.period,
+        source: 'openrouter',
+        model: config.openrouter.model || 'openai/gpt-4o-mini',
+      };
+    } catch {
+      return deterministicAnswer(facts, 'The live model was unavailable; this answer uses deterministic calculations only.');
+    }
+  }
+
+  return deterministicAnswer(facts);
 }

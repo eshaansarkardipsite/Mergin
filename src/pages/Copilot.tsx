@@ -17,7 +17,7 @@ let nextId = 1;
 export default function Copilot() {
   const { toast } = useApp();
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [liveModel, setLiveModel] = useState(false);
+  const [modelLabel, setModelLabel] = useState<'gemini' | 'openrouter' | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [question, setQuestion] = useState('');
   const [asking, setAsking] = useState(false);
@@ -26,10 +26,10 @@ export default function Copilot() {
 
   useEffect(() => {
     api
-      .get<{ suggestions: string[]; liveModel: boolean }>('/copilot/suggestions')
+      .get<{ suggestions: string[]; liveModel: 'gemini' | 'openrouter' | null }>('/copilot/suggestions')
       .then((data) => {
         setSuggestions(data.suggestions);
-        setLiveModel(data.liveModel);
+        setModelLabel(data.liveModel === 'openrouter' ? 'openrouter' : 'gemini');
       })
       .catch(() => {
         // Suggestions are optional; the input still works.
@@ -73,9 +73,9 @@ export default function Copilot() {
         title="Copilot"
         description="Answers are calculated by deterministic TypeScript against the local ledger. When Gemini is configured, it only explains those calculated facts."
         actions={
-          <span className={`chip-outline ${liveModel ? 'border-ink-solid' : ''}`}>
-            <Icon name={liveModel ? 'auto_awesome' : 'terminal'} className="text-[13px]" />
-            {liveModel ? 'Gemini explanation mode' : 'Deterministic mode'}
+          <span className={`chip-outline ${modelLabel ? 'border-ink-solid' : ''}`}>
+            <Icon name={modelLabel ? 'auto_awesome' : 'terminal'} className="text-[13px]" />
+            {modelLabel === 'gemini' ? 'Gemini explanation mode' : modelLabel === 'openrouter' ? 'OpenRouter explanation mode' : 'Deterministic mode'}
           </span>
         }
       />
@@ -215,7 +215,7 @@ export default function Copilot() {
                 </button>
               </div>
               <div className="flex items-center justify-between gap-2 text-caption-micro text-ink-muted">
-                <span>{liveModel ? 'Gemini explains calculated facts; it never invents amounts.' : 'No model key configured. Answers are generated locally.'}</span>
+                <span>{modelLabel ? `${modelLabel === 'gemini' ? 'Gemini' : 'OpenRouter'} explains calculated facts; it never invents amounts.` : 'No model key configured. Answers are generated locally.'}</span>
                 <span className="hidden font-mono sm:inline">Enter ↵</span>
               </div>
             </form>

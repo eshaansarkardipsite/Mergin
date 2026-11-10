@@ -4,7 +4,7 @@ import { currentUser } from '../auth';
 import { getWorkspace } from '../db/repo';
 import { parseBody } from '../http';
 import { askCopilot } from '../services/copilot';
-import { geminiConfigured } from '../config';
+import { geminiConfigured, openrouterConfigured } from '../config';
 
 export const copilotRouter = Router();
 
@@ -18,8 +18,14 @@ export const SUGGESTED_QUESTIONS = [
   'Which budgets are close to their limits?',
 ];
 
+function configuredModel(): 'gemini' | 'openrouter' | null {
+  if (geminiConfigured()) return 'gemini';
+  if (openrouterConfigured()) return 'openrouter';
+  return null;
+}
+
 copilotRouter.get('/suggestions', (_req, res) => {
-  res.json({ suggestions: SUGGESTED_QUESTIONS, liveModel: geminiConfigured() });
+  res.json({ suggestions: SUGGESTED_QUESTIONS, liveModel: configuredModel() });
 });
 
 const askSchema = z.object({ question: z.string().trim().min(3).max(500) });

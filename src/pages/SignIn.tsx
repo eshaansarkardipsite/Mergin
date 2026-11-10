@@ -1,11 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp, InlineAlert } from '../context/AppContext';
-import { errorMessage } from '../lib/api';
+import { api, errorMessage } from '../lib/api';
 import { Icon, Logo, Modal, Spinner } from '../components/ui';
 import { Sparkline } from '../components/charts';
 
 type Dialog = 'terms' | 'privacy' | 'forgot' | null;
+
+interface AuthProviders {
+  supabase: boolean;
+  password: boolean;
+  google: boolean;
+  paypal: boolean;
+  demo: boolean;
+}
 
 const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[] }> = {
   terms: {
@@ -19,16 +27,16 @@ const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[]
   privacy: {
     title: 'Privacy notice',
     body: [
-      'Demo data is stored locally in a SQLite file on the machine running this app. No analytics or third-party trackers are included in the React client.',
-      'When Gemini is configured, the question text and deterministic fact summary are sent to the Gemini API by the server. Without a key, answers are generated locally.',
+      'Workspace data is stored locally in a SQLite file on the machine running this app. Account identity is handled by Supabase Auth. Google sign-in completes through Supabase; PayPal sign-in completes on PayPal. MERGIN stores your email, display name, and an identity link only.',
+      'When Gemini is configured, the question text and deterministic fact summary are sent to the Gemini API by the server. Without a key, answers are generated locally. OpenRouter is used only as a fallback when the primary provider is rate limited.',
       'PayPal credentials, webhook IDs, and the session secret live in server environment variables and are never exposed to the browser.',
     ],
   },
   forgot: {
     title: 'Password recovery',
     body: [
-      'Password recovery is not available in this demo build. The only seeded account is the demo owner.',
-      'Use “Launch demo workspace” to sign in without credentials, or sign in with demo@mergin.example and the password mergin-demo.',
+      'Self-service password recovery is not wired to email yet.',
+      'Use “Launch demo workspace” for evaluation. Accounts managed in Supabase can have their password reset from the Supabase dashboard until recovery ships.',
     ],
   },
 };
@@ -43,8 +51,29 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState<'form' | 'demo' | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(() => new URLSearchParams(location.search).get('error'));
   const [dialog, setDialog] = useState<Dialog>(null);
+  const [providers, setProviders] = useState<AuthProviders | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    api
+      .get<AuthProviders>('/auth/providers')
+      .then((data) => {
+        if (active) setProviders(data);
+      })
+      .catch(() => {
+        if (active) setProviders(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const startSso = (provider: 'google' | 'paypal') => {
+    setError(null);
+    window.location.assign(`/api/auth/${provider}/start`);
+  };
 
   const signIn = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -52,7 +81,7 @@ export default function SignIn() {
     setSubmitting('form');
     try {
       await login(email.trim(), password);
-      toast('Signed in to the demo workspace.', 'success');
+      toast('Signed in.', 'success');
       navigate(from, { replace: true });
     } catch (err) {
       setError(errorMessage(err));
@@ -207,10 +236,16 @@ export default function SignIn() {
                 </div>
               </div>
 
-              <p className="text-caption-micro leading-4 text-ink-muted">
-                Seeded credentials: <span className="font-medium text-ink-slate">demo@mergin.example</span> · password{' '}
-                <span className="font-medium text-ink-slate">mergin-demo</span>
-              </p>
+              {providers === null ? null : providers.password ? (
+                <p className="text-caption-micro leading-4 text-ink-muted">
+                  Use your MERGIN account email and password, or continue with a provider below.
+                </p>
+              ) : (
+                <p className="text-caption-micro leading-4 text-ink-muted">
+                  Seeded credentials: <span className="font-medium text-ink-slate">demo@mergin.example</span> · password{' '}
+                  <span className="font-medium text-ink-slate">mergin-demo</span>
+                </p>
+              )}
 
               <button type="submit" className="btn btn-primary mt-1 h-12 text-headline-sm" disabled={submitting !== null}>
                 {submitting === 'form' ? <Spinner className="h-4 w-4" /> : null}
@@ -222,22 +257,47 @@ export default function SignIn() {
             <div className="relative my-6 flex items-center justify-center">
               <div className="h-px w-full bg-surface-container-high" />
               <span className="absolute bg-surface-canvas px-3 text-caption-micro uppercase tracking-widest text-ink-slate">
-                Enterprise single sign-on
+                Single sign-on
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <button type="button" className="btn btn-secondary" disabled title="Passkeys require a production identity provider. Not configured in this demo.">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                disabled
+                title="Passkeys are not enabled yet."
+              >
                 <Icon name="passkey" className="text-[18px]" />
                 Passkey
               </button>
-              <button type="button" className="btn btn-secondary" disabled title="Google Workspace SSO requires OAuth credentials. Not configured in this demo.">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => startSso('google')}
+                disabled={!providers?.google}
+                title={providers?.google ? 'Continue with Google' : 'Google sign-in is not configured.'}
+              >
                 <Icon name="corporate_fare" className="text-[18px]" />
-                Google Workspace
+                Google
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => startSso('paypal')}
+                disabled={!providers?.paypal}
+                title={providers?.paypal ? 'Continue with PayPal' : 'PayPal sign-in is not configured.'}
+              >
+                <Icon name="payments" className="text-[18px]" />
+                PayPal
               </button>
             </div>
             <p className="mt-2 text-caption-micro text-ink-muted">
-              Passkey and Google Workspace are disabled: no identity provider is configured in this demo.
+              {providers === null
+                ? 'Checking configured sign-in methods…'
+                : providers.google || providers.paypal
+                  ? 'SSO completes on the provider page. MERGIN never sees your provider password.'
+                  : 'Google and PayPal sign-in are disabled because no identity provider is configured.'}
             </p>
 
             <div className="mt-7 flex items-start gap-2 text-caption-micro text-ink-slate">

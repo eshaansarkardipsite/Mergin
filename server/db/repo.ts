@@ -87,6 +87,58 @@ export function updateProfile(userId: string, name: string): void {
   db().prepare('UPDATE users SET name = ? WHERE id = ?').run(name, userId);
 }
 
+export interface IdentityProfile {
+  provider: string;
+  subject: string;
+  email: string;
+  name: string;
+}
+
+export function findUserByIdentity(provider: string, subject: string) {
+  return db()
+    .prepare(
+      `SELECT u.id, u.workspace_id, u.name, u.email, u.password_hash, u.demo
+       FROM user_identities i JOIN users u ON u.id = i.user_id
+       WHERE i.provider = ? AND i.subject = ?`,
+    )
+    .get(provider, subject) as any;
+}
+
+export function linkUserIdentity(provider: string, subject: string, userId: string): void {
+  db()
+    .prepare('INSERT OR IGNORE INTO user_identities (provider, subject, user_id, created_at) VALUES (?, ?, ?, ?)')
+    .run(provider, subject, userId, nowIso());
+}
+
+/** Creates a fresh workspace and user for a first-time identity login. */
+export function createUserForIdentity(profile: IdentityProfile): string {
+  const email = profile.email.trim().toLowerCase();
+  const name = profile.name.trim() || email.split('@')[0] || 'Workspace owner';
+  const slugBase = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'workspace';
+  const workspaceId = id('ws');
+  const userId = id('usr');
+  const now = nowIso();
+
+  db().exec('BEGIN');
+  try {
+    db()
+      .prepare('INSERT INTO workspaces (id, name, slug, currency, timezone, created_at) VALUES (?, ?, ?, ?, ?, ?)')
+      .run(workspaceId, `${name}'s workspace`, `${slugBase}-${crypto.randomBytes(3).toString('hex')}`, 'USD', 'America/New_York', now);
+    db().prepare('INSERT INTO workspace_settings (workspace_id) VALUES (?)').run(workspaceId);
+    db()
+      .prepare('INSERT INTO users (id, workspace_id, name, email, password_hash, demo) VALUES (?, ?, ?, ?, ?, 0)')
+      .run(userId, workspaceId, name, email, '');
+    db()
+      .prepare('INSERT INTO user_identities (provider, subject, user_id, created_at) VALUES (?, ?, ?, ?)')
+      .run(profile.provider, profile.subject, userId, now);
+    db().exec('COMMIT');
+  } catch (error) {
+    db().exec('ROLLBACK');
+    throw error;
+  }
+  return userId;
+}
+
 // ---------- customers ----------
 
 export function listCustomers(workspaceId: string): Customer[] {

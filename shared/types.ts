@@ -273,7 +273,7 @@ export interface CopilotAnswer {
   amountMinor: number | null;
   currency: Currency;
   period: string;
-  source: 'gemini' | 'deterministic';
+  source: 'gemini' | 'openrouter' | 'deterministic';
   model: string | null;
 }
 

@@ -32,7 +32,8 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 
 - Express 5 API mounted under `/api`, Zod-validated.
 - `node:sqlite` persistence with a typed repository layer (`server/db/repo.ts`) and explicit schema.
-- Signed HTTP-only demo session cookie, one-click demo entry, seeded credentials.
+- Supabase-backed email/password sign-in, Google OAuth through Supabase, and PayPal "Log in with PayPal" SSO.
+- Signed HTTP-only session cookie (7 days), one-click demo entry, seeded demo credentials.
 - Security headers with a Google Fonts-aware CSP, API rate limiting, stricter failed-sign-in limiting, and a
   production startup guard for `SESSION_SECRET` / `APP_BASE_URL`.
 - Coherent seed data; dashboard totals reconcile exactly (see README).
@@ -41,7 +42,7 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 
 | Area | Endpoints |
 | --- | --- |
-| Auth | `POST /api/auth/login`, `POST /api/auth/demo`, `POST /api/auth/logout`, `GET /api/auth/session` |
+| Auth | `GET /api/auth/providers`, `POST /api/auth/login`, `POST /api/auth/demo`, `POST /api/auth/logout`, `GET /api/auth/session`, `GET /api/auth/google/start`, `GET /api/auth/google/callback`, `GET /api/auth/paypal/start`, `GET /api/auth/paypal/callback` |
 | Dashboard | `GET /api/dashboard` |
 | Invoices | `GET/POST /api/invoices`, `GET/PATCH /api/invoices/:id`, `POST /api/invoices/:id/send`, `/remind`, `/cancel`, `/reconcile` |
 | Public payment | `GET /api/public/invoices/:token`, `POST /api/public/invoices/:token/demo-pay` |
@@ -54,6 +55,15 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 | Settings | `GET/PATCH /api/settings`, `POST /api/settings/paypal/test`, `POST /api/settings/renewal-policy`, `POST /api/settings/demo-reset` |
 | Onboarding | `GET/POST /api/onboarding` |
 | Webhooks | `POST /api/paypal/webhook` |
+
+### Authentication
+
+- Supabase Auth verifies email/password. Google uses Supabase's OAuth provider with a server-side PKCE verifier.
+- PayPal uses "Log in with PayPal" OAuth and the OIDC userinfo endpoint.
+- First sign-in creates a local workspace and user; later sign-ins reuse the `user_identities` mapping. A matching
+  non-demo email links providers together. The demo account is never linked to a real identity.
+- Provider tokens are exchanged server-side. The browser receives only the signed HTTP-only `mergin_session` cookie.
+- Missing provider credentials disable the buttons and produce truthful redirect errors; no fake session is created.
 
 ### Money
 
@@ -113,7 +123,7 @@ minor units into decimals at the boundary only.
 | `npm run db:reset` | Complete; totals reconcile |
 | `npm run typecheck` | Passing |
 | `npm run lint` | Passing |
-| `npm test` | 31 tests in 6 files passing |
+| `npm test` | 38 tests in 7 files passing |
 | `npm run build` | Passing |
 | Browser flows | Sign-in, dashboard, invoices, payment, transactions, expenses, budgets, cash flow, Sentinel, Copilot, settings, reset |
 
@@ -125,6 +135,7 @@ Vitest suites:
 - `tests/webhook.test.ts` — event extraction, deduplication, status handling
 - `tests/budgets.test.ts` — utilisation thresholds
 - `tests/security.test.ts` — security headers, provider readiness flags
+- `tests/auth.test.ts` — identity provisioning, Supabase password/PKCE exchange, PayPal profile mapping
 
 ## Production foundation (Phase 1)
 
@@ -137,7 +148,8 @@ Phase 1 prepares the production path without changing the demo sign-in flow:
 - README documents Supabase, Google OAuth, and PayPal Sandbox credential setup, including the webhook endpoint
   `<origin>/api/paypal/webhook` and required invoice events.
 
-Phase 2 replaces the demo session with Supabase-validated sessions and adds Google OAuth and passkey flows.
+Phase 2 (current) adds Supabase-verified email/password, Google OAuth, and PayPal SSO. Passkeys, self-service
+sign-up, and password recovery remain for the next auth increment.
 
 ## Branding audit
 
@@ -152,7 +164,7 @@ Phase 2 replaces the demo session with Supabase-validated sessions and adds Goog
 
 ## Intentional limits
 
-- Demo authentication only; Supabase session validation, Google OAuth, and passkeys arrive in Phase 2.
+- Passkeys, self-service sign-up, and password recovery are not implemented yet.
 - Demo mode does not deliver email and does not create PayPal invoices without credentials.
 - Receipt upload is not implemented; only a receipt reference is stored.
 - CI verifies the build; deployment automation is not included.

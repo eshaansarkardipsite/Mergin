@@ -6,9 +6,18 @@ import type { SessionUser } from '../shared/types';
 
 const COOKIE_NAME = 'mergin_session';
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
+const OAUTH_COOKIE_NAME = 'mergin_oauth';
+const OAUTH_TTL_SECONDS = 60 * 10;
 
 interface SessionPayload {
   userId: string;
+  exp: number;
+}
+
+export interface OAuthPayload {
+  provider: string;
+  state: string;
+  verifier?: string;
   exp: number;
 }
 
@@ -16,25 +25,34 @@ function sign(value: string): string {
   return crypto.createHmac('sha256', config.sessionSecret).update(value).digest('base64url');
 }
 
-export function createSessionToken(userId: string): string {
-  const payload: SessionPayload = { userId, exp: Math.floor(Date.now() / 1000) + SESSION_TTL_SECONDS };
-  const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
+function createSignedToken(payload: Record<string, unknown>, ttlSeconds: number): string {
+  const body = Buffer.from(
+    JSON.stringify({ ...payload, exp: Math.floor(Date.now() / 1000) + ttlSeconds }),
+  ).toString('base64url');
   return `${body}.${sign(body)}`;
 }
 
-export function verifySessionToken(token: string): string | null {
+function verifySignedToken<T extends { exp: number }>(token: string): T | null {
   const [body, signature] = token.split('.');
   if (!body || !signature) return null;
   const expected = sign(body);
   if (expected.length !== signature.length) return null;
   if (!crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(signature))) return null;
   try {
-    const payload = JSON.parse(Buffer.from(body, 'base64url').toString()) as SessionPayload;
-    if (!payload.userId || payload.exp * 1000 < Date.now()) return null;
-    return payload.userId;
+    const payload = JSON.parse(Buffer.from(body, 'base64url').toString()) as T;
+    if (!payload.exp || payload.exp * 1000 < Date.now()) return null;
+    return payload;
   } catch {
     return null;
   }
+}
+
+export function createSessionToken(userId: string): string {
+  return createSignedToken({ userId }, SESSION_TTL_SECONDS);
+}
+
+export function verifySessionToken(token: string): string | null {
+  return verifySignedToken<SessionPayload>(token)?.userId ?? null;
 }
 
 export function setSessionCookie(res: Response, userId: string): void {
@@ -60,6 +78,31 @@ function readCookie(req: Request, name: string): string | null {
     if (key === name) return decodeURIComponent(rest.join('='));
   }
   return null;
+}
+
+export function setOAuthCookie(res: Response, payload: Omit<OAuthPayload, 'exp'>): void {
+  res.cookie(OAUTH_COOKIE_NAME, createSignedToken(payload, OAUTH_TTL_SECONDS), {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: config.isProduction,
+    maxAge: OAUTH_TTL_SECONDS * 1000,
+    path: '/api/auth',
+  });
+}
+
+export function readOAuthCookie(req: Request): OAuthPayload | null {
+  const token = readCookie(req, OAUTH_COOKIE_NAME);
+  return token ? verifySignedToken<OAuthPayload>(token) : null;
+}
+
+export function clearOAuthCookie(res: Response): void {
+  res.clearCookie(OAUTH_COOKIE_NAME, { path: '/api/auth' });
+}
+
+export function safeEqual(left: string, right: string): boolean {
+  const a = Buffer.from(left);
+  const b = Buffer.from(right);
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
 export function getSession(req: Request): SessionUser | null {
