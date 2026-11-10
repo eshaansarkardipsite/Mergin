@@ -139,6 +139,57 @@ export function createUserForIdentity(profile: IdentityProfile): string {
   return userId;
 }
 
+// ---------- passkey credentials ----------
+
+export interface PasskeyCredentialRow {
+  id: string;
+  userId: string;
+  name: string;
+  publicKey: string;
+  counter: number;
+  createdAt: string;
+  lastUsedAt: string | null;
+}
+
+export function listPasskeyCredentials(userId: string): PasskeyCredentialRow[] {
+  const rows = db()
+    .prepare('SELECT * FROM passkey_credentials WHERE user_id = ? ORDER BY created_at DESC')
+    .all(userId) as any[];
+  return rows.map((r) => ({
+    id: r.id,
+    userId: r.user_id,
+    name: r.name,
+    publicKey: r.public_key,
+    counter: r.counter,
+    createdAt: r.created_at,
+    lastUsedAt: r.last_used_at,
+  }));
+}
+
+export function findPasskeyCredential(credentialId: string) {
+  return db()
+    .prepare('SELECT * FROM passkey_credentials WHERE id = ?')
+    .get(credentialId) as any;
+}
+
+export function createPasskeyCredential(userId: string, name: string, publicKey: string, credentialId: string): void {
+  db()
+    .prepare(
+      'INSERT INTO passkey_credentials (id, user_id, name, public_key, counter, created_at) VALUES (?, ?, ?, ?, 0, ?)',
+    )
+    .run(credentialId, userId, name, publicKey, nowIso());
+}
+
+export function updatePasskeyCounter(credentialId: string, counter: number): void {
+  db()
+    .prepare('UPDATE passkey_credentials SET counter = ?, last_used_at = ? WHERE id = ?')
+    .run(counter, nowIso(), credentialId);
+}
+
+export function deletePasskeyCredential(credentialId: string): void {
+  db().prepare('DELETE FROM passkey_credentials WHERE id = ?').run(credentialId);
+}
+
 // ---------- customers ----------
 
 export function listCustomers(workspaceId: string): Customer[] {

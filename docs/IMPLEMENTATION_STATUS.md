@@ -60,6 +60,9 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 
 - Supabase Auth verifies email/password. Google uses Supabase's OAuth provider with a server-side PKCE verifier.
 - PayPal uses "Log in with PayPal" OAuth and the OIDC userinfo endpoint.
+- Passkeys use WebAuthn (ES256/P-256) with local credential storage; registration and authentication via
+  `/auth/passkey/register/*` and `/auth/passkey/authenticate/*`.
+- Self-service sign-up via `/auth/signup`; password reset via `/auth/reset-password`.
 - First sign-in creates a local workspace and user; later sign-ins reuse the `user_identities` mapping. A matching
   non-demo email links providers together. The demo account is never linked to a real identity.
 - Provider tokens are exchanged server-side. The browser receives only the signed HTTP-only `mergin_session` cookie.
@@ -164,7 +167,8 @@ sign-up, and password recovery remain for the next auth increment.
 
 ## Intentional limits
 
-- Passkeys, self-service sign-up, and password recovery are not implemented yet.
+- Passkeys require WebAuthn support (modern browsers); no fallback for legacy browsers.
+- Self-service sign-up and password reset require `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
 - Demo mode does not deliver email and does not create PayPal invoices without credentials.
 - Receipt upload is not implemented; only a receipt reference is stored.
 - CI verifies the build; deployment automation is not included.

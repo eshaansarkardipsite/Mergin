@@ -7,14 +7,6 @@ import { Sparkline } from '../components/charts';
 
 type Dialog = 'terms' | 'privacy' | 'forgot' | null;
 
-interface AuthProviders {
-  supabase: boolean;
-  password: boolean;
-  google: boolean;
-  paypal: boolean;
-  demo: boolean;
-}
-
 const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[] }> = {
   terms: {
     title: 'Terms of service',
@@ -35,14 +27,22 @@ const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[]
   forgot: {
     title: 'Password recovery',
     body: [
-      'Self-service password recovery is not wired to email yet.',
-      'Use “Launch demo workspace” for evaluation. Accounts managed in Supabase can have their password reset from the Supabase dashboard until recovery ships.',
+      'Self-service password recovery is available when Supabase is configured. A reset link is sent to your email.',
+      'Use “Launch demo workspace” for evaluation without credentials.',
     ],
   },
 };
 
+interface AuthProviders {
+  supabase: boolean;
+  password: boolean;
+  google: boolean;
+  paypal: boolean;
+  demo: boolean;
+}
+
 export default function SignIn() {
-  const { demoLogin, login, toast } = useApp();
+  const { demoLogin, login, signup, toast } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: string } | null)?.from ?? '/app';
@@ -75,6 +75,119 @@ export default function SignIn() {
     window.location.assign(`/api/auth/${provider}/start`);
   };
 
+  const startPasskeyRegister = async () => {
+    setError(null);
+    try {
+      const options = await api.post<{
+        challenge: string;
+        rpId: string;
+        rpName: string;
+        userId: string;
+        userName: string;
+        userDisplay: string;
+      }>('/auth/passkey/register/start', { email: email.trim() });
+
+      if (!window.PublicKeyCredential) {
+        setError('Passkeys are not supported in this browser.');
+        return;
+      }
+
+      const credential = await (navigator.credentials as any).create({
+        publicKey: {
+          challenge: options.challenge,
+          rp: { id: options.rpId, name: options.rpName },
+          user: {
+            id: options.userId,
+            name: options.userName,
+            displayName: options.userDisplay,
+          },
+          pubKeyCredParams: [{ type: 'public-key', alg: -7 }],
+          authenticatorSelection: {
+            authenticatorAttachment: 'platform',
+            residentKey: 'preferred',
+            requireResidentKey: false,
+            userVerification: 'preferred',
+          },
+          timeout: 60_000,
+        },
+      });
+
+      await api.post('/auth/passkey/register/finish', {
+        challenge: options.challenge,
+        credential: {
+          id: credential.id,
+          rawId: credential.rawId,
+          response: {
+            attestationObject: btoa(
+              String.fromCharCode(...new Uint8Array(credential.response.attestationObject)),
+            ),
+            clientDataJSON: btoa(
+              String.fromCharCode(...new Uint8Array(credential.response.clientDataJSON)),
+            ),
+          },
+        },
+      });
+
+      toast('Passkey registered. You are signed in.', 'success');
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(errorMessage(err));
+    }
+  };
+
+  const startPasskeyAuthenticate = async () => {
+    setError(null);
+    try {
+      const options = await api.post<{
+        challenge: string;
+        rpId: string;
+        allowCredentials: Array<{ id: string; type: 'public-key' }>;
+      }>('/auth/passkey/authenticate/start', { email: email.trim() });
+
+      if (!window.PublicKeyCredential) {
+        setError('Passkeys are not supported in this browser.');
+        return;
+      }
+
+      const assertion = await (navigator.credentials as any).get({
+        publicKey: {
+          challenge: options.challenge,
+          rpId: options.rpId,
+          allowCredentials: options.allowCredentials.map((c: { id: string; type: string }) => ({
+            id: c.id,
+            type: c.type,
+          })),
+          userVerification: 'preferred',
+          timeout: 60_000,
+        },
+      });
+
+      await api.post('/auth/passkey/authenticate/finish', {
+        challenge: options.challenge,
+        credential: {
+          id: assertion.id,
+          rawId: assertion.rawId,
+          response: {
+            authenticatorData: btoa(
+              String.fromCharCode(...new Uint8Array(assertion.response.authenticatorData)),
+            ),
+            clientDataJSON: btoa(
+              String.fromCharCode(...new Uint8Array(assertion.response.clientDataJSON)),
+            ),
+            signature: btoa(
+              String.fromCharCode(...new Uint8Array(assertion.response.signature)),
+            ),
+          },
+        },
+      });
+
+      toast('Signed in with passkey.', 'success');
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(errorMessage(err));
+    }
+  };
+
   const signIn = async (event: React.FormEvent) => {
     event.preventDefault();
     setError(null);
@@ -96,6 +209,21 @@ export default function SignIn() {
     try {
       await demoLogin();
       toast('Demo workspace ready. All records are seeded local data.', 'success');
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(errorMessage(err));
+    } finally {
+      setSubmitting(null);
+    }
+  };
+
+  const signUp = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setError(null);
+    setSubmitting('form');
+    try {
+      await signup(email.trim(), password);
+      toast('Account created. You are signed in.', 'success');
       navigate(from, { replace: true });
     } catch (err) {
       setError(errorMessage(err));
@@ -252,6 +380,19 @@ export default function SignIn() {
                 {submitting === 'form' ? 'Signing in' : 'Continue to workspace'}
                 {submitting !== 'form' ? <Icon name="arrow_forward" className="text-[18px]" /> : null}
               </button>
+              {providers?.password ? (
+                <p className="mt-4 text-caption-micro text-ink-muted">
+                  Don't have an account?{' '}
+                  <button
+                    type="button"
+                    className="underline underline-offset-2 hover:text-ink-solid"
+                    onClick={signUp}
+                    disabled={submitting !== null}
+                  >
+                    Create account
+                  </button>
+                </p>
+              ) : null}
             </form>
 
             <div className="relative my-6 flex items-center justify-center">
@@ -265,8 +406,9 @@ export default function SignIn() {
               <button
                 type="button"
                 className="btn btn-secondary"
-                disabled
-                title="Passkeys are not enabled yet."
+                onClick={startPasskeyRegister}
+                disabled={submitting !== null}
+                title="Register a passkey (Windows Hello, Face ID, Touch ID, or security key)"
               >
                 <Icon name="passkey" className="text-[18px]" />
                 Passkey
@@ -274,8 +416,18 @@ export default function SignIn() {
               <button
                 type="button"
                 className="btn btn-secondary"
+                onClick={startPasskeyAuthenticate}
+                disabled={submitting !== null}
+                title="Sign in with your registered passkey"
+              >
+                <Icon name="login" className="text-[18px]" />
+                Sign in w/ Passkey
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
                 onClick={() => startSso('google')}
-                disabled={!providers?.google}
+                disabled={!providers?.google || submitting !== null}
                 title={providers?.google ? 'Continue with Google' : 'Google sign-in is not configured.'}
               >
                 <Icon name="corporate_fare" className="text-[18px]" />
@@ -285,7 +437,7 @@ export default function SignIn() {
                 type="button"
                 className="btn btn-secondary"
                 onClick={() => startSso('paypal')}
-                disabled={!providers?.paypal}
+                disabled={!providers?.paypal || submitting !== null}
                 title={providers?.paypal ? 'Continue with PayPal' : 'PayPal sign-in is not configured.'}
               >
                 <Icon name="payments" className="text-[18px]" />

@@ -111,8 +111,8 @@ limit on failed sign-in attempts, and a startup guard that refuses to run produc
 
 ## Identity setup
 
-Email/password, Google, and PayPal sign-in are wired through the server. The demo workspace remains available with
-**Launch demo**. Passkeys and self-service sign-up/recovery are not implemented yet.
+Email/password, Google OAuth, PayPal "Log in with PayPal", passkeys (WebAuthn), self-service sign-up, and password
+reset are all wired through the server. The demo workspace remains available with **Launch demo**.
 
 ### Supabase
 
@@ -120,9 +120,9 @@ Email/password, Google, and PayPal sign-in are wired through the server. The dem
 2. Open **Project Settings → API** and copy the project URL, anon key, and service-role key into `.env`.
 3. Under **Authentication → URL Configuration**, set the site URL to `APP_BASE_URL` and add
    `${APP_BASE_URL}/api/auth/google/callback` plus the production origin as redirect URLs.
-4. Under **Authentication → Providers**, enable Email and Google. Under **Authentication → Settings**, enable
-   passkeys when the project plan supports it.
-5. Create email/password accounts in **Authentication → Users** until self-service sign-up ships.
+4. Under **Authentication → Providers**, enable Email and Google.
+5. Self-service sign-up is available via `/auth/signup` once `SUPABASE_URL` and `SUPABASE_ANON_KEY` are set.
+   Until then, create accounts in **Authentication → Users**.
 
 The service-role key bypasses row-level security. It belongs only in the server environment, never in Vite variables
 or client code.
@@ -136,7 +136,10 @@ or client code.
    `http://localhost:5173` and the production origin as authorised JavaScript origins.
 5. Copy the client ID and secret into `.env` and into **Supabase → Authentication → Providers → Google**.
 
-Passkeys (WebAuthn) are registered against the production domain over HTTPS. Localhost works for development.
+### Passkeys (WebAuthn)
+
+Passkeys use the WebAuthn API with ES256/P-256 credentials. Register and authenticate via
+`/auth/passkey/register/*` and `/auth/passkey/authenticate/*`. Credentials are stored locally with the user account.
 
 ### PayPal Sandbox credentials
 
@@ -213,9 +216,9 @@ docs/              Implementation status and notes
 
 ## Known limits (intentional MVP scope)
 
-- Passkeys, self-service sign-up, and password recovery are not implemented yet. Email/password accounts are created
-  in the Supabase dashboard.
 - Provider sign-in verifies the external identity once, then issues a signed 7-day MERGIN session cookie.
+- Passkeys use WebAuthn with ES256/P-256; credentials are stored locally per user.
+- Self-service sign-up and password reset require `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
 - Invoice "send" and "remind" are demo actions unless PayPal credentials are configured. No email is delivered.
 - Receipt files are referenced by name only; uploads are not stored.
 - The payment page only opens a genuine PayPal URL when the server has created a real hosted invoice. Otherwise it

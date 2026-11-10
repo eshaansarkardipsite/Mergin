@@ -68,6 +68,48 @@ describe('local identity provisioning', () => {
     expect(findUserByIdentity('paypal', 'paypal-user-2')?.id).toBe(first.id);
   });
 
+  it('does not create a duplicate account when Google email matches an existing email/password account', () => {
+    // First sign-up via email/password path creates a local account
+    const first = provisionLocalUser({
+      provider: 'supabase',
+      subject: 'supabase-uuid-3',
+      email: 'alice@example.com',
+      name: 'Alice Smith',
+    });
+
+    // Later Google SSO with the same email should link to the same account
+    const viaGoogle = provisionLocalUser({
+      provider: 'supabase',
+      subject: 'google-uuid-3',
+      email: 'alice@example.com',
+      name: 'Alice Smith',
+    });
+
+    expect(viaGoogle.id).toBe(first.id);
+    expect(viaGoogle.workspaceId).toBe(first.workspaceId);
+  });
+
+  it('does not create a duplicate account when PayPal email matches an existing Google account', () => {
+    // First sign-in via Google creates a local account
+    const first = provisionLocalUser({
+      provider: 'supabase',
+      subject: 'google-uuid-4',
+      email: 'bob@example.com',
+      name: 'Bob Jones',
+    });
+
+    // Later PayPal SSO with the same email should link to the same account
+    const viaPaypal = provisionLocalUser({
+      provider: 'paypal',
+      subject: 'paypal-uuid-4',
+      email: 'bob@example.com',
+      name: 'Bob Jones',
+    });
+
+    expect(viaPaypal.id).toBe(first.id);
+    expect(viaPaypal.workspaceId).toBe(first.workspaceId);
+  });
+
   it('refuses to attach a real identity to the demo account', () => {
     const demo = provisionLocalUser({
       provider: 'local',

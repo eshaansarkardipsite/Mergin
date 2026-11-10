@@ -26,6 +26,8 @@ interface AppContextValue {
   demoMode: boolean;
   login: (email: string, password: string) => Promise<SessionUser>;
   demoLogin: () => Promise<SessionUser>;
+  signup: (email: string, password: string, name?: string) => Promise<SessionUser>;
+  resetPassword: (email: string) => Promise<void>;
   logout: () => Promise<void>;
   refreshSession: () => Promise<void>;
   toast: (message: string, tone?: ToastTone) => void;
@@ -75,6 +77,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return data.user;
   }, []);
 
+  const signup = useCallback(async (email: string, password: string, name?: string) => {
+    const data = await api.post<{ user: SessionUser }>('/auth/signup', { email, password, name });
+    setUser(data.user);
+    return data.user;
+  }, []);
+
+  const resetPassword = useCallback(async (email: string) => {
+    await api.post('/auth/reset-password', { email });
+  }, []);
+
   const logout = useCallback(async () => {
     try {
       await api.post('/auth/logout');
@@ -111,12 +123,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
       demoMode: !user || user.demo,
       login,
       demoLogin,
+      signup,
+      resetPassword,
       logout,
       refreshSession,
       toast,
       confirm,
     }),
-    [user, loading, login, demoLogin, logout, refreshSession, toast, confirm],
+    [user, loading, login, demoLogin, signup, resetPassword, logout, refreshSession, toast, confirm],
   );
 
   return (

@@ -56,6 +56,14 @@ export function signInWithSupabasePassword(email: string, password: string): Pro
   return supabaseRequest('/token?grant_type=password', { email, password });
 }
 
+export function signUpWithSupabasePassword(email: string, password: string, name?: string): Promise<SupabaseTokenResponse> {
+  return supabaseRequest('/signup', {
+    email,
+    password,
+    options: { data: { full_name: name ?? '' } },
+  });
+}
+
 export function exchangeSupabaseCode(code: string, verifier: string): Promise<SupabaseTokenResponse> {
   return supabaseRequest('/token?grant_type=pkce', { auth_code: code, code_verifier: verifier });
 }
