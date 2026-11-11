@@ -12,6 +12,7 @@ import { copilotRouter } from './routes/copilot';
 import { settingsRouter, onboardingRouter } from './routes/settings';
 import { webhookRouter } from './routes/webhooks';
 import { config } from './config';
+import { getDb } from './db/connection';
 import { apiLimiter, sameOriginOnly, securityHeaders } from './security';
 
 export function createApp(): express.Express {
@@ -36,7 +37,12 @@ export function createApp(): express.Express {
   );
 
   app.get('/api/health', (_req, res) => {
-    res.json({ ok: true, service: 'mergin-api', environment: config.paypal.environment });
+    try {
+      getDb().prepare('SELECT 1').get();
+      res.json({ ok: true, service: 'mergin-api', environment: config.paypal.environment });
+    } catch {
+      res.status(503).json({ ok: false, service: 'mergin-api', error: 'Database unavailable.' });
+    }
   });
 
   app.use('/api/auth', authRouter);

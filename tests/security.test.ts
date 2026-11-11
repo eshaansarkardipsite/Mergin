@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createApp } from '../server/app';
 import {
   config,
@@ -7,11 +7,17 @@ import {
   openrouterConfigured,
   supabaseConfigured,
 } from '../server/config';
+import { closeDb, resetDbForTests } from '../server/db/connection';
+
+beforeEach(() => {
+  resetDbForTests();
+});
 
 describe('security headers', () => {
   it('applies hardening headers to API responses', async () => {
     const response = await request(createApp()).get('/api/health');
     expect(response.status).toBe(200);
+    expect(response.body).toMatchObject({ ok: true, service: 'mergin-api' });
     expect(response.headers['x-powered-by']).toBeUndefined();
     expect(response.headers['x-content-type-options']).toBe('nosniff');
     expect(response.headers['x-frame-options']).toBe('SAMEORIGIN');
@@ -50,6 +56,7 @@ const original = {
 };
 
 afterEach(() => {
+  closeDb();
   Object.assign(config.supabase, original.supabase);
   Object.assign(config.google, original.google);
   Object.assign(config.openrouter, original.openrouter);

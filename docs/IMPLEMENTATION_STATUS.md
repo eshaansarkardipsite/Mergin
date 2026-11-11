@@ -38,6 +38,8 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
   session cookies, a same-origin write guard, `no-store` API responses, CSV formula-injection escaping, and a
   production startup guard for `SESSION_SECRET` / `APP_BASE_URL`.
 - Coherent seed data; dashboard totals reconcile exactly (see README).
+- `/api/health` checks the SQLite connection and returns `503` when it fails. Weekly Dependabot updates cover npm and
+  GitHub Actions.
 
 ### Routes
 
