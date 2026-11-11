@@ -108,7 +108,7 @@ cp .env.example .env
 Security groundwork is active in every environment: security headers and CSP, a global API rate limit, a stricter
 limit on failed sign-in attempts, SameSite session cookies, a same-origin guard on state-changing API calls,
 `no-store` API caching, CSV formula-injection escaping, and a startup guard that refuses to run production without
-`SESSION_SECRET` and `APP_BASE_URL`.
+`SESSION_SECRET` and `APP_BASE_URL`. See [docs/SECURITY.md](docs/SECURITY.md) for the production checklist.
 
 ## Identity setup
 

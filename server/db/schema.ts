@@ -1,6 +1,7 @@
 export const SCHEMA_SQL = `
 PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
+PRAGMA busy_timeout = 5000;
 
 CREATE TABLE IF NOT EXISTS workspaces (
   id TEXT PRIMARY KEY,
@@ -222,4 +223,18 @@ CREATE TABLE IF NOT EXISTS passkey_credentials (
 );
 
 CREATE INDEX IF NOT EXISTS idx_passkey_credentials_user ON passkey_credentials(user_id);
+CREATE INDEX IF NOT EXISTS idx_users_workspace ON users(workspace_id);
+CREATE INDEX IF NOT EXISTS idx_customers_workspace_email ON customers(workspace_id, lower(email));
+CREATE INDEX IF NOT EXISTS idx_invoices_workspace_date ON invoices(workspace_id, issue_date DESC);
+CREATE INDEX IF NOT EXISTS idx_invoices_paypal ON invoices(paypal_invoice_id);
+CREATE INDEX IF NOT EXISTS idx_invoice_items_invoice ON invoice_items(invoice_id, position);
+CREATE INDEX IF NOT EXISTS idx_payments_invoice ON payments(invoice_id);
+CREATE INDEX IF NOT EXISTS idx_payments_workspace_date ON payments(workspace_id, received_at DESC);
+CREATE INDEX IF NOT EXISTS idx_transactions_workspace_date ON transactions(workspace_id, date DESC);
+CREATE INDEX IF NOT EXISTS idx_expenses_workspace_date ON expenses(workspace_id, date DESC);
+CREATE INDEX IF NOT EXISTS idx_recurring_patterns_workspace ON recurring_patterns(workspace_id);
+CREATE INDEX IF NOT EXISTS idx_sentinel_reviews_workspace ON sentinel_reviews(workspace_id, status, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_notifications_workspace ON notifications(workspace_id, read, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_audit_events_workspace ON audit_events(workspace_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_webhook_events_invoice ON webhook_events(paypal_invoice_id);
 `;
