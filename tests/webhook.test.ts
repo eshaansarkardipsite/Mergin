@@ -1,8 +1,17 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import request from 'supertest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { createApp } from '../server/app';
+import { config } from '../server/config';
 import { resetDbForTests } from '../server/db/connection';
 import { getInvoice, getWebhookEvent, recordWebhookEvent, setInvoicePaypal } from '../server/db/repo';
 import { seedDatabase, WORKSPACE_ID } from '../server/db/seed';
 import { processPaypalWebhook } from '../server/services/webhook';
+
+const originalPaypal = { ...config.paypal };
+
+afterEach(() => {
+  Object.assign(config.paypal, originalPaypal);
+});
 
 beforeEach(() => {
   const db = resetDbForTests(':memory:');
@@ -62,5 +71,28 @@ describe('PayPal webhook event handling', () => {
   it('fails an event without an id', async () => {
     const outcome = await processPaypalWebhook({ event_type: 'INVOICING.INVOICE.PAID' });
     expect(outcome.state).toBe('failed');
+  });
+});
+
+describe('PayPal webhook route', () => {
+  it('refuses webhooks when PayPal credentials are missing', async () => {
+    config.paypal.clientId = '';
+    config.paypal.clientSecret = '';
+
+    const response = await request(createApp()).post('/api/paypal/webhook').send({ id: 'WH-1' });
+
+    expect(response.status).toBe(503);
+    expect(response.body.error).toMatch(/PAYPAL_CLIENT_ID/);
+  });
+
+  it('refuses webhooks when the webhook ID is missing', async () => {
+    config.paypal.clientId = 'client';
+    config.paypal.clientSecret = 'secret';
+    config.paypal.webhookId = '';
+
+    const response = await request(createApp()).post('/api/paypal/webhook').send({ id: 'WH-2' });
+
+    expect(response.status).toBe(503);
+    expect(response.body.error).toMatch(/PAYPAL_WEBHOOK_ID/);
   });
 });

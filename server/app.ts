@@ -41,7 +41,7 @@ export function createApp(): express.Express {
 
   app.use('/api/auth', authRouter);
   app.use('/api/pay', payRouter);
-  app.use('/api/paypal', webhookRouter);
+  app.use('/api', webhookRouter);
 
   app.use('/api/invoices', requireAuth, invoicesRouter);
   app.use('/api', requireAuth, financesRouter);

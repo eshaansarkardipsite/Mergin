@@ -27,6 +27,11 @@ export function emailConfigured(): boolean {
   return resolveConfig() !== null;
 }
 
+/** Collapse CR/LF so user text cannot inject extra mail headers. */
+export function sanitizeHeader(value: string): string {
+  return value.replace(/[\r\n]+/g, ' ').trim();
+}
+
 export async function sendInvoiceEmail({
   to,
   subject,
@@ -51,9 +56,9 @@ export async function sendInvoiceEmail({
   });
 
   const info = await transporter.sendMail({
-    from: cfg.from ?? undefined,
-    to,
-    subject,
+    from: cfg.from ? sanitizeHeader(cfg.from) : undefined,
+    to: sanitizeHeader(to),
+    subject: sanitizeHeader(subject),
     html,
     attachments: attachments?.map((a) => ({
       filename: a.filename,

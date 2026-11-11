@@ -196,7 +196,7 @@ invoicesRouter.post(
           subject: `Invoice ${invoice.number} from ${workspace.name}`,
           html,
           attachments: [{
-            filename: `invoice-${invoice.number}.pdf`,
+            filename: `invoice-${invoice.number.replace(/[^A-Za-z0-9._-]/g, '_')}.pdf`,
             content: pdf,
             contentType: 'application/pdf',
           }],
