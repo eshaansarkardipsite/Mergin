@@ -20,6 +20,7 @@ export default function InvoiceDetail() {
   const { toast, confirm } = useApp();
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [paypalConfigured, setPaypalConfigured] = useState(false);
+  const [emailConfigured, setEmailConfigured] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
@@ -28,10 +29,11 @@ export default function InvoiceDetail() {
     setLoading(true);
     setError(null);
     api
-      .get<{ invoice: Invoice; paypalConfigured: boolean }>(`/invoices/${encodeURIComponent(id)}`)
+      .get<{ invoice: Invoice; paypalConfigured: boolean; emailConfigured: boolean }>(`/invoices/${encodeURIComponent(id)}`)
       .then((data) => {
         setInvoice(data.invoice);
         setPaypalConfigured(data.paypalConfigured);
+        setEmailConfigured(data.emailConfigured);
       })
       .catch((err) => setError(errorMessage(err)))
       .finally(() => setLoading(false));
@@ -193,12 +195,12 @@ export default function InvoiceDetail() {
         </div>
       </div>
 
-      {!paypalConfigured ? (
+      {!paypalConfigured && !emailConfigured ? (
         <div className="flex items-start gap-2.5 rounded-xl border border-stroke-line bg-surface-container-low/70 px-4 py-3 text-caption-micro text-ink-slate no-print">
           <Icon name="info" className="mt-px text-[16px]" />
           <span>
-            PayPal server credentials are not configured. This invoice can still be sent in demo mode, where it is marked sent
-            and no email or PayPal invoice is created.
+            Neither PayPal nor email is configured. Sending marks this invoice sent in demo mode; no email or PayPal invoice
+            is created.
           </span>
         </div>
       ) : null}
@@ -239,9 +241,11 @@ export default function InvoiceDetail() {
                 <p className="mt-1 text-body-md font-medium text-ink-solid">
                   {invoice.paypalStatus === 'DEMO_ONLY'
                     ? 'Demo mode'
-                    : invoice.paypalInvoiceId
-                      ? 'PayPal Invoicing v2'
-                      : 'Not sent'}
+                    : invoice.paypalStatus === 'EMAILED'
+                      ? 'Email with PDF'
+                      : invoice.paypalInvoiceId
+                        ? 'PayPal Invoicing v2'
+                        : 'Not sent'}
                 </p>
                 <p className="mt-0.5 truncate font-mono text-label-sm text-ink-slate">
                   {invoice.paypalInvoiceId ?? 'No PayPal invoice ID'}
@@ -386,7 +390,7 @@ export default function InvoiceDetail() {
             </div>
             <dl className="mt-4 space-y-3 text-label-sm">
               <div className="flex items-start justify-between gap-3">
-                <dt className="text-ink-muted">PayPal status</dt>
+                <dt className="text-ink-muted">Delivery status</dt>
                 <dd className="text-right font-medium text-ink-solid">
                   {invoice.paypalStatus ? titleCase(invoice.paypalStatus) : 'Not sent'}
                 </dd>

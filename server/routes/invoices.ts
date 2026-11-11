@@ -13,6 +13,8 @@ import {
 } from '../db/repo';
 import { asyncRoute, notFound, parseBody } from '../http';
 import { config, emailConfigured, paypalConfigured } from '../config';
+import { formatDate } from '../../shared/dates';
+import { formatMoney, formatQuantity } from '../../shared/money';
 import { generateInvoicePdf } from '../services/invoicePdf';
 import { sendInvoiceEmail } from '../services/email';
 import {
@@ -25,6 +27,13 @@ import {
 } from '../services/paypal';
 
 export const invoicesRouter = Router();
+
+function escapeHtml(value: string): string {
+  return value.replace(
+    /[&<>"']/g,
+    (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!,
+  );
+}
 
 const itemSchema = z.object({
   description: z.string().trim().min(1).max(200),
@@ -57,7 +66,7 @@ invoicesRouter.get('/:id', (req, res) => {
   const user = currentUser(req);
   const invoice = getInvoice(user.workspaceId, String(req.params.id));
   if (!invoice) return notFound(res, 'Invoice');
-  res.json({ invoice, paypalConfigured: paypalConfigured() });
+  res.json({ invoice, paypalConfigured: paypalConfigured(), emailConfigured: emailConfigured() });
 });
 
 invoicesRouter.post('/', (req, res) => {
@@ -123,25 +132,36 @@ invoicesRouter.post(
     // Generate PDF and email if SMTP is configured
     if (emailConfigured()) {
       try {
-        const pdf = await generateInvoicePdf(invoice, getWorkspace(user.workspaceId).name);
+        const workspace = getWorkspace(user.workspaceId);
+        const pdf = await generateInvoicePdf(invoice, workspace.name);
+        const money = (minor: number) => formatMoney(minor, invoice.currency);
+        const cell = 'padding: 8px; border: 1px solid #ccc;';
         const html = `
           <div style="font-family: Inter, sans-serif; color: #1a1a1a; line-height: 1.5;">
-            <h2 style="margin: 0 0 8px 0; font-size: 16px;">Invoice ${invoice.number}</h2>
-            <p style="margin: 0 0 16px 0; color: #555;">From ${getWorkspace(user.workspaceId).name}</p>
+            <h2 style="margin: 0 0 8px 0; font-size: 16px;">Invoice ${escapeHtml(invoice.number)}</h2>
+            <p style="margin: 0 0 20px 0; color: #555;">From ${escapeHtml(workspace.name)}</p>
+            <p style="margin: 0 0 12px 0;">Dear ${escapeHtml(invoice.customerName)},</p>
+            <p style="margin: 0 0 12px 0;">
+              Thank you for availing our services. Please find invoice <strong>${escapeHtml(invoice.number)}</strong>
+              attached as a PDF for your records.
+            </p>
+            <p style="margin: 0 0 24px 0;">
+              Total due: <strong>${money(invoice.totalMinor)}</strong> · Due ${formatDate(invoice.dueDate)}
+            </p>
             <table style="border-collapse: collapse; width: 100%; margin-bottom: 24px;">
               <thead>
                 <tr style="background: #f0f0f0;">
-                  <th style="text-align: left; padding: 8px; border: 1px solid #ccc;">Item</th>
-                  <th style="text-align: right; padding: 8px; border: 1px solid #ccc;">Qty</th>
-                  <th style="text-align: right; padding: 8px; border: 1px solid #ccc;">Amount</th>
+                  <th style="text-align: left; ${cell}">Item</th>
+                  <th style="text-align: right; ${cell}">Qty</th>
+                  <th style="text-align: right; ${cell}">Amount</th>
                 </tr>
               </thead>
               <tbody>
                 ${invoice.items.map((item) => `
                   <tr>
-                    <td style="padding: 8px; border: 1px solid #ccc;">${item.description}${item.detail ? '<br><span style="color:#555; font-size:0.9em;">' + item.detail + '</span>' : ''}</td>
-                    <td style="padding: 8px; border: 1px solid #ccc; text-align: right;">${(item.quantityMilli / 1000).toFixed(3)}</td>
-                    <td style="padding: 8px; border: 1px solid #ccc; text-align: right;">$${(item.totalMinor / 100).toFixed(2)}</td>
+                    <td style="${cell}">${escapeHtml(item.description)}${item.detail ? `<br><span style="color:#555; font-size:0.9em;">${escapeHtml(item.detail)}</span>` : ''}</td>
+                    <td style="text-align: right; ${cell}">${formatQuantity(item.quantityMilli)}</td>
+                    <td style="text-align: right; ${cell}">${money(item.totalMinor)}</td>
                   </tr>
                 `).join('')}
               </tbody>
@@ -149,29 +169,31 @@ invoicesRouter.post(
             <table style="border-collapse: collapse; width: 100%; margin-bottom: 24px;">
               <tr>
                 <td style="text-align: right; padding: 6px;">Subtotal</td>
-                <td style="text-align: right; padding: 6px;">$${(invoice.subtotalMinor / 100).toFixed(2)}</td>
+                <td style="text-align: right; padding: 6px;">${money(invoice.subtotalMinor)}</td>
               </tr>
               <tr>
                 <td style="text-align: right; padding: 6px;">Tax</td>
-                <td style="text-align: right; padding: 6px;">$${(invoice.taxMinor / 100).toFixed(2)}</td>
+                <td style="text-align: right; padding: 6px;">${money(invoice.taxMinor)}</td>
               </tr>
               ${invoice.discountMinor > 0 ? `<tr>
                 <td style="text-align: right; padding: 6px;">Discount</td>
-                <td style="text-align: right; padding: 6px;">-$${(invoice.discountMinor / 100).toFixed(2)}</td>
+                <td style="text-align: right; padding: 6px;">-${money(invoice.discountMinor)}</td>
               </tr>` : ''}
               <tr style="border-top: 2px solid #1a1a1a;">
                 <td style="text-align: right; padding: 6px; font-weight: bold;">Total due</td>
-                <td style="text-align: right; padding: 6px; font-weight: bold;">$${(invoice.totalMinor / 100).toFixed(2)}</td>
+                <td style="text-align: right; padding: 6px; font-weight: bold;">${money(invoice.totalMinor)}</td>
               </tr>
             </table>
-            <p style="margin: 0; color: #555;">Payment terms: ${invoice.paymentTerms || 'Net 30'}</p>
-            ${invoice.notes ? `<p style="margin: 16px 0 0 0; color: #1a1a1a;">${invoice.notes}</p>` : ''}
+            <p style="margin: 0; color: #555;">Payment terms: ${escapeHtml(invoice.paymentTerms || 'Net 30')}</p>
+            ${invoice.notes ? `<p style="margin: 16px 0 0 0; color: #1a1a1a;">${escapeHtml(invoice.notes)}</p>` : ''}
+            <p style="margin: 24px 0 0 0;">If you have any questions about this invoice, simply reply to this email.</p>
+            <p style="margin: 16px 0 0 0;">Warm regards,<br>${escapeHtml(workspace.name)}</p>
           </div>
         `;
 
         await sendInvoiceEmail({
           to: invoice.customerEmail,
-          subject: `Invoice ${invoice.number} from ${getWorkspace(user.workspaceId).name}`,
+          subject: `Invoice ${invoice.number} from ${workspace.name}`,
           html,
           attachments: [{
             filename: `invoice-${invoice.number}.pdf`,

@@ -1,313 +1,226 @@
+import { readFileSync } from 'node:fs';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import { formatMoney } from '../../shared/money';
+import type { PDFFont, PDFImage, PDFPage } from 'pdf-lib';
+import { formatMoney, formatQuantity } from '../../shared/money';
 import type { Invoice } from '../../shared/types';
 
 const PAGE_WIDTH = 612; // 8.5in
 const PAGE_HEIGHT = 792; // 11in
 const MARGIN = 54; // 0.75in
+const BOTTOM = 64;
 const INK = rgb(0.06, 0.06, 0.06);
 const INK_MUTED = rgb(0.35, 0.35, 0.35);
 const SURFACE_RAISED = rgb(0.96, 0.96, 0.96);
-const SURFACE_CONTAINER_LOW = rgb(0.92, 0.92, 0.92);
+const RULE = rgb(0.85, 0.85, 0.85);
+const RIGHT = PAGE_WIDTH - MARGIN;
+const QTY_RIGHT = RIGHT - 90;
+const DESC_MAX = QTY_RIGHT - MARGIN - 70;
+const LOGO_PATH = new URL('../../public/brand/mergin-logo.png', import.meta.url);
 
-function money(minor: number): string {
-  return formatMoney(minor, 'USD');
+/** StandardFonts use WinAnsi; map typographic characters and replace anything unencodable. */
+function safe(text: string): string {
+  return text
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .replace(/[\u2013\u2014]/g, '-')
+    .replace(/\u2026/g, '...')
+    .replace(/\u00A0/g, ' ')
+    .replace(/[^\u0020-\u007E\u00A0-\u00FF]/g, '?');
 }
 
-async function drawHeader(page: any, font: any, boldFont: any, workspaceName: string): Promise<void> {
-  const { width } = page.getSize();
-  const fontSize = 14;
-
-  page.drawText('MERGIN', {
-    x: MARGIN,
-    y: PAGE_HEIGHT - MARGIN + 8,
-    size: fontSize,
-    font: boldFont,
-    color: INK,
-  });
-  page.drawText(workspaceName, {
-    x: MARGIN,
-    y: PAGE_HEIGHT - MARGIN - 18,
-    size: 10,
-    font,
-    color: INK_MUTED,
-  });
-
-  page.drawText('Invoice', {
-    x: width - MARGIN - 100,
-    y: PAGE_HEIGHT - MARGIN + 8,
-    size: fontSize,
-    font: boldFont,
-    color: INK,
-  });
+function measure(font: PDFFont, text: string, size: number): number {
+  return font.widthOfTextAtSize(text, size);
 }
 
-async function drawMeta(
-  page: any,
-  font: any,
-  boldFont: any,
-  invoiceNumber: string,
-  issueDate: string,
-  dueDate: string,
-): Promise<number> {
-  const { width } = page.getSize();
-  let y = PAGE_HEIGHT - MARGIN - 55;
-
-  const meta = [
-    { label: 'Invoice', value: invoiceNumber },
-    { label: 'Issued', value: issueDate },
-    { label: 'Due', value: dueDate },
-  ];
-
-  for (const m of meta) {
-    page.drawText(m.label, {
-      x: width - MARGIN - 120,
-      y,
-      size: 10,
-      font: boldFont,
-      color: INK_MUTED,
-    });
-    page.drawText(m.value, {
-      x: width - MARGIN - 40,
-      y,
-      size: 10,
-      font,
-      color: INK,
-    });
-    y -= 16;
-  }
-
-  return y;
+function drawRight(
+  page: PDFPage,
+  font: PDFFont,
+  text: string,
+  rightX: number,
+  y: number,
+  size: number,
+  color = INK,
+): void {
+  const value = safe(text);
+  page.drawText(value, { x: rightX - measure(font, value, size), y, size, font, color });
 }
 
-async function drawBillTo(
-  page: any,
-  font: any,
-  boldFont: any,
-  customerName: string,
-  customerEmail: string,
-  startY: number,
-): Promise<number> {
-  const y = startY - 20;
-
-  page.drawText('Bill to', {
-    x: MARGIN,
-    y,
-    size: 10,
-    font: boldFont,
-    color: INK_MUTED,
-  });
-  page.drawText(customerName, {
-    x: MARGIN,
-    y: y - 16,
-    size: 11,
-    font: boldFont,
-    color: INK,
-  });
-  page.drawText(customerEmail, {
-    x: MARGIN,
-    y: y - 32,
-    size: 10,
-    font,
-    color: INK_MUTED,
-  });
-
-  return y - 52;
-}
-
-async function drawItemsTable(
-  page: any,
-  font: any,
-  boldFont: any,
-  items: { description: string; detail?: string; quantityMilli: number; unitPriceMinor: number; totalMinor: number }[],
-  startY: number,
-): Promise<number> {
-  const { width } = page.getSize();
-  const colX = {
-    item: MARGIN,
-    qty: width - MARGIN - 140,
-    amount: width - MARGIN - 60,
-  };
-
-  let y = startY;
-
-  // Header
-  page.drawRect({
-    x: MARGIN,
-    y: y - 12,
-    width: width - MARGIN * 2,
-    height: 24,
-    color: SURFACE_RAISED,
-  });
-
-  page.drawText('Item', { x: colX.item, y: y - 8, size: 9, font: boldFont, color: INK_MUTED });
-  page.drawText('Qty', { x: colX.qty, y: y - 8, size: 9, font: boldFont, color: INK_MUTED, textAlign: 'right' });
-  page.drawText('Amount', { x: colX.amount, y: y - 8, size: 9, font: boldFont, color: INK_MUTED, textAlign: 'right' });
-
-  y -= 28;
-
-  for (const item of items) {
-    const qty = (item.quantityMilli / 1000).toFixed(3).replace(/\.?0+$/, '');
-    const amount = money(item.totalMinor);
-
-    page.drawText(item.description, {
-      x: colX.item,
-      y: y - 6,
-      size: 9.5,
-      font,
-      color: INK,
-      maxWidth: colX.qty - colX.item - 10,
-    });
-    if (item.detail) {
-      page.drawText(item.detail, {
-        x: colX.item,
-        y: y - 16,
-        size: 8,
-        font,
-        color: INK_MUTED,
-        maxWidth: colX.qty - colX.item - 10,
-      });
+function wrap(font: PDFFont, text: string, size: number, maxWidth: number): string[] {
+  const words = safe(text).split(/\s+/).filter(Boolean);
+  const lines: string[] = [];
+  let line = '';
+  for (const word of words) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && measure(font, next, size) > maxWidth) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = next;
     }
-    page.drawText(qty, {
-      x: colX.qty,
-      y: y - 6,
-      size: 9.5,
-      font,
-      color: INK,
-      textAlign: 'right',
-    });
-    page.drawText(amount, {
-      x: colX.amount,
-      y: y - 6,
-      size: 9.5,
-      font,
-      color: INK,
-      textAlign: 'right',
-    });
-
-    y -= item.detail ? 32 : 22;
-    // Draw row divider
-    page.drawLine({
-      start: { x: MARGIN, x2: width - MARGIN, y, y2: y },
-      thickness: 0.5,
-      color: SURFACE_CONTAINER_LOW,
-    });
-    y -= 2;
   }
-
-  return y;
+  if (line) lines.push(line);
+  return lines.length > 0 ? lines : [''];
 }
 
-async function drawTotals(
-  page: any,
-  font: any,
-  boldFont: any,
-  subtotalMinor: number,
-  taxMinor: number,
-  discountMinor: number,
-  totalMinor: number,
-  startY: number,
-): Promise<number> {
-  const { width } = page.getSize();
-  let y = startY - 10;
-
-  const rows = [
-    { label: 'Subtotal', value: money(subtotalMinor) },
-    { label: 'Tax', value: money(taxMinor) },
-    { label: 'Discount', value: `−${money(discountMinor)}` },
-    { label: 'Total due', value: money(totalMinor), bold: true },
-  ];
-
-  for (const row of rows) {
-    page.drawText(row.label, {
-      x: width - MARGIN - 100,
-      y,
-      size: row.bold ? 10 : 9,
-      font: row.bold ? boldFont : font,
-      color: row.bold ? INK : INK_MUTED,
-    });
-    page.drawText(row.value, {
-      x: width - MARGIN - 30,
-      y,
-      size: row.bold ? 11 : 9,
-      font: row.bold ? boldFont : font,
-      color: row.bold ? INK : INK_MUTED,
-      textAlign: 'right',
-    });
-    y -= 18;
-  }
-
-  return y - 12;
+function drawHeader(
+  page: PDFPage,
+  font: PDFFont,
+  bold: PDFFont,
+  workspaceName: string,
+  logo: PDFImage,
+): number {
+  const logoHeight = 24;
+  const logoWidth = (logo.width / logo.height) * logoHeight;
+  page.drawImage(logo, {
+    x: MARGIN,
+    y: PAGE_HEIGHT - MARGIN - logoHeight + 6,
+    width: logoWidth,
+    height: logoHeight,
+  });
+  page.drawText(safe(workspaceName), {
+    x: MARGIN,
+    y: PAGE_HEIGHT - MARGIN - logoHeight - 10,
+    size: 9,
+    font,
+    color: INK_MUTED,
+  });
+  drawRight(page, bold, 'INVOICE', RIGHT, PAGE_HEIGHT - MARGIN - logoHeight + 6, 14, INK);
+  page.drawLine({
+    start: { x: MARGIN, y: PAGE_HEIGHT - MARGIN - logoHeight - 22 },
+    end: { x: RIGHT, y: PAGE_HEIGHT - MARGIN - logoHeight - 22 },
+    thickness: 0.75,
+    color: RULE,
+  });
+  return PAGE_HEIGHT - MARGIN - logoHeight - 46;
 }
 
-async function drawNotes(page: any, font: any, notes: string, paymentTerms: string, startY: number): Promise<void> {
-  if (!notes && !paymentTerms) return;
-  let y = startY - 10;
+function drawTableHeader(page: PDFPage, bold: PDFFont, y: number): number {
+  page.drawRectangle({ x: MARGIN, y: y - 5, width: RIGHT - MARGIN, height: 20, color: SURFACE_RAISED });
+  page.drawText('ITEM', { x: MARGIN + 8, y: y, size: 8, font: bold, color: INK_MUTED });
+  drawRight(page, bold, 'QTY', QTY_RIGHT, y, 8, INK_MUTED);
+  drawRight(page, bold, 'AMOUNT', RIGHT, y, 8, INK_MUTED);
+  return y - 24;
+}
 
-  if (notes) {
-    page.drawText('Notes', {
-      x: MARGIN,
-      y,
-      size: 10,
-      font: undefined as any,
-      color: INK_MUTED,
-    });
-    page.drawText(notes, {
-      x: MARGIN,
-      y: y - 16,
-      size: 9.5,
-      font,
-      color: INK,
-      maxWidth: PAGE_HEIGHT - MARGIN * 2 - 100,
-    });
-    y -= 32;
-  }
-  if (paymentTerms) {
-    page.drawText('Payment terms', {
-      x: MARGIN,
-      y,
-      size: 10,
-      font: undefined as any,
-      color: INK_MUTED,
-    });
-    page.drawText(paymentTerms, {
-      x: MARGIN,
-      y: y - 16,
-      size: 9.5,
-      font,
-      color: INK,
-    });
-  }
+function freshPage(doc: PDFDocument, font: PDFFont, bold: PDFFont, workspaceName: string, logo: PDFImage) {
+  const page = doc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+  return { page, y: drawHeader(page, font, bold, workspaceName, logo) };
 }
 
 /** Generates a PDF invoice buffer from invoice data. */
 export async function generateInvoicePdf(invoice: Invoice, workspaceName: string): Promise<Buffer> {
-  const pdfDoc = await PDFDocument.create();
-  const page = pdfDoc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
-  const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-  const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+  const doc = await PDFDocument.create();
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const logo = await doc.embedPng(readFileSync(LOGO_PATH));
 
-  await drawHeader(page, font, boldFont, workspaceName);
+  let page = doc.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
+  let y = drawHeader(page, font, bold, workspaceName, logo);
 
-  const metaY = await drawMeta(page, font, boldFont, invoice.number, invoice.issueDate, invoice.dueDate);
+  // Invoice meta (right) and bill-to (left) share the same top line.
+  const metaRows: Array<[string, string]> = [
+    ['Invoice', invoice.number],
+    ['Issued', invoice.issueDate],
+    ['Due', invoice.dueDate],
+  ];
+  metaRows.forEach(([label, value], index) => {
+    drawRight(page, font, label, RIGHT - 80, y - index * 16, 9, INK_MUTED);
+    drawRight(page, font, value, RIGHT, y - index * 16, 9, INK);
+  });
 
-  const billToY = await drawBillTo(page, font, boldFont, invoice.customerName, invoice.customerEmail, metaY);
-
-  const itemsY = await drawItemsTable(page, font, boldFont, invoice.items, billToY);
-
-  const totalsY = await drawTotals(
-    page,
+  page.drawText('BILL TO', { x: MARGIN, y, size: 8, font: bold, color: INK_MUTED });
+  page.drawText(safe(invoice.customerName), {
+    x: MARGIN,
+    y: y - 16,
+    size: 11,
+    font: bold,
+    color: INK,
+    maxWidth: 220,
+  });
+  page.drawText(safe(invoice.customerEmail), {
+    x: MARGIN,
+    y: y - 32,
+    size: 9,
     font,
-    boldFont,
-    invoice.subtotalMinor,
-    invoice.taxMinor,
-    invoice.discountMinor,
-    invoice.totalMinor,
-    itemsY,
-  );
+    color: INK_MUTED,
+    maxWidth: 220,
+  });
 
-  await drawNotes(page, font, invoice.notes, invoice.paymentTerms, totalsY);
+  y = drawTableHeader(page, bold, y - 64);
 
-  const pdfBytes = await pdfDoc.save();
-  return Buffer.from(pdfBytes);
+  for (const item of invoice.items) {
+    const descLines = wrap(font, item.description, 9.5, DESC_MAX);
+    const detailLines = item.detail ? wrap(font, item.detail, 8, DESC_MAX) : [];
+    const rowHeight = descLines.length * 12 + detailLines.length * 10 + 12;
+
+    if (y - rowHeight < BOTTOM) {
+      ({ page, y } = freshPage(doc, font, bold, workspaceName, logo));
+      y = drawTableHeader(page, bold, y);
+    }
+
+    let lineY = y;
+    for (const line of descLines) {
+      page.drawText(line, { x: MARGIN + 8, y: lineY, size: 9.5, font, color: INK });
+      lineY -= 12;
+    }
+    for (const line of detailLines) {
+      page.drawText(line, { x: MARGIN + 8, y: lineY, size: 8, font, color: INK_MUTED });
+      lineY -= 10;
+    }
+
+    drawRight(page, font, formatQuantity(item.quantityMilli), QTY_RIGHT, y, 9.5, INK);
+    drawRight(page, font, formatMoney(item.totalMinor, invoice.currency), RIGHT, y, 9.5, INK);
+
+    y -= rowHeight;
+    page.drawLine({
+      start: { x: MARGIN, y: y + 4 },
+      end: { x: RIGHT, y: y + 4 },
+      thickness: 0.5,
+      color: RULE,
+    });
+  }
+
+  // Totals
+  const totalRows: Array<[string, string, boolean]> = [
+    ['Subtotal', formatMoney(invoice.subtotalMinor, invoice.currency), false],
+    ['Tax', formatMoney(invoice.taxMinor, invoice.currency), false],
+  ];
+  if (invoice.discountMinor > 0) {
+    totalRows.push(['Discount', `-${formatMoney(invoice.discountMinor, invoice.currency)}`, false]);
+  }
+  totalRows.push(['Total due', formatMoney(invoice.totalMinor, invoice.currency), true]);
+
+  y -= 16;
+  if (y - totalRows.length * 18 < BOTTOM) {
+    ({ page, y } = freshPage(doc, font, bold, workspaceName, logo));
+  }
+  for (const [label, value, strong] of totalRows) {
+    const rowFont = strong ? bold : font;
+    drawRight(page, rowFont, label, RIGHT - 90, y, strong ? 10 : 9, strong ? INK : INK_MUTED);
+    drawRight(page, rowFont, value, RIGHT, y, strong ? 11 : 9, strong ? INK : INK_MUTED);
+    y -= 18;
+  }
+
+  // Notes and payment terms
+  const blocks: Array<[string, string]> = [];
+  if (invoice.notes) blocks.push(['NOTES', invoice.notes]);
+  if (invoice.paymentTerms) blocks.push(['PAYMENT TERMS', invoice.paymentTerms]);
+
+  y -= 12;
+  for (const [label, body] of blocks) {
+    const lines = wrap(font, body, 9, RIGHT - MARGIN);
+    const height = lines.length * 12 + 24;
+    if (y - height < BOTTOM) {
+      ({ page, y } = freshPage(doc, font, bold, workspaceName, logo));
+    }
+    page.drawText(label, { x: MARGIN, y, size: 8, font: bold, color: INK_MUTED });
+    y -= 16;
+    for (const line of lines) {
+      page.drawText(line, { x: MARGIN, y, size: 9, font, color: INK });
+      y -= 12;
+    }
+    y -= 12;
+  }
+
+  return Buffer.from(await doc.save());
 }

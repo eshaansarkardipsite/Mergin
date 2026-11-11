@@ -5,7 +5,7 @@ import { addDays, isoToday } from '../../shared/dates';
 import { computeInvoiceTotals, formatMoney, parseMoneyToMinor, parseQuantityToMilli } from '../../shared/money';
 import { api, errorMessage } from '../lib/api';
 import { useApp, InlineAlert } from '../context/AppContext';
-import { BackLink, Icon, Spinner } from '../components/ui';
+import { BackLink, Icon, Logo, Spinner } from '../components/ui';
 
 interface LineItemDraft {
   key: number;
@@ -22,7 +22,7 @@ function blankItem(key: number): LineItemDraft {
 }
 
 export default function InvoiceNew() {
-  const { toast } = useApp();
+  const { toast, user } = useApp();
   const navigate = useNavigate();
   const today = isoToday();
 
@@ -86,6 +86,12 @@ export default function InvoiceNew() {
       setError('The due date cannot be earlier than the issue date.');
       return;
     }
+    const parsedTaxPercent = taxPercent.trim() === '' ? 0 : Number(taxPercent);
+    if (!Number.isFinite(parsedTaxPercent) || parsedTaxPercent < 0 || parsedTaxPercent > 100) {
+      setError('Tax rate must be a number between 0 and 100.');
+      return;
+    }
+    const taxRateBps = Math.round(parsedTaxPercent * 100);
 
     setSaving(mode);
     try {
@@ -95,7 +101,7 @@ export default function InvoiceNew() {
         number: number.trim() || undefined,
         issueDate,
         dueDate,
-        taxRateBps: Math.max(0, Math.round((Number.parseFloat(taxPercent) || 0) * 100)),
+        taxRateBps,
         discountMinor: Math.max(0, parseMoneyToMinor(discount)),
         notes: notes.trim(),
         paymentTerms: paymentTerms.trim(),
@@ -363,6 +369,10 @@ export default function InvoiceNew() {
                     <input
                       id="tax-rate"
                       className="h-7 w-14 rounded-md border border-stroke-line bg-surface-raised px-1.5 text-right text-label-sm tabular-nums focus:border-ink-solid focus:outline-none"
+                      type="number"
+                      min="0"
+                      max="100"
+                      step="0.01"
                       inputMode="decimal"
                       value={taxPercent}
                       onChange={(event) => setTaxPercent(event.target.value)}
@@ -446,8 +456,8 @@ export default function InvoiceNew() {
             <div className="p-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-headline-sm tracking-tight text-ink-solid">MERGIN</p>
-                  <p className="mt-0.5 text-caption-micro text-ink-muted">Northstar Creative</p>
+                  <Logo height={22} />
+                  <p className="mt-1 text-caption-micro text-ink-muted">{user?.workspaceName ?? 'Your workspace'}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-label-md font-semibold text-ink-solid">{number.trim() || 'INV-XXXX'}</p>
