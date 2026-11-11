@@ -217,6 +217,13 @@ export function AppShell() {
         </div>
       ) : null}
 
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-ink-solid focus:px-4 focus:py-2 focus:text-label-md focus:text-on-primary"
+      >
+        Skip to content
+      </a>
+
       <div className="app-content lg:pl-[240px]">
         <header className="app-topbar fixed left-0 right-0 top-0 z-40 h-16 border-b border-stroke-line bg-surface-raised/90 backdrop-blur-md lg:left-[240px]">
           <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center gap-3 px-4 md:px-8">
@@ -351,7 +358,7 @@ export function AppShell() {
           </div>
         </header>
 
-        <main className="app-main min-h-screen pt-16">
+        <main id="main-content" tabIndex={-1} className="app-main min-h-screen pt-16">
           <div className="mx-auto w-full max-w-[1440px] px-4 py-6 md:px-8 md:py-8">
             <Outlet />
           </div>
