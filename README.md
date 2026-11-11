@@ -1,6 +1,6 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/brand/mergin-logo-white.png">
+    <source media="(prefers-color-scheme: dark)" srcset="public/brand/Logo White.png">
     <img src="public/brand/mergin-logo.png" alt="MERGIN" width="280">
   </picture>
 </p>
