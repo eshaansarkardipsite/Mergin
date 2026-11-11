@@ -12,7 +12,7 @@ import { copilotRouter } from './routes/copilot';
 import { settingsRouter, onboardingRouter } from './routes/settings';
 import { webhookRouter } from './routes/webhooks';
 import { config } from './config';
-import { apiLimiter, securityHeaders } from './security';
+import { apiLimiter, sameOriginOnly, securityHeaders } from './security';
 
 export function createApp(): express.Express {
   const app = express();
@@ -20,7 +20,12 @@ export function createApp(): express.Express {
   app.set('trust proxy', config.trustProxy);
 
   app.use(securityHeaders);
+  app.use('/api', (_req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+  });
   app.use('/api', apiLimiter);
+  app.use('/api', sameOriginOnly);
   app.use(
     express.json({
       limit: '1mb',

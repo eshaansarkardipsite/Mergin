@@ -1,3 +1,4 @@
+import type { NextFunction, Request, Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
 import { config } from './config';
@@ -33,6 +34,18 @@ export const apiLimiter = rateLimit({
   message: { error: 'Too many requests. Try again in a few minutes.' },
 });
 // shortcut: in-memory counters are per process; move to a shared store before running more than one API instance.
+
+const UNSAFE_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
+
+/** Block browser cross-origin writes. Requests without Origin (webhooks, CLI) are not browser CSRF. */
+export function sameOriginOnly(req: Request, res: Response, next: NextFunction): void {
+  const origin = req.headers.origin;
+  if (UNSAFE_METHODS.has(req.method) && origin && origin !== config.appBaseUrl) {
+    res.status(403).json({ error: 'Cross-origin request blocked.' });
+    return;
+  }
+  next();
+}
 
 /** Only failed sign-in attempts count, so normal use never locks a workspace out. */
 export const authLimiter = rateLimit({

@@ -18,6 +18,28 @@ describe('security headers', () => {
     expect(response.headers['content-security-policy']).toContain("frame-ancestors 'none'");
     expect(response.headers['content-security-policy']).toContain("default-src 'self'");
     expect(response.headers['content-security-policy']).toContain('https://fonts.gstatic.com');
+    expect(response.headers['cache-control']).toBe('no-store');
+  });
+});
+
+describe('cross-origin request protection', () => {
+  it('blocks unsafe browser requests from another origin', async () => {
+    const response = await request(createApp())
+      .post('/api/invoices')
+      .set('Origin', 'https://evil.example')
+      .send({});
+
+    expect(response.status).toBe(403);
+    expect(response.body.error).toMatch(/cross-origin/i);
+  });
+
+  it('lets same-origin requests reach the auth guard', async () => {
+    const response = await request(createApp())
+      .post('/api/invoices')
+      .set('Origin', config.appBaseUrl)
+      .send({});
+
+    expect(response.status).toBe(401);
   });
 });
 

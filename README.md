@@ -106,8 +106,9 @@ cp .env.example .env
 | `GEMINI_API_KEY` / `GEMINI_MODEL` | Legacy Copilot provider, kept until the OpenRouter migration lands |
 
 Security groundwork is active in every environment: security headers and CSP, a global API rate limit, a stricter
-limit on failed sign-in attempts, and a startup guard that refuses to run production without `SESSION_SECRET` and
-`APP_BASE_URL`.
+limit on failed sign-in attempts, SameSite session cookies, a same-origin guard on state-changing API calls,
+`no-store` API caching, CSV formula-injection escaping, and a startup guard that refuses to run production without
+`SESSION_SECRET` and `APP_BASE_URL`.
 
 ## Identity setup
 

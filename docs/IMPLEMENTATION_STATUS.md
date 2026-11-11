@@ -34,7 +34,8 @@ The archived exports in `Stitch Screens/` have been rebranded from ZELVO to MERG
 - `node:sqlite` persistence with a typed repository layer (`server/db/repo.ts`) and explicit schema.
 - Supabase-backed email/password sign-in, Google OAuth through Supabase, and PayPal "Log in with PayPal" SSO.
 - Signed HTTP-only session cookie (7 days), one-click demo entry, seeded demo credentials.
-- Security headers with a Google Fonts-aware CSP, API rate limiting, stricter failed-sign-in limiting, and a
+- Security headers with a Google Fonts-aware CSP, API rate limiting, stricter failed-sign-in limiting, SameSite
+  session cookies, a same-origin write guard, `no-store` API responses, CSV formula-injection escaping, and a
   production startup guard for `SESSION_SECRET` / `APP_BASE_URL`.
 - Coherent seed data; dashboard totals reconcile exactly (see README).
 

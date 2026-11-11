@@ -28,7 +28,4 @@ export function asyncRoute(
   };
 }
 
-export function csvEscape(value: string | number | null): string {
-  const text = value == null ? '' : String(value);
-  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
-}
+export { escapeCsvCell as csvEscape } from '../shared/csv';

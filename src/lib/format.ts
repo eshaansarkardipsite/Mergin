@@ -1,3 +1,4 @@
+import { escapeCsvCell } from '../../shared/csv';
 import { formatDate, daysBetween, isoToday } from '../../shared/dates';
 import type { InvoiceStatus, SentinelStatus } from '../../shared/types';
 
@@ -84,11 +85,7 @@ export function dueLabel(dueDate: string, status: string): string {
 }
 
 export function downloadCsv(filename: string, rows: (string | number | null | undefined)[][]): void {
-  const escape = (value: string | number | null | undefined) => {
-    const text = value == null ? '' : String(value);
-    return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
-  };
-  const csv = rows.map((row) => row.map(escape).join(',')).join('\r\n');
+  const csv = rows.map((row) => row.map(escapeCsvCell).join(',')).join('\r\n');
   const blob = new Blob([`\ufeff${csv}`], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
