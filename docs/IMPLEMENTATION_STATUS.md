@@ -139,7 +139,7 @@ minor units into decimals at the boundary only.
 | `npm run db:reset` | Complete; totals reconcile |
 | `npm run typecheck` | Passing |
 | `npm run lint` | Passing |
-| `npm test` | 38 tests in 7 files passing |
+| `npm test` | 52 tests in 11 files passing |
 | `npm run build` | Passing |
 | Browser flows | Sign-in, dashboard, invoices, payment, transactions, expenses, budgets, cash flow, Sentinel, Copilot, settings, reset |
 
@@ -150,8 +150,12 @@ Vitest suites:
 - `tests/paypal.test.ts` — status mapping, reconciliation, signature verification
 - `tests/webhook.test.ts` — event extraction, deduplication, status handling
 - `tests/budgets.test.ts` — utilisation thresholds
-- `tests/security.test.ts` — security headers, provider readiness flags
+- `tests/security.test.ts` — security headers, origin guard, provider readiness flags, health check
 - `tests/auth.test.ts` — identity provisioning, Supabase password/PKCE exchange, PayPal profile mapping
+- `tests/csv.test.ts` — formula-injection escaping
+- `tests/email.test.ts` — email header sanitization
+- `tests/invoices.test.ts` — invoice API validation
+- `tests/pdf.test.ts` — PDF generation with Unicode and control characters
 
 ## Production foundation (Phase 1)
 
@@ -164,8 +168,8 @@ Phase 1 prepares the production path without changing the demo sign-in flow:
 - README documents Supabase, Google OAuth, and PayPal Sandbox credential setup, including the webhook endpoint
   `<origin>/api/paypal/webhook` and required invoice events.
 
-Phase 2 (current) adds Supabase-verified email/password, Google OAuth, and PayPal SSO. Passkeys, self-service
-sign-up, and password recovery remain for the next auth increment.
+Phase 2 added Supabase-verified email/password, Google OAuth, PayPal SSO, passkeys, self-service sign-up, and
+password recovery.
 
 ## Branding audit
 
