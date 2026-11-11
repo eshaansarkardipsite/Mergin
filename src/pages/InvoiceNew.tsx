@@ -431,8 +431,9 @@ export default function InvoiceNew() {
             </button>
           </div>
           <p className="text-right text-caption-micro text-ink-muted">
-            “Save and send” creates the draft first. In demo mode it is marked sent with no email; with PayPal configured, a real
-            Sandbox invoice is created.
+            “Save and send” creates the draft first. With SMTP configured, the invoice is rendered to PDF and emailed to the
+            billing address. With PayPal configured, a real PayPal invoice is created. Otherwise it is marked sent in demo
+            mode with no email.
           </p>
         </div>
 

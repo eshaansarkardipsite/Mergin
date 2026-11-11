@@ -85,6 +85,16 @@ minor units into decimals at the boundary only.
 - Missing credentials or webhook ID produce truthful `409`/`503` and clear UI copy. A labelled local demo payment is
   available and moves no real funds.
 
+### Email (invoice PDF delivery)
+
+- SMTP configuration via `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`.
+- `sendInvoiceEmail()` uses nodemailer; `generateInvoicePdf()` uses pdf-lib for server-side PDF generation.
+- Clicking “Save and send” on an invoice renders it to PDF and emails it to the customer’s billing address with an HTML
+  body and PDF attachment.
+- Falls back to PayPal (if configured) or demo mode when SMTP is not set.
+- Demo mode never sends email.
+
+
 ### Gemini
 
 - `@google/genai` is server-only.

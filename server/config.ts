@@ -40,6 +40,14 @@ export const config = {
     anonKey: env.SUPABASE_ANON_KEY?.trim() ?? '',
     serviceRoleKey: env.SUPABASE_SERVICE_ROLE_KEY?.trim() ?? '',
   },
+  email: {
+    smtpHost: env.SMTP_HOST?.trim() ?? '',
+    smtpPort: Number(env.SMTP_PORT ?? 587),
+    smtpSecure: env.SMTP_SECURE === 'true',
+    smtpUser: env.SMTP_USER?.trim() ?? '',
+    smtpPass: env.SMTP_PASS?.trim() ?? '',
+    smtpFrom: env.SMTP_FROM?.trim() ?? '',
+  },
   google: {
     clientId: env.GOOGLE_CLIENT_ID?.trim() ?? '',
     clientSecret: env.GOOGLE_CLIENT_SECRET?.trim() ?? '',
@@ -82,6 +90,10 @@ export function googleAuthConfigured(): boolean {
 
 export function openrouterConfigured(): boolean {
   return Boolean(config.openrouter.apiKey);
+}
+
+export function emailConfigured(): boolean {
+  return Boolean(config.email.smtpHost && config.email.smtpFrom);
 }
 
 export function paypalApiBase(): string {

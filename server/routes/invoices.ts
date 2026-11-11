@@ -12,7 +12,9 @@ import {
   updateDraftInvoice,
 } from '../db/repo';
 import { asyncRoute, notFound, parseBody } from '../http';
-import { config, paypalConfigured } from '../config';
+import { config, emailConfigured, paypalConfigured } from '../config';
+import { generateInvoicePdf } from '../services/invoicePdf';
+import { sendInvoiceEmail } from '../services/email';
 import {
   cancelPaypalInvoice,
   createPaypalInvoice,
@@ -103,7 +105,7 @@ invoicesRouter.post(
       return;
     }
 
-    if (!paypalConfigured()) {
+    if (!paypalConfigured() && !emailConfigured()) {
       setInvoicePaypal(invoice.id, {
         status: 'sent',
         paypalStatus: 'DEMO_ONLY',
@@ -118,6 +120,86 @@ invoicesRouter.post(
       return;
     }
 
+    // Generate PDF and email if SMTP is configured
+    if (emailConfigured()) {
+      try {
+        const pdf = await generateInvoicePdf(invoice, getWorkspace(user.workspaceId).name);
+        const html = `
+          <div style="font-family: Inter, sans-serif; color: #1a1a1a; line-height: 1.5;">
+            <h2 style="margin: 0 0 8px 0; font-size: 16px;">Invoice ${invoice.number}</h2>
+            <p style="margin: 0 0 16px 0; color: #555;">From ${getWorkspace(user.workspaceId).name}</p>
+            <table style="border-collapse: collapse; width: 100%; margin-bottom: 24px;">
+              <thead>
+                <tr style="background: #f0f0f0;">
+                  <th style="text-align: left; padding: 8px; border: 1px solid #ccc;">Item</th>
+                  <th style="text-align: right; padding: 8px; border: 1px solid #ccc;">Qty</th>
+                  <th style="text-align: right; padding: 8px; border: 1px solid #ccc;">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${invoice.items.map((item) => `
+                  <tr>
+                    <td style="padding: 8px; border: 1px solid #ccc;">${item.description}${item.detail ? '<br><span style="color:#555; font-size:0.9em;">' + item.detail + '</span>' : ''}</td>
+                    <td style="padding: 8px; border: 1px solid #ccc; text-align: right;">${(item.quantityMilli / 1000).toFixed(3)}</td>
+                    <td style="padding: 8px; border: 1px solid #ccc; text-align: right;">$${(item.totalMinor / 100).toFixed(2)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+            <table style="border-collapse: collapse; width: 100%; margin-bottom: 24px;">
+              <tr>
+                <td style="text-align: right; padding: 6px;">Subtotal</td>
+                <td style="text-align: right; padding: 6px;">$${(invoice.subtotalMinor / 100).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td style="text-align: right; padding: 6px;">Tax</td>
+                <td style="text-align: right; padding: 6px;">$${(invoice.taxMinor / 100).toFixed(2)}</td>
+              </tr>
+              ${invoice.discountMinor > 0 ? `<tr>
+                <td style="text-align: right; padding: 6px;">Discount</td>
+                <td style="text-align: right; padding: 6px;">-$${(invoice.discountMinor / 100).toFixed(2)}</td>
+              </tr>` : ''}
+              <tr style="border-top: 2px solid #1a1a1a;">
+                <td style="text-align: right; padding: 6px; font-weight: bold;">Total due</td>
+                <td style="text-align: right; padding: 6px; font-weight: bold;">$${(invoice.totalMinor / 100).toFixed(2)}</td>
+              </tr>
+            </table>
+            <p style="margin: 0; color: #555;">Payment terms: ${invoice.paymentTerms || 'Net 30'}</p>
+            ${invoice.notes ? `<p style="margin: 16px 0 0 0; color: #1a1a1a;">${invoice.notes}</p>` : ''}
+          </div>
+        `;
+
+        await sendInvoiceEmail({
+          to: invoice.customerEmail,
+          subject: `Invoice ${invoice.number} from ${getWorkspace(user.workspaceId).name}`,
+          html,
+          attachments: [{
+            filename: `invoice-${invoice.number}.pdf`,
+            content: pdf,
+            contentType: 'application/pdf',
+          }],
+        });
+
+        setInvoicePaypal(invoice.id, {
+          status: 'sent',
+          paypalStatus: 'EMAILED',
+          sentAt: new Date().toISOString(),
+        });
+        addAuditEvent(user.workspaceId, 'invoice.sent_email', user.name, `Emailed ${invoice.number} as PDF to ${invoice.customerEmail}`);
+        res.json({
+          invoice: getInvoice(user.workspaceId, invoice.id),
+          mode: 'email',
+          message: `Invoice ${invoice.number} emailed as PDF to ${invoice.customerEmail}.`,
+        });
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Email send failed.';
+        res.status(502).json({ error: `Invoice email failed: ${message}` });
+        return;
+      }
+    }
+
+    // PayPal path (existing)
     try {
       let paypalInvoiceId = invoice.paypalInvoiceId;
       let approvalUrl = invoice.paypalApprovalUrl;

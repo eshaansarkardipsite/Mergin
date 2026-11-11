@@ -171,6 +171,15 @@ Localhost webhooks are not reachable from PayPal. Use a tunnel (for example `ngr
 - Without credentials or a webhook ID, the relevant endpoints return truthful `409`/`503` responses and the UI
   explains what is missing. A clearly labelled **demo payment** can be recorded locally; no real funds move.
 
+### Email behaviour
+
+- When `SMTP_HOST` and `SMTP_FROM` are set, clicking “Save and send” on an invoice renders it to a formatted PDF and
+  emails it to the customer’s billing address, with the invoice HTML body and PDF attachment.
+- The email uses your SMTP server (host, port, secure, user, pass). Set `SMTP_SECURE=true` for TLS on connect
+  (port 465) or leave false for STARTTLS (port 587).
+- Without SMTP configured, invoices fall back to PayPal (if configured) or demo mode (marked sent, no email).
+- Demo mode never sends email and never creates a PayPal invoice.
+
 ### Gemini behaviour
 
 - `@google/genai` is imported only on the server.
