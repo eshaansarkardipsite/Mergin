@@ -17,6 +17,8 @@ interface LineItemDraft {
 
 let nextKey = 2;
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 function blankItem(key: number): LineItemDraft {
   return { key, description: '', detail: '', quantity: '1', unitPrice: '' };
 }
@@ -67,7 +69,7 @@ export default function InvoiceNew() {
       setError('Enter a client name.');
       return;
     }
-    if (!customerEmail.trim() || !customerEmail.includes('@')) {
+    if (!EMAIL_PATTERN.test(customerEmail.trim())) {
       setError('Enter a valid billing email.');
       return;
     }

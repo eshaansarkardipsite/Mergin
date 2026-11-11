@@ -9,3 +9,10 @@ dist/
 coverage/
 .DS_Store
 *.log
+
+# Local agent tooling and captures
+.opencode/
+.playwright-mcp/
+.claude/
+.cursor/
+AGENTS.md

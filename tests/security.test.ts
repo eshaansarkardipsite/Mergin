@@ -33,6 +33,20 @@ afterEach(() => {
   Object.assign(config.openrouter, original.openrouter);
 });
 
+describe('authentication guard', () => {
+  it('rejects protected API requests without a session', async () => {
+    const response = await request(createApp()).get('/api/invoices');
+    expect(response.status).toBe(401);
+  });
+
+  it('rejects a tampered session cookie', async () => {
+    const response = await request(createApp())
+      .get('/api/invoices')
+      .set('Cookie', 'mergin_session=forged.signature');
+    expect(response.status).toBe(401);
+  });
+});
+
 describe('provider readiness flags', () => {
   it('requires a Supabase URL and anon key', () => {
     config.supabase.url = '';
