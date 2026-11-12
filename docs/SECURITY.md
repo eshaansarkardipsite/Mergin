@@ -15,7 +15,7 @@ page lists what the app enforces and what the operator must provide.
 
 - Passwords are stored as scrypt hashes with a per-user salt.
 - Session cookies are HMAC-signed, `HttpOnly`, `SameSite=Lax`, and `Secure` when `NODE_ENV=production`.
-- Unsafe API methods reject browser requests whose `Origin` does not match `APP_BASE_URL`.
+- Unsafe API methods reject browser requests whose `Origin` matches neither `APP_BASE_URL` nor the request's own `Host`.
 - Protected routes call `requireAuth`; the public payment route exposes one invoice by random token only.
 - Failed sign-in attempts are rate limited. API responses are `Cache-Control: no-store`.
 

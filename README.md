@@ -372,7 +372,7 @@ npm test
 npm run build
 ```
 
-The suite contains **53 tests across 11 files**, covering integer money math, CSV escaping, Sentinel detection,
+The suite contains **55 tests across 11 files**, covering integer money math, CSV escaping, Sentinel detection,
 PayPal status mapping and signature verification, webhook idempotency and fail-closed behaviour, budget utilisation,
 security headers and origin checks, auth provisioning, invoice API validation, email header sanitization, and PDF
 generation with Unicode and control characters.

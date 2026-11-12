@@ -38,12 +38,16 @@ export const apiLimiter = rateLimit({
 const UNSAFE_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
 const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
 
-/** Development may use any local port (5173, 5174, …); production only accepts the configured origin. */
-function originAllowed(origin: string): boolean {
+/**
+ * Accept the configured origin, the request's own host (Render serves one app on both its
+ * onrender.com and onrender.app URLs), and any loopback port in development.
+ */
+function originAllowed(origin: string, req: Request): boolean {
   if (origin === config.appBaseUrl) return true;
-  if (config.isProduction) return false;
   try {
     const url = new URL(origin);
+    if (url.host === req.get('host')) return true;
+    if (config.isProduction) return false;
     return (url.protocol === 'http:' || url.protocol === 'https:') && LOOPBACK_HOSTS.has(url.hostname);
   } catch {
     return false;
@@ -53,7 +57,7 @@ function originAllowed(origin: string): boolean {
 /** Block browser cross-origin writes. Requests without Origin (webhooks, CLI) are not browser CSRF. */
 export function sameOriginOnly(req: Request, res: Response, next: NextFunction): void {
   const origin = req.headers.origin;
-  if (UNSAFE_METHODS.has(req.method) && origin && !originAllowed(origin)) {
+  if (UNSAFE_METHODS.has(req.method) && origin && !originAllowed(origin, req)) {
     res.status(403).json({ error: 'Cross-origin request blocked.' });
     return;
   }

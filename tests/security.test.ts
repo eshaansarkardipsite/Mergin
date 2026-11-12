@@ -56,6 +56,26 @@ describe('cross-origin request protection', () => {
 
     expect(response.status).toBe(401);
   });
+
+  it('lets the request host through when it differs from APP_BASE_URL', async () => {
+    const response = await request(createApp())
+      .post('/api/invoices')
+      .set('Host', 'mergin.onrender.com')
+      .set('Origin', 'https://mergin.onrender.com')
+      .send({});
+
+    expect(response.status).toBe(401);
+  });
+
+  it('still blocks another origin on an aliased host', async () => {
+    const response = await request(createApp())
+      .post('/api/invoices')
+      .set('Host', 'mergin.onrender.com')
+      .set('Origin', 'https://evil.example')
+      .send({});
+
+    expect(response.status).toBe(403);
+  });
 });
 
 const original = {
