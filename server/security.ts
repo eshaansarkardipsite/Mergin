@@ -36,11 +36,24 @@ export const apiLimiter = rateLimit({
 // shortcut: in-memory counters are per process; move to a shared store before running more than one API instance.
 
 const UNSAFE_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
+const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '[::1]']);
+
+/** Development may use any local port (5173, 5174, …); production only accepts the configured origin. */
+function originAllowed(origin: string): boolean {
+  if (origin === config.appBaseUrl) return true;
+  if (config.isProduction) return false;
+  try {
+    const url = new URL(origin);
+    return (url.protocol === 'http:' || url.protocol === 'https:') && LOOPBACK_HOSTS.has(url.hostname);
+  } catch {
+    return false;
+  }
+}
 
 /** Block browser cross-origin writes. Requests without Origin (webhooks, CLI) are not browser CSRF. */
 export function sameOriginOnly(req: Request, res: Response, next: NextFunction): void {
   const origin = req.headers.origin;
-  if (UNSAFE_METHODS.has(req.method) && origin && origin !== config.appBaseUrl) {
+  if (UNSAFE_METHODS.has(req.method) && origin && !originAllowed(origin)) {
     res.status(403).json({ error: 'Cross-origin request blocked.' });
     return;
   }

@@ -47,6 +47,15 @@ describe('cross-origin request protection', () => {
 
     expect(response.status).toBe(401);
   });
+
+  it('lets localhost on another development port reach the auth guard', async () => {
+    const response = await request(createApp())
+      .post('/api/invoices')
+      .set('Origin', 'http://localhost:5174')
+      .send({});
+
+    expect(response.status).toBe(401);
+  });
 });
 
 const original = {
