@@ -1,19 +1,22 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/brand/mergin-logo-dark.png">
-    <img src="public/brand/mergin-logo-light.png" alt="MERGIN" width="300">
+    <source media="(prefers-color-scheme: dark)" srcset="public/brand/Logo%20Dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="public/brand/Logo%20Light.png">
+    <img src="public/brand/Logo%20Light.png" alt="MERGIN" width="300">
   </picture>
 </p>
 
-<p align="center"><strong>Finance, without the noise.</strong></p>
+<p align="center"><strong>Merge. Manage. Margin.</strong></p>
+
+<p align="center"><em>Finance, without the noise.</em></p>
 
 <p align="center">
-  A monochrome finance workspace for small businesses — invoicing with PayPal reconciliation, a transaction ledger,
-  expenses, budgets, cash-flow forecasting, evidence-based recurring-charge detection, and a grounded finance Copilot,
-  all on one deterministic local ledger.
+  A monochrome finance workspace for small businesses — bringing invoicing, PayPal reconciliation, cash-flow planning,
+  expense and budget management, recurring-charge intelligence, and an evidence-grounded Finance Copilot into one workspace.
 </p>
 
 <p align="center">
+  <a href="https://mergin.onrender.com">Live app</a> ·
   <a href="#screens">Screens</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#architecture">Architecture</a> ·
@@ -22,9 +25,9 @@
   <a href="docs/SECURITY.md">Operations guide</a>
 </p>
 
-> **Demo build.** MERGIN is an MVP that runs on your machine. Every invoice, transaction, expense, budget, and Sentinel
-> signal is local SQLite data. PayPal, email, and model calls happen only when you supply real credentials, and demo
-> mode is labelled everywhere. Nothing here pretends an action succeeded when it did not.
+> **MVP note.** MERGIN includes a seeded demo workspace backed by SQLite. PayPal, email, and AI provider actions require
+> their respective server-side credentials. Demo actions are clearly labelled; payment state is reconciled from
+> server-side evidence rather than inferred from a browser redirect.
 
 ## Screens
 
@@ -118,21 +121,25 @@ history, and the local demo profile. Vendor secrets stay in the server environme
 
 - **Invoicing** — drafts, line items, tax and discount, PDF generation, email delivery, PDF print, hosted PayPal
   invoices, reminders, cancellation, and a public payment page.
+
 - **PayPal reconciliation** — server-side OAuth, Invoicing API v2, signature-verified webhooks, deduplicated events,
   and explicit mapping for partial, pending, paid, refunded, and cancelled states.
+
 - **Ledger and planning** — transactions, expenses, monthly category budgets, and 7/30-day cash-flow forecasts.
 - **Sentinel** — recurring-charge evidence with a minimum of three observations, price-change and overlap detection,
   and an explicit "usage telemetry not connected" statement.
+
 - **Copilot** — deterministic facts with optional model phrasing. It cannot move money, send invoices, or change records.
 - **Trustworthy states** — missing credentials produce truthful `409`/`503` responses and matching UI copy. No fake
   success toasts, no invoice marked paid by a browser return.
+
 - **Monochrome design system** — achromatic surfaces, text, and iconography; Inter with tabular numerals for money; no
   colored status chips and no chart library.
+
 - **Production groundwork** — security headers and CSP, rate limiting, same-origin write guard, workspace indexes,
   health check, route-level code splitting, CI, and weekly dependency updates.
 
 ## Stack
-
 | Layer | Choice |
 | --- | --- |
 | Frontend | React 19, TypeScript, React Router 7, Vite 7, Tailwind CSS built locally |
@@ -143,7 +150,6 @@ history, and the local demo profile. Vendor secrets stay in the server environme
 | AI | Deterministic Copilot core; optional OpenRouter or Gemini phrasing (server-only) |
 | Tests | Vitest, Supertest |
 | Design | Achromatic system from `Stitch Screens/achromatic_financial_architecture/DESIGN.md` |
-
 Node.js **22.5+** is required for the built-in `node:sqlite` module. CI uses Node 22.
 
 ## Quick start
@@ -152,17 +158,16 @@ Node.js **22.5+** is required for the built-in `node:sqlite` module. CI uses Nod
 npm install
 npm run db:reset      # create and seed the local SQLite database
 npm run dev           # API on :3001, Vite on :5173
+
 ```
 
-Open <http://localhost:5173> and either:
+Open <http://localhost:5173> and choose either demo entry option:
 
 - click **Launch demo**, or
 - sign in with `demo@mergin.example` / `mergin-demo`.
-
 The Vite dev server proxies `/api` to `http://localhost:3001`.
 
 ### Scripts
-
 | Command | What it does |
 | --- | --- |
 | `npm run dev` | Runs API (`tsx watch`) and Vite together |
@@ -177,7 +182,6 @@ The Vite dev server proxies `/api` to `http://localhost:3001`.
 | `npm start` | Runs the Express server; serves `dist/` when it has been built |
 
 ## Architecture
-
 MERGIN is a single-repo TypeScript application. The React SPA renders the workspace; the Express API owns every
 decision that matters.
 
@@ -191,15 +195,19 @@ Express 5 + Zod validation
   ├── PayPal Invoicing API v2 — server OAuth, verified + deduplicated webhooks
   ├── SMTP + pdf-lib — invoice HTML body and PDF attachment
   └── Copilot — deterministic facts, optional model phrasing
+
 ```
 
 - **One ledger, integer money.** `shared/money.ts` owns parsing, arithmetic, and formatting. Every stored amount is an
   integer in minor units; floating-point money math is never used.
+
 - **Server-authoritative.** Invoice totals, budget utilisation, cash-flow forecasts, PayPal status, and payment state
   are computed or confirmed on the server.
+
 - **Shared domain.** `shared/` holds the types, money helpers, date helpers, and Sentinel detection used by both sides.
 - **Truthful failure.** Missing provider configuration returns explicit `409`/`503` responses and matching UI copy
   rather than simulated success.
+
 - **Code-split frontend.** Routes load on demand; React, React DOM, and React Router live in a separate vendor chunk.
 
 ### Project layout
@@ -208,14 +216,14 @@ Express 5 + Zod validation
 server/            Express API, SQLite schema/repos, PayPal, email, Copilot, webhook, seed
 shared/            Domain types, money math, dates, deterministic Sentinel detection
 src/               React app, pages, components, API client, design tokens
-public/brand/      MERGIN logo and derived icons (source: Logo.png)
+public/brand/      Theme-aware logos (Logo Dark.png and Logo Light.png) and brand assets
 tests/             Vitest + Supertest suites
 docs/              Screenshots, security guide, implementation status
 Stitch Screens/    Original Stitch exports and DESIGN.md (reference only — not the app)
+
 ```
 
 ## Routes
-
 | Route | Screen |
 | --- | --- |
 | `/login` | Sign in |
@@ -240,12 +248,12 @@ same achromatic system. The archived exports in `Stitch Screens/` are visual ref
 change the running app.
 
 ## Configuration
-
 Copy `.env.example` to `.env` and fill in what you have. Every value is optional in development; with none set the app
 runs in a clearly labelled local demo mode.
 
 ```bash
 cp .env.example .env
+
 ```
 
 | Variable | Purpose |
@@ -256,8 +264,8 @@ cp .env.example .env
 | `APP_BASE_URL` | Public origin used in payment links and OAuth redirects (default `http://localhost:5173`) |
 | `DATABASE_URL` | SQLite location (default `file:./dev.db`) |
 | `SESSION_SECRET` | Cookie signing secret. Required in production; generate with `openssl rand -hex 32` |
-| `SUPABASE_URL` / `SUPABASE_ANON_KEY` | Supabase project URL and anon key for email/password auth |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server-only admin key. Never send it to the browser |
+| `SUPABASE_URL` / `SUPABASE_ANON_KEY` | Supabase project URL and anon/publishable key for authentication |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server-only service-role/secret key. Never send it to the browser |
 | `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | Google OAuth client. Paste the same pair into Supabase |
 | `PAYPAL_ENV` | `sandbox` (default) or `live` |
 | `PAYPAL_CLIENT_ID` / `PAYPAL_CLIENT_SECRET` | Server-side PayPal OAuth. Never exposed to the browser |
@@ -277,42 +285,42 @@ cp .env.example .env
 1. Sign in at <https://developer.paypal.com/dashboard/> and switch to **Sandbox**.
 2. Open **Apps & Credentials → Create App**, name it (for example `MERGIN Sandbox`), and create it.
 3. Copy the **Client ID** and **Secret** into `.env`.
-4. Open the app's **Webhooks** tab and add `<PUBLIC_WEBHOOK_BASE_URL or APP_BASE_URL>/api/paypal/webhook`.
+4. Open the app's **Webhooks** tab and add `https://<your-public-origin>/api/paypal/webhook` (use `PUBLIC_WEBHOOK_BASE_URL` or `APP_BASE_URL` as the origin).
 5. Select the invoice events the server reconciles: `INVOICING.INVOICE.PAID`, `UPDATED`, `REFUNDED`, `CANCELLED`,
    `CREATED`, `SENT`, and `SCHEDULED`.
+
 6. Copy the generated **Webhook ID** into `PAYPAL_WEBHOOK_ID`.
 7. Restart the API and use **Settings → Integrations → Test connection** to verify OAuth.
 
 For **Log in with PayPal**, enable the feature on the same app and set the return URL to
 `${APP_BASE_URL}/api/auth/paypal/callback`. PayPal also asks for privacy-policy and user-agreement URLs. Without the
 feature enabled, the PayPal button returns a provider error; no local session is created.
-
-Localhost webhooks are not reachable from PayPal. Use a tunnel (for example `ngrok http 3001`) and set
-`PUBLIC_WEBHOOK_BASE_URL` to the tunnel's HTTPS origin while testing.
+PayPal must be able to reach the webhook over public HTTPS. For a deployed instance, set
+`PUBLIC_WEBHOOK_BASE_URL` to the public origin (or leave it unset when `APP_BASE_URL` already points to that origin).
+For local testing, expose the API port through a secure tunnel (for example `ngrok http 3001`) and use the tunnel's
+HTTPS origin as `PUBLIC_WEBHOOK_BASE_URL`.
 
 ### Email setup
-
 Set `SMTP_HOST`, `SMTP_FROM`, and the matching credentials. Sending an invoice then renders a formatted PDF on the
 server and emails it to the customer's billing address with an HTML body and PDF attachment. If SMTP is not configured,
 sending falls back to PayPal when available, otherwise to demo mode — which states that no email was delivered and no
 PayPal invoice was created.
 
 ### Identity setup
-
 Email/password, Google OAuth, PayPal sign-in, passkeys (WebAuthn), self-service sign-up, and password reset are wired
 through the server. **Launch demo** never needs credentials.
 
 **Supabase**
 
 1. Create a project at <https://supabase.com/dashboard>.
-2. Copy the project URL, anon key, and service-role key from **Project Settings → API** into `.env`.
+2. Copy the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API** into the matching `.env` variables.
 3. Under **Authentication → URL Configuration**, set the site URL to `APP_BASE_URL` and add
    `${APP_BASE_URL}/api/auth/google/callback` plus the production origin as redirect URLs.
+
 4. Enable the Email and Google providers under **Authentication → Providers**.
 5. Self-service sign-up and password reset work once Supabase is configured.
 
-The service-role key bypasses row-level security. It belongs only in the server environment.
-
+The secret/service-role key bypasses row-level security. Keep it only in the server environment; never expose it to the browser.
 **Google OAuth**
 
 1. In <https://console.cloud.google.com/>, create or pick a project.
@@ -320,21 +328,19 @@ The service-role key bypasses row-level security. It belongs only in the server 
 3. Create an **OAuth client ID → Web application**.
 4. Add `https://<project-ref>.supabase.co/auth/v1/callback` as the authorised redirect URI, and add
    `http://localhost:5173` plus the production origin as authorised JavaScript origins.
+
 5. Copy the client ID and secret into `.env` and into **Supabase → Authentication → Providers → Google**.
 
 **Passkeys**
-
 Passkeys use the WebAuthn API with ES256/P-256 credentials, stored locally per user. Register and authenticate via
 `/auth/passkey/register/*` and `/auth/passkey/authenticate/*`. Modern browsers only; there is no legacy fallback.
 
 ### Copilot behaviour
-
 `@google/genai` and the OpenRouter client are imported only on the server. All amounts, counts, and evidence are
 calculated in TypeScript first. A configured model may only explain those facts; without a key, a deterministic local
 answer is returned. The Copilot cannot move money, send invoices, or change records.
 
 ## Demo data
-
 `npm run db:reset` seeds one coherent workspace — Northstar Creative:
 
 - Opening balance `$15,215.50`, current recorded balance `$18,420.50`
@@ -342,12 +348,10 @@ answer is returned. The Copilot cannot move money, send invoices, or change reco
 - Outstanding `$5,490.00`, including one overdue invoice
 - Expenses this month `$4,380.20`
 - 8 invoices, 20 transactions, 10 expenses, 4 budgets, 4 recurring patterns, 4 Sentinel reviews
-
 All data is local and resettable from **Settings → Business profile → Reset demo data**. Resetting never calls PayPal
 and never sends email.
 
 ## Security
-
 Controls active in every environment:
 
 - Security headers and a Google Fonts-aware CSP; `x-powered-by` disabled.
@@ -359,7 +363,6 @@ Controls active in every environment:
 - PayPal webhooks fail closed without credentials and are signature-verified and deduplicated.
 - A production startup guard that refuses to run without `SESSION_SECRET` and `APP_BASE_URL`.
 - `/api/health` runs a real database check and returns `503` when SQLite is unavailable.
-
 TLS termination, encrypted database volumes, backups, log retention, alerting, and SPF/DKIM/DMARC are operator
 responsibilities. See [`docs/SECURITY.md`](docs/SECURITY.md) for the deployment checklist and data-at-rest notes.
 
@@ -370,13 +373,13 @@ npm run typecheck
 npm run lint
 npm test
 npm run build
+
 ```
 
 The suite contains **56 tests across 11 files**, covering integer money math, CSV escaping, Sentinel detection,
 PayPal status mapping and signature verification, webhook idempotency and fail-closed behaviour, budget utilisation,
 security headers and origin checks, auth provisioning, invoice API validation, email header sanitization, and PDF
 generation with Unicode and control characters.
-
 GitHub Actions runs typecheck, lint, tests, and build on every push and pull request. Dependabot checks npm and GitHub
 Actions weekly.
 
@@ -389,8 +392,10 @@ Actions weekly.
 - Receipt files are referenced by name only; uploads are not stored.
 - The public payment page only opens a genuine PayPal URL when the server created a real hosted invoice. Otherwise it
   offers a clearly labelled local simulation.
+
 - SQLite stores business data in plaintext on disk. Disk encryption, backups, TLS, and email DNS records are deployment
   tasks, not app features.
+
 - CI verifies the build; deployment automation is not included.
 
 ## Documentation
