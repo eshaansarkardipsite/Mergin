@@ -11,7 +11,7 @@
 <p align="center"><em>Finance, without the noise.</em></p>
 
 <p align="center">
-  A monochrome finance workspace for small businesses — bringing invoicing, PayPal reconciliation, cash-flow planning,
+  A finance workspace for small businesses — bringing invoicing, PayPal reconciliation, cash-flow planning,
   expense and budget management, recurring-charge intelligence, and an evidence-grounded Finance Copilot into one workspace.
 </p>
 
