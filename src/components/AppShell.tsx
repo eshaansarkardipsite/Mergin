@@ -5,6 +5,7 @@ import { api, errorMessage } from '../lib/api';
 import { initials, relativeTime } from '../lib/format';
 import { useApp } from '../context/AppContext';
 import { Icon, Logo, Modal } from './ui';
+import { CopilotDock } from './CopilotDock';
 
 const NAV_GROUPS: { label: string; items: { to: string; label: string; icon: string; end?: boolean }[] }[] = [
   {
@@ -402,6 +403,8 @@ export function AppShell() {
           <p className="text-caption-micro text-ink-muted">No real funds move from this app. Demo payments are labeled in the audit log.</p>
         </div>
       </Modal>
+
+      <CopilotDock />
     </div>
   );
 }

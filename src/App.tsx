@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import { lazy, Suspense } from 'react';
 import type { ReactElement } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
+import { CopilotChatProvider } from './context/CopilotChatContext';
 import { AppShell } from './components/AppShell';
 import { Spinner } from './components/ui';
 
@@ -58,7 +59,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <AppProvider>
-        <Suspense fallback={<FullPageLoader />}>
+        <CopilotChatProvider>
+          <Suspense fallback={<FullPageLoader />}>
           <Routes>
             <Route path="/" element={<RootRedirect />} />
             <Route
@@ -113,6 +115,7 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
+        </CopilotChatProvider>
       </AppProvider>
     </BrowserRouter>
   );

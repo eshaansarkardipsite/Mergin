@@ -101,6 +101,12 @@ subscription is used or unused. Review decisions are the user's to make and are 
 The Copilot calculates every amount, count, and evidence link in deterministic TypeScript first. OpenRouter (or the
 legacy Gemini path) may only phrase those facts; with no key, a deterministic local answer is returned instead.
 
+![MERGIN Copilot dock](docs/screenshots/copilot-dock.png)
+
+A Copilot bubble follows you across the workspace. It opens a compact chat with the same conversation as the full
+Copilot page, so you can ask a question without leaving the current screen. The sidebar **Copilot** entry still opens
+the full page with evidence, assumptions, and suggested questions.
+
 ### Settings
 
 ![MERGIN settings and integrations](docs/screenshots/settings.png)

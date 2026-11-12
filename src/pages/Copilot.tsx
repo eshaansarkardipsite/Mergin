@@ -1,27 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import type { CopilotAnswer } from '../../shared/types';
-import { api, errorMessage } from '../lib/api';
-import { useApp, InlineAlert } from '../context/AppContext';
+import { api } from '../lib/api';
+import { InlineAlert } from '../context/AppContext';
+import { useCopilotChat } from '../context/CopilotChatContext';
 import { formatMoney } from '../lib/format';
 import { Icon, PageHeader, Spinner } from '../components/ui';
 
-interface Message {
-  id: number;
-  role: 'user' | 'assistant';
-  text?: string;
-  answer?: CopilotAnswer;
-}
-
-let nextId = 1;
-
 export default function Copilot() {
-  const { toast } = useApp();
+  const { messages, asking, error, ask } = useCopilotChat();
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [modelLabel, setModelLabel] = useState<'gemini' | 'openrouter' | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
   const [question, setQuestion] = useState('');
-  const [asking, setAsking] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,7 +17,7 @@ export default function Copilot() {
       .get<{ suggestions: string[]; liveModel: 'gemini' | 'openrouter' | null }>('/copilot/suggestions')
       .then((data) => {
         setSuggestions(data.suggestions);
-        setModelLabel(data.liveModel === 'openrouter' ? 'openrouter' : 'gemini');
+        setModelLabel(data.liveModel);
       })
       .catch(() => {
         // Suggestions are optional; the input still works.
@@ -39,25 +27,6 @@ export default function Copilot() {
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [messages, asking]);
-
-  const ask = async (prompt: string) => {
-    const trimmed = prompt.trim();
-    if (trimmed.length < 3 || asking) return;
-    setError(null);
-    setQuestion('');
-    setMessages((current) => [...current, { id: (nextId += 1), role: 'user', text: trimmed }]);
-    setAsking(true);
-    try {
-      const data = await api.post<{ answer: CopilotAnswer; question: string }>('/copilot/ask', { question: trimmed });
-      setMessages((current) => [...current, { id: (nextId += 1), role: 'assistant', answer: data.answer }]);
-    } catch (err) {
-      const message = errorMessage(err);
-      setError(message);
-      toast(message, 'error');
-    } finally {
-      setAsking(false);
-    }
-  };
 
   const latest = [...messages].reverse().find((message) => message.answer)?.answer;
 
@@ -71,7 +40,7 @@ export default function Copilot() {
           </>
         }
         title="Copilot"
-        description="Answers are calculated by deterministic TypeScript against the local ledger. When Gemini is configured, it only explains those calculated facts."
+        description="Answers are calculated by deterministic TypeScript against the local ledger. A configured model provider only explains those calculated facts."
         actions={
           <span className={`chip-outline ${modelLabel ? 'border-ink-solid' : ''}`}>
             <Icon name={modelLabel ? 'auto_awesome' : 'terminal'} className="text-[13px]" />
@@ -190,7 +159,10 @@ export default function Copilot() {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                void ask(question);
+                const prompt = question.trim();
+                if (prompt.length < 3) return;
+                setQuestion('');
+                void ask(prompt);
               }}
               className="flex flex-col gap-2"
             >
@@ -237,7 +209,10 @@ export default function Copilot() {
                     key={suggestion}
                     type="button"
                     className="rounded-lg border border-stroke-line bg-surface-raised px-3 py-1.5 text-left text-caption-micro text-ink-graphite transition-colors hover:border-ink-solid hover:text-ink-solid"
-                    onClick={() => void ask(suggestion)}
+                    onClick={() => {
+                      setQuestion('');
+                      void ask(suggestion);
+                    }}
                     disabled={asking}
                   >
                     <span className="mr-1 font-mono text-ink-muted">Q{index + 1}</span>
