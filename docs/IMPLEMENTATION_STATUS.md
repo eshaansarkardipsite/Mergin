@@ -139,7 +139,7 @@ minor units into decimals at the boundary only.
 | `npm run db:reset` | Complete; totals reconcile |
 | `npm run typecheck` | Passing |
 | `npm run lint` | Passing |
-| `npm test` | 55 tests in 11 files passing |
+| `npm test` | 56 tests in 11 files passing |
 | `npm run build` | Passing |
 | Browser flows | Sign-in, dashboard, invoices, payment, transactions, expenses, budgets, cash flow, Sentinel, Copilot, settings, reset |
 
