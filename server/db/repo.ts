@@ -4,7 +4,6 @@ import { getDb } from './connection';
 import { computeInvoiceTotals } from '../../shared/money';
 import { isoToday, monthKey } from '../../shared/dates';
 import { detectRecurringPatterns } from '../../shared/sentinel';
-import { seedIdentityWorkspace } from './seed';
 import type {
   AuditEvent,
   BudgetView,
@@ -132,7 +131,6 @@ export function createUserForIdentity(profile: IdentityProfile): string {
     db()
       .prepare('INSERT INTO user_identities (provider, subject, user_id, created_at) VALUES (?, ?, ?, ?)')
       .run(profile.provider, profile.subject, userId, now);
-    seedIdentityWorkspace(db(), workspaceId, userId, name);
     db().exec('COMMIT');
   } catch (error) {
     db().exec('ROLLBACK');

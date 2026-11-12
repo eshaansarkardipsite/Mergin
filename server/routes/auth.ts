@@ -156,28 +156,36 @@ authRouter.post(
     const input = parseBody(resetSchema, req, res);
     if (!input) return;
 
-    if (supabaseConfigured()) {
-      try {
-        const response = await fetch(`${config.supabase.url}/auth/v1/recover`, {
-          method: 'POST',
-          headers: { apikey: config.supabase.anonKey, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: input.email }),
-          signal: AbortSignal.timeout(15_000),
-        });
-        if (!response.ok) {
-          const data = (await response.json().catch(() => null)) as { error_description?: string } | null;
-          res.status(400).json({ error: data?.error_description || 'Password reset request failed.' });
-          return;
-        }
-        res.json({ ok: true, message: 'If an account exists, a reset link was sent to your email.' });
-      } catch (error) {
-        console.error('[mergin-auth] reset-password failed:', error);
-        res.status(500).json({ error: 'Password reset request failed. Try again.' });
-      }
+    if (!supabaseConfigured()) {
+      res.status(503).json({ error: 'Password reset requires Supabase to be configured.' });
       return;
     }
 
-    res.status(503).json({ error: 'Password reset requires Supabase to be configured.' });
+    // Only known self-service accounts get a recovery mail; the reply stays generic either way
+    // so the endpoint cannot be used to enumerate registered emails.
+    const account = findUserByEmail(input.email);
+    if (!account || account.demo) {
+      res.json({ ok: true, message: 'If an account exists, a reset link was sent to your email.' });
+      return;
+    }
+
+    try {
+      const response = await fetch(`${config.supabase.url}/auth/v1/recover`, {
+        method: 'POST',
+        headers: { apikey: config.supabase.anonKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: input.email }),
+        signal: AbortSignal.timeout(15_000),
+      });
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error_description?: string } | null;
+        res.status(400).json({ error: data?.error_description || 'Password reset request failed.' });
+        return;
+      }
+      res.json({ ok: true, message: 'If an account exists, a reset link was sent to your email.' });
+    } catch (error) {
+      console.error('[mergin-auth] reset-password failed:', error);
+      res.status(500).json({ error: 'Password reset request failed. Try again.' });
+    }
   }),
 );
 

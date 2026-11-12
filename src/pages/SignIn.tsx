@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp, InlineAlert } from '../context/AppContext';
 import { api, errorMessage } from '../lib/api';
+import { registerPasskey } from '../lib/passkey';
 import { Icon, Logo, Modal, Spinner } from '../components/ui';
 import { Sparkline } from '../components/charts';
 
 type Dialog = 'terms' | 'privacy' | 'forgot' | null;
 
-const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[] }> = {
+const DIALOG_COPY: Record<Exclude<Dialog, 'forgot' | null>, { title: string; body: string[] }> = {
   terms: {
     title: 'Terms of service',
     body: [
@@ -24,13 +25,6 @@ const DIALOG_COPY: Record<Exclude<Dialog, null>, { title: string; body: string[]
       'PayPal credentials, webhook IDs, and the session secret live in server environment variables and are never exposed to the browser.',
     ],
   },
-  forgot: {
-    title: 'Password recovery',
-    body: [
-      'Self-service password recovery is available when Supabase is configured. A reset link is sent to your email.',
-      'Use “Launch demo workspace” for evaluation without credentials.',
-    ],
-  },
 };
 
 interface AuthProviders {
@@ -42,17 +36,21 @@ interface AuthProviders {
 }
 
 export default function SignIn() {
-  const { demoLogin, login, signup, toast } = useApp();
+  const { demoLogin, login, signup, resetPassword, toast } = useApp();
   const navigate = useNavigate();
   const location = useLocation();
   const from = (location.state as { from?: string } | null)?.from ?? '/app';
 
+  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState<'form' | 'demo' | null>(null);
   const [error, setError] = useState<string | null>(() => new URLSearchParams(location.search).get('error'));
   const [dialog, setDialog] = useState<Dialog>(null);
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetState, setResetState] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [resetError, setResetError] = useState<string | null>(null);
   const [providers, setProviders] = useState<AuthProviders | null>(null);
 
   useEffect(() => {
@@ -78,56 +76,7 @@ export default function SignIn() {
   const startPasskeyRegister = async () => {
     setError(null);
     try {
-      const options = await api.post<{
-        challenge: string;
-        rpId: string;
-        rpName: string;
-        userId: string;
-        userName: string;
-        userDisplay: string;
-      }>('/auth/passkey/register/start', { email: email.trim() });
-
-      if (!window.PublicKeyCredential) {
-        setError('Passkeys are not supported in this browser.');
-        return;
-      }
-
-      const credential = await (navigator.credentials as any).create({
-        publicKey: {
-          challenge: options.challenge,
-          rp: { id: options.rpId, name: options.rpName },
-          user: {
-            id: options.userId,
-            name: options.userName,
-            displayName: options.userDisplay,
-          },
-          pubKeyCredParams: [{ type: 'public-key', alg: -7 }],
-          authenticatorSelection: {
-            authenticatorAttachment: 'platform',
-            residentKey: 'preferred',
-            requireResidentKey: false,
-            userVerification: 'preferred',
-          },
-          timeout: 60_000,
-        },
-      });
-
-      await api.post('/auth/passkey/register/finish', {
-        challenge: options.challenge,
-        credential: {
-          id: credential.id,
-          rawId: credential.rawId,
-          response: {
-            attestationObject: btoa(
-              String.fromCharCode(...new Uint8Array(credential.response.attestationObject)),
-            ),
-            clientDataJSON: btoa(
-              String.fromCharCode(...new Uint8Array(credential.response.clientDataJSON)),
-            ),
-          },
-        },
-      });
-
+      await registerPasskey(email.trim());
       toast('Passkey registered. You are signed in.', 'success');
       navigate(from, { replace: true });
     } catch (err) {
@@ -224,11 +173,39 @@ export default function SignIn() {
     try {
       await signup(email.trim(), password);
       toast('Account created. You are signed in.', 'success');
-      navigate(from, { replace: true });
+      // The passkey offer lives on the auth-protected onboarding step because signing in
+      // immediately redirects this public page to the workspace.
+      navigate('/onboarding/business', { replace: true, state: { offerPasskey: true } });
     } catch (err) {
       setError(errorMessage(err));
     } finally {
       setSubmitting(null);
+    }
+  };
+
+  const switchMode = (next: 'signin' | 'signup') => {
+    setMode(next);
+    setError(null);
+    setPassword('');
+  };
+
+  const openForgot = () => {
+    setResetEmail(email);
+    setResetState('idle');
+    setResetError(null);
+    setDialog('forgot');
+  };
+
+  const sendReset = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setResetError(null);
+    setResetState('sending');
+    try {
+      await resetPassword(resetEmail.trim());
+      setResetState('sent');
+    } catch (err) {
+      setResetError(errorMessage(err));
+      setResetState('idle');
     }
   };
 
@@ -246,7 +223,7 @@ export default function SignIn() {
           <button
             type="button"
             className="btn btn-sm btn-ghost"
-            onClick={() => setDialog('forgot')}
+            onClick={openForgot}
           >
             Need help?
           </button>
@@ -264,10 +241,12 @@ export default function SignIn() {
                 </span>
               </div>
               <h1 className="text-headline-lg-mobile tracking-tight text-ink-solid md:text-headline-lg">
-                Sign in to MERGIN
+                {mode === 'signup' ? 'Create your MERGIN account' : 'Sign in to MERGIN'}
               </h1>
               <p className="mt-2 text-body-md text-ink-slate">
-                Your business finances. One deterministic workspace.
+                {mode === 'signup'
+                  ? 'Set up your email and password. You can add a passkey after the account is created.'
+                  : 'Your business finances. One deterministic workspace.'}
               </p>
             </div>
 
@@ -300,13 +279,13 @@ export default function SignIn() {
 
             {error ? (
               <div className="mb-5">
-                <InlineAlert tone="error" title="Sign-in failed">
+                <InlineAlert tone="error" title={mode === 'signup' ? 'Account creation failed' : 'Sign-in failed'}>
                   {error}
                 </InlineAlert>
               </div>
             ) : null}
 
-            <form onSubmit={signIn} className="flex flex-col gap-4" noValidate>
+            <form onSubmit={mode === 'signup' ? signUp : signIn} className="flex flex-col gap-4" noValidate>
               <div>
                 <label className="field-label" htmlFor="email">
                   Business email
@@ -332,23 +311,26 @@ export default function SignIn() {
                   <label className="text-label-md font-medium text-ink-solid" htmlFor="password">
                     Password
                   </label>
-                  <button
-                    type="button"
-                    className="text-label-sm text-ink-slate transition-colors hover:text-ink-solid"
-                    onClick={() => setDialog('forgot')}
-                  >
-                    Forgot password?
-                  </button>
+                  {mode === 'signin' ? (
+                    <button
+                      type="button"
+                      className="text-label-sm text-ink-slate transition-colors hover:text-ink-solid"
+                      onClick={openForgot}
+                    >
+                      Forgot password?
+                    </button>
+                  ) : null}
                 </div>
                 <div className="relative">
                   <Icon name="lock" className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-ink-slate" />
                   <input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
-                    autoComplete="current-password"
+                    autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                     required
+                    minLength={mode === 'signup' ? 8 : undefined}
                     className="input pl-10 pr-11"
-                    placeholder="Enter your password"
+                    placeholder={mode === 'signup' ? 'At least 8 characters' : 'Enter your password'}
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                     disabled={submitting !== null}
@@ -377,19 +359,25 @@ export default function SignIn() {
 
               <button type="submit" className="btn btn-primary mt-1 h-12 text-headline-sm" disabled={submitting !== null}>
                 {submitting === 'form' ? <Spinner className="h-4 w-4" /> : null}
-                {submitting === 'form' ? 'Signing in' : 'Continue to workspace'}
+                {submitting === 'form'
+                  ? mode === 'signup'
+                    ? 'Creating account'
+                    : 'Signing in'
+                  : mode === 'signup'
+                    ? 'Create account'
+                    : 'Continue to workspace'}
                 {submitting !== 'form' ? <Icon name="arrow_forward" className="text-[18px]" /> : null}
               </button>
               {providers?.password ? (
                 <p className="mt-4 text-caption-micro text-ink-muted">
-                  Don't have an account?{' '}
+                  {mode === 'signup' ? 'Already have an account?' : "Don't have an account?"}{' '}
                   <button
                     type="button"
                     className="underline underline-offset-2 hover:text-ink-solid"
-                    onClick={signUp}
+                    onClick={() => switchMode(mode === 'signup' ? 'signin' : 'signup')}
                     disabled={submitting !== null}
                   >
-                    Create account
+                    {mode === 'signup' ? 'Sign in' : 'Create account'}
                   </button>
                 </p>
               ) : null}
@@ -406,7 +394,7 @@ export default function SignIn() {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={startPasskeyRegister}
+                onClick={() => void startPasskeyRegister()}
                 disabled={submitting !== null}
                 title="Register a passkey (Windows Hello, Face ID, Touch ID, or security key)"
               >
@@ -552,9 +540,9 @@ export default function SignIn() {
       </footer>
 
       <Modal
-        open={dialog !== null}
+        open={dialog === 'terms' || dialog === 'privacy'}
         onClose={() => setDialog(null)}
-        title={dialog ? DIALOG_COPY[dialog].title : ''}
+        title={dialog === 'privacy' ? DIALOG_COPY.privacy.title : dialog === 'terms' ? DIALOG_COPY.terms.title : ''}
         footer={
           <button type="button" className="btn btn-primary" onClick={() => setDialog(null)}>
             Close
@@ -562,10 +550,64 @@ export default function SignIn() {
         }
       >
         <div className="space-y-3 text-body-md text-ink-graphite">
-          {dialog
+          {dialog === 'terms' || dialog === 'privacy'
             ? DIALOG_COPY[dialog].body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
             : null}
         </div>
+      </Modal>
+
+      <Modal
+        open={dialog === 'forgot'}
+        onClose={() => setDialog(null)}
+        title="Reset your password"
+        description="Enter the email on your account. We check it against this workspace before asking Supabase to send a link."
+        size="sm"
+      >
+        {resetState === 'sent' ? (
+          <div className="space-y-3 text-body-md text-ink-graphite">
+            <p>
+              If a self-service account exists for{' '}
+              <span className="font-medium text-ink-solid">{resetEmail.trim()}</span>, a reset link is on its way. Check
+              your spam folder if it does not arrive in a minute.
+            </p>
+            <p className="text-caption-micro leading-relaxed text-ink-slate">
+              Reset mail is sent by Supabase and only for accounts created through email sign-up or Google. The demo
+              workspace credentials never change.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={sendReset} className="flex flex-col gap-4" noValidate>
+            <div>
+              <label className="field-label" htmlFor="reset-email">
+                Account email
+              </label>
+              <div className="relative">
+                <Icon name="mail" className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-ink-slate" />
+                <input
+                  id="reset-email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="input pl-10"
+                  placeholder="you@company.com"
+                  value={resetEmail}
+                  onChange={(event) => setResetEmail(event.target.value)}
+                  disabled={resetState === 'sending'}
+                />
+              </div>
+            </div>
+            {resetError ? <InlineAlert tone="error" title="Reset request failed">{resetError}</InlineAlert> : null}
+            <div className="flex justify-end gap-2">
+              <button type="button" className="btn btn-ghost" onClick={() => setDialog(null)} disabled={resetState === 'sending'}>
+                Cancel
+              </button>
+              <button type="submit" className="btn btn-primary" disabled={resetState === 'sending'}>
+                {resetState === 'sending' ? <Spinner className="h-4 w-4" /> : null}
+                {resetState === 'sending' ? 'Sending' : 'Send reset link'}
+              </button>
+            </div>
+          </form>
+        )}
       </Modal>
     </div>
   );

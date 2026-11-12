@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import type { Workspace } from '../../shared/types';
 import { api, errorMessage } from '../lib/api';
+import { registerPasskey } from '../lib/passkey';
 import { useApp } from '../context/AppContext';
 import { InlineAlert } from '../context/AppContext';
-import { CopyButton, Icon, LoadingBlock, Spinner } from '../components/ui';
+import { CopyButton, Icon, LoadingBlock, Modal, Spinner } from '../components/ui';
 import { OnboardingShell, OnboardingStepperFooter } from '../components/OnboardingShell';
 
 interface OnboardingState {
@@ -15,13 +16,19 @@ interface OnboardingState {
 }
 
 export default function OnboardingBusiness() {
-  const { toast } = useApp();
+  const { toast, user } = useApp();
   const navigate = useNavigate();
+  const location = useLocation();
   const [state, setState] = useState<OnboardingState | null>(null);
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [offerPasskey, setOfferPasskey] = useState(
+    Boolean((location.state as { offerPasskey?: boolean } | null)?.offerPasskey),
+  );
+  const [passkeyBusy, setPasskeyBusy] = useState(false);
+  const [passkeyError, setPasskeyError] = useState<string | null>(null);
 
   useEffect(() => {
     api
@@ -56,6 +63,21 @@ export default function OnboardingBusiness() {
       setError(errorMessage(err));
     } finally {
       setSaving(false);
+    }
+  };
+
+  const addPasskey = async () => {
+    if (!user) return;
+    setPasskeyError(null);
+    setPasskeyBusy(true);
+    try {
+      await registerPasskey(user.email);
+      toast('Passkey saved. Use "Sign in with passkey" next time.', 'success');
+      setOfferPasskey(false);
+    } catch (err) {
+      setPasskeyError(errorMessage(err));
+    } finally {
+      setPasskeyBusy(false);
     }
   };
 
@@ -178,6 +200,31 @@ export default function OnboardingBusiness() {
           </aside>
         </div>
       )}
+
+      <Modal
+        open={offerPasskey}
+        onClose={() => setOfferPasskey(false)}
+        title="Save a passkey?"
+        description="Next time, sign in with Windows Hello, Face ID, Touch ID, or a security key instead of typing your password."
+        size="sm"
+      >
+        <div className="space-y-3 text-body-md text-ink-graphite">
+          <p>
+            Your email and password stay exactly as they are. The passkey is stored on this device; you can always sign
+            in with your password instead.
+          </p>
+          {passkeyError ? <InlineAlert tone="error" title="Passkey not saved">{passkeyError}</InlineAlert> : null}
+          <div className="flex justify-end gap-2 pt-1">
+            <button type="button" className="btn btn-ghost" onClick={() => setOfferPasskey(false)} disabled={passkeyBusy}>
+              Not now
+            </button>
+            <button type="button" className="btn btn-primary" onClick={() => void addPasskey()} disabled={passkeyBusy}>
+              {passkeyBusy ? <Spinner className="h-4 w-4" /> : <Icon name="passkey" className="text-[17px]" />}
+              {passkeyBusy ? 'Waiting for device' : 'Create passkey'}
+            </button>
+          </div>
+        </div>
+      </Modal>
     </OnboardingShell>
   );
 }

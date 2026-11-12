@@ -1,7 +1,10 @@
+import request from 'supertest';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { createApp } from '../server/app';
 import { config } from '../server/config';
 import { closeDb, getDb, resetDbForTests } from '../server/db/connection';
 import { findUserByIdentity } from '../server/db/repo';
+import { seedDatabase } from '../server/db/seed';
 import {
   AuthError,
   exchangePaypalCode,
@@ -128,6 +131,20 @@ describe('local identity provisioning', () => {
       }),
     ).toThrowError(AuthError);
   });
+
+  it('provisions a first-time identity on a database that already holds the demo seed', () => {
+    seedDatabase(getDb());
+
+    const user = provisionLocalUser({
+      provider: 'supabase',
+      subject: 'google-seeded-uuid',
+      email: 'new.owner@example.com',
+      name: 'New Owner',
+    });
+
+    expect(user.demo).toBe(false);
+    expect(user.workspaceName).toBeTruthy();
+  });
 });
 
 describe('Supabase password sign-in', () => {
@@ -197,5 +214,26 @@ describe('PayPal sign-in', () => {
     expect(tokenUrl).toContain('/v1/oauth2/token');
     expect(String(tokenInit.body)).toContain('grant_type=authorization_code');
     expect(String(tokenInit.body)).toContain('code=paypal-code');
+  });
+});
+
+describe('password reset requests', () => {
+  it('asks Supabase for a recovery mail only when the email exists locally', async () => {
+    config.supabase.url = 'https://project.supabase.co';
+    config.supabase.anonKey = 'anon-key';
+    const fetchMock = vi.fn(async () => jsonResponse({}));
+    vi.stubGlobal('fetch', fetchMock);
+    const app = createApp();
+
+    const unknown = await request(app).post('/api/auth/reset-password').send({ email: 'missing@example.com' });
+    expect(unknown.status).toBe(200);
+    expect(unknown.body.message).toMatch(/if an account exists/i);
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    provisionLocalUser({ provider: 'supabase', subject: 'reset-uuid', email: 'known@example.com', name: 'Known' });
+    const known = await request(app).post('/api/auth/reset-password').send({ email: 'known@example.com' });
+    expect(known.status).toBe(200);
+    const [url] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe('https://project.supabase.co/auth/v1/recover');
   });
 });
