@@ -1,9 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="public/brand/Logo%20Dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="public/brand/Logo%20Light.png">
-    <img src="public/brand/Logo%20Light.png" alt="MERGIN" width="300">
-  </picture>
+  <img src="public/brand/Mergin%20Banner.png" alt="MERGIN Banner" width="800">
 </p>
 
 <p align="center"><strong>Merge. Manage. Margin.</strong></p>
